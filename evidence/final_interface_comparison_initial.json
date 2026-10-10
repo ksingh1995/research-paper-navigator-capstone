@@ -1,0 +1,274 @@
+{
+  "answer": "Both papers combine learning with symbolic mechanisms, but they do so at different points in the synthesis loop.\n\n## Learning to Infer Program Sketches\nThis paper learns a neural **sketch generator** that predicts a program sketch from the specification, then hands that sketch to a **symbolic enumerative synthesizer** that fills the holes with explicit search. The authors emphasize that the system can learn how much detail to put in the sketch, so it can rely more on pattern recognition when the task is easy and more on symbolic search when the task is hard [1][4].\n\nOne stated evaluation/scope trade-off is that the approach is intended to be **domain-general across multiple domains**, but the authors also report that the **synthesizer-only** baseline struggles in harder settings because enumeration from scratch is too slow or ineffective in larger DSLs [2][3]. More specifically, they note that in the string-editing DSL, enumerative search is “both slower and less effective” than in the list-transformation DSL, and that this makes synthesizing sufficiently complex programs from scratch difficult [2].\n\n## Program Synthesis with a REPL\nI could not find passages about this paper in the supplied documents, so I can’t safely describe its method or its evaluation trade-off from the evidence provided. If you share passages from that paper, I can compare them directly.\n\n## Comparison on the learning-symbolic boundary\nFrom the supplied evidence, **Learning to Infer Program Sketches** combines learning and symbolic search by:\n- learning a sketch distribution with a neural model,\n- using symbolic enumeration to complete the sketch,\n- and training the sketch generator to choose sketches that make symbolic search easier [1][4].\n\nFor **Program Synthesis with a REPL**, no evidence is available in the provided passages, so I cannot attribute any specific use of execution feedback or REPL-style interaction.\n\n### Sources used\n- **Learning to Infer Program Sketches** — `DBLP_journals_corr_abs-1902-06349.pdf`, p. 2\n- **Learning to Infer Program Sketches** — `DBLP_journals_corr_abs-1902-06349.pdf`, p. 3\n- **Learning to Infer Program Sketches** — `DBLP_conf_icml_NyeHTS19.pdf`, p. 5\n- **Learning to Infer Program Sketches** — `DBLP_conf_icml_NyeHTS19.pdf`, p. 7\n- **Learning to Infer Program Sketches** — `DBLP_conf_icml_NyeHTS19.pdf`, p. 8",
+  "answer_usage": {
+    "prompt_tokens": 3015,
+    "completion_tokens": 529,
+    "total_tokens": 3544,
+    "cost": 0.00464175,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00464175,
+      "upstream_inference_prompt_cost": 0.00226125,
+      "upstream_inference_completions_cost": 0.0023805
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "hits": [
+    {
+      "rank": 1,
+      "fused_score": 0.01639344,
+      "keyword_rank": 1,
+      "keyword_score": 52.929,
+      "semantic_rank": 7,
+      "semantic_score": 0.736304,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p2:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using symbolic synthesis techniques, which approximate explicit reasoning from ﬁrst principles. However, previous systems use static, hand-designed inter- mediate sketch grammars, which do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search. The neural network is trained to map from spec to a pre-speciﬁed sketch, and can- not learn to output a more detailed sketch, if the pattern matching task is easy, or learn to output a mo..."
+    },
+    {
+      "rank": 2,
+      "fused_score": 0.01612903,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p7:c2",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 7,
+      "excerpt": "trained only on a synthetic distribution. Furthermore, the string editing DSL is much larger than the list transformation DSL. This means that enumerative search is both slower and less effective than for the list trans- formation programs, where a fast enumerator could brute force the entire search space (Balog et al., 2016). Because of this, the “Synthesizer only” model is not able to consistently enumerate sufﬁciently complex programs from scratch. We trained our model using self-supervision, sampling train- ing programs randomly from the DSL and conditioning the models on 4 examples of input-output pairs, and evaluated on our test corpus. We plot our results in Figure 3. Overall, SKETCH ADAPT outperforms the “Synthesizer 2000 4000 6000 8000 79214 (full dataset) Number of training programs used 0 20 40 60 80 100% of test programs solved Algolisp Our model Generator only (RobustFill) S"
+    },
+    {
+      "rank": 3,
+      "fused_score": 0.01639344,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p5:c2",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 5,
+      "excerpt": "well in practice. Our training methodology is described in Algorithm 1, and the evaluation approach is described in Algorithm 2. 5. Experiments We provide the results of evaluatingSKETCH ADAPT in three test domains. For all test domains, we compare against two alternate models, which can be regarded as lesioned versions of our model, as well as existing models in the literature: The “Synthesizer only” alternate model is equivalent to our program synthesizer module, using a learned recogni- tion model and enumerator. Instead of enumerating from holes in partially ﬁlled-in sketches, the “Synthesizer only” model enumerates all programs from scratch, starting from a single <HOLE> token. This model is comparable to the “Deepcoder” system in Balog et al. (2016), which was developed to solve the list transformation tasks we examine in subsection 5.1. The “Generator only” alternate model is a fu"
+    },
+    {
+      "rank": 4,
+      "fused_score": 0.01612903,
+      "keyword_rank": 5,
+      "keyword_score": 47.841,
+      "semantic_rank": 5,
+      "semantic_score": 0.739242,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p3:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 3,
+      "excerpt": "Learning to Infer Program Sketches a special token: <HOLE> . Intuitively, this token desig- nates locations in the program tree for which pattern-based recognition is difﬁcult, and more explicit search methods are necessary. Our system consists of two main components: 1) a sketch generator, and 2) a program synthesizer. The sketch generator is a distribution over program sketches given the spec: qφ(sketch|X ). The generator is parametrized by a recurrent neural network, and is trained to assign high probability to sketches which are likely to quickly yield programs satisfying the spec when given to the synthesizer. Details about the learning scheme and ar- chitecture will be discussed below. The program synthesizer takes a sketch as a starting point, and performs an explicit symbolic search to “ﬁll in the holes” in order to ﬁnd a program which satisﬁes the spec. Given a set of test probl..."
+    },
+    {
+      "rank": 5,
+      "fused_score": 0.01587302,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p8:c1",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 8,
+      "excerpt": "Learning to Infer Program Sketches Table 3. Example problems from the AlgoLisp dataset Spec Program Consider an array of numbers, ( filter a ( lambda1 ( == ( ﬁnd elements in the given array not divisible by two % arg1 2 ) 1))) You are given an array of numbers, (reduce(reverse(digits(deref (sort a) your task is to compute median (/ (len a) 2)))) 0 in the given array with its digits reversed (lambda2 (+( * arg1 10) arg2))) Table 4. Algolisp results on full dataset Model Full dataset Filtered 1 (Dev) Test (Dev) Test SKETCH ADAPT (Ours) (88.8) 90.0 (95.0) 95.8 Synthesizer only (5.2) 7.3 (5.6) 8.0 Generator only (91.4) 88.6 (98.4) 95.6 SKETCH ADAPT , IO only (4.9) 8.3 (5.6) 8.8 Seq2Tree+Search (86.1) 85.8 - - SAPS2 (83.0) 85.2 (93.2) 92.0 Table 5. Algolisp generalization results: Trained on 8000 pro- grams, excluding ‘Odd’ concept: Model Even Odd SKETCH ADAPT (Ours) 34.4 29.8 Synthesizer onl"
+    }
+  ],
+  "actions": [
+    {
+      "action": "search",
+      "query": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+      "hit_ids": [
+        "DBLP_journals_corr_abs-1902-06349:p2:c1",
+        "DBLP_journals_corr_abs-1902-06349:p3:c1",
+        "DBLP_journals_corr_abs-1906-04604:p2:c1",
+        "DBLP_conf_icml_NyeHTS19:p2:c1",
+        "DBLP_journals_corr_abs-1906-04604:p1:c2",
+        "DBLP_conf_icml_NyeHTS19:p3:c1",
+        "DBLP_conf_iclr_NyePBATS21:p9:c2",
+        "DBLP_conf_nips_EllisST15:p2:c1"
+      ],
+      "embedding_usage": {
+        "tokens": 43.0,
+        "cost": 8.6e-07
+      }
+    },
+    {
+      "action": "lookup_paper",
+      "title": "Learning to Infer Program Sketches",
+      "hit_ids": [
+        "DBLP_conf_icml_NyeHTS19:p5:c2",
+        "DBLP_conf_icml_NyeHTS19:p7:c2",
+        "DBLP_conf_icml_NyeHTS19:p8:c1",
+        "DBLP_conf_icml_NyeHTS19:p2:c2",
+        "DBLP_conf_icml_NyeHTS19:p3:c2"
+      ]
+    }
+  ],
+  "planner_calls": [
+    {
+      "plan": {
+        "action": "lookup_paper",
+        "title": "Learning to Infer Program Sketches",
+        "query": "",
+        "missing_aspects": [
+          "experimental evaluation results scope limitations tradeoff baseline dataset"
+        ],
+        "reason": "Named-paper evidence coverage rule",
+        "override_reason": "Required focused lookup"
+      },
+      "usage": {
+        "prompt_tokens": 2566,
+        "completion_tokens": 195,
+        "total_tokens": 2761,
+        "cost": 0.002802,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.002802,
+          "upstream_inference_prompt_cost": 0.0019245,
+          "upstream_inference_completions_cost": 0.0008775
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "plan": {
+        "action": "answer",
+        "query": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+        "title": "",
+        "missing_aspects": [
+          "Program Synthesis with a REPL paper evidence not provided in the retrieved excerpts",
+          "Need one evaluation or scope trade-off explicitly stated by Program Synthesis with a REPL authors",
+          "Need possibly a direct characterization of execution-feedback loop from Program Synthesis with a REPL"
+        ],
+        "reason": "The retrieved excerpts provide enough evidence for Learning to Infer Program Sketches: it uses a learned sketch generator plus symbolic enumeration to fill holes, and the authors report that enumerative search is slower/less effective in the larger string-editing DSL, while their model outperforms a"
+      },
+      "usage": {
+        "prompt_tokens": 2348,
+        "completion_tokens": 234,
+        "total_tokens": 2582,
+        "cost": 0.002814,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.002814,
+          "upstream_inference_prompt_cost": 0.001761,
+          "upstream_inference_completions_cost": 0.001053
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "sanitized_question": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+  "filter_notes": [],
+  "rejected_chunks": [],
+  "mode": "live",
+  "route": "agent",
+  "question": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+  "named_papers": [
+    "Learning to Infer Program Sketches"
+  ],
+  "calls": [
+    {
+      "path": "/embeddings",
+      "role": "embedding",
+      "model": "openai/text-embedding-3-small",
+      "status": "ok",
+      "prompt_tokens": 43,
+      "completion_tokens": null,
+      "total_tokens": 43,
+      "reported_cost_usd": 8.6e-07,
+      "seconds": 0.3117
+    },
+    {
+      "path": "/chat/completions",
+      "role": "planner",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2566,
+      "completion_tokens": 195,
+      "total_tokens": 2761,
+      "reported_cost_usd": 0.002802,
+      "seconds": 1.4953
+    },
+    {
+      "path": "/chat/completions",
+      "role": "planner",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2348,
+      "completion_tokens": 234,
+      "total_tokens": 2582,
+      "reported_cost_usd": 0.002814,
+      "seconds": 1.5451
+    },
+    {
+      "path": "/chat/completions",
+      "role": "answer",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 3015,
+      "completion_tokens": 529,
+      "total_tokens": 3544,
+      "reported_cost_usd": 0.00464175,
+      "seconds": 2.4869
+    }
+  ],
+  "metrics": {
+    "seconds": 6.306,
+    "api_calls": 4,
+    "chat_calls": 3,
+    "embedding_calls": 1,
+    "input_tokens": 7972,
+    "output_tokens": 958,
+    "total_tokens": 8930,
+    "reported_cost_usd": 0.01025861,
+    "missing_cost_calls": 0,
+    "retrieval_actions": 2,
+    "planner_calls": 2,
+    "verified_passages": 5,
+    "rejected_chunks": 0
+  },
+  "index_usage": {
+    "source": "loaded_in_memory"
+  },
+  "index_calls": [],
+  "corpus_fingerprint": "297a8f04bbe45f52272bf8ed89030324cc8145caff06b38a1bc6babb60916c4c",
+  "extraction_warnings": [],
+  "total_seconds": 6.307
+}

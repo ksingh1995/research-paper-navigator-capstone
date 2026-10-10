@@ -1,0 +1,620 @@
+{
+  "pdf_count": 153,
+  "recorded_chunks": 12420,
+  "source": "Original course ResearchPapers collection",
+  "note": "Full PDFs and vector caches are excluded from GitHub. Place your authorized PDF copies in data/papers or set RPN_CORPUS_DIR.",
+  "files": [
+    {
+      "filename": "conf_iclr_gupta2025sparling.pdf",
+      "bytes": 2925842
+    },
+    {
+      "filename": "conf_nips_li2025encompass.pdf",
+      "bytes": 935606
+    },
+    {
+      "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+      "bytes": 1169195
+    },
+    {
+      "filename": "DBLP_conf_aplas_2009.pdf",
+      "bytes": 160254
+    },
+    {
+      "filename": "DBLP_conf_aplas_Solar-Lezama09.pdf",
+      "bytes": 88384
+    },
+    {
+      "filename": "DBLP_conf_cav_2011.pdf",
+      "bytes": 408022
+    },
+    {
+      "filename": "DBLP_conf_cav_2012.pdf",
+      "bytes": 134933
+    },
+    {
+      "filename": "DBLP_conf_cav_2015.pdf",
+      "bytes": 157470
+    },
+    {
+      "filename": "DBLP_conf_cav_BraggFRS21.pdf",
+      "bytes": 33605756
+    },
+    {
+      "filename": "DBLP_conf_cav_ChaudhuriS11.pdf",
+      "bytes": 471601
+    },
+    {
+      "filename": "DBLP_conf_cav_ChaudhuriS12.pdf",
+      "bytes": 938293
+    },
+    {
+      "filename": "DBLP_conf_cav_GaoKDRSAK19.pdf",
+      "bytes": 20690107
+    },
+    {
+      "filename": "DBLP_conf_cav_JeonQSF15.pdf",
+      "bytes": 1014454
+    },
+    {
+      "filename": "DBLP_conf_cav_KongSG18.pdf",
+      "bytes": 21312977
+    },
+    {
+      "filename": "DBLP_conf_cav_SinghS12.pdf",
+      "bytes": 243545
+    },
+    {
+      "filename": "DBLP_conf_cidr_CheungAMSM13.pdf",
+      "bytes": 612163
+    },
+    {
+      "filename": "DBLP_conf_cikm_CheungSM12.pdf",
+      "bytes": 401051
+    },
+    {
+      "filename": "DBLP_conf_cvpr_WillisJCT0GSTLS22.pdf",
+      "bytes": 7985287
+    },
+    {
+      "filename": "DBLP_conf_emnlp_OlaussonGLZSTL23.pdf",
+      "bytes": 812783
+    },
+    {
+      "filename": "DBLP_conf_fmcad_AlurBJMRSSSTU13.pdf",
+      "bytes": 1052671
+    },
+    {
+      "filename": "DBLP_conf_hvc_2012.pdf",
+      "bytes": 116134
+    },
+    {
+      "filename": "DBLP_conf_hvc_GaneshMSR12.pdf",
+      "bytes": 172493
+    },
+    {
+      "filename": "DBLP_conf_hybrid_HuntFMHDS21.pdf",
+      "bytes": 2510196
+    },
+    {
+      "filename": "DBLP_conf_iclr_InalaBTS20.pdf",
+      "bytes": 881111
+    },
+    {
+      "filename": "DBLP_conf_iclr_JainHGLYZWSSS25.pdf",
+      "bytes": 5285303
+    },
+    {
+      "filename": "DBLP_conf_iclr_LiWSZ0BM25.pdf",
+      "bytes": 47815681
+    },
+    {
+      "filename": "DBLP_conf_iclr_NyePBATS21.pdf",
+      "bytes": 878259
+    },
+    {
+      "filename": "DBLP_conf_iclr_OlaussonIW0S24.pdf",
+      "bytes": 2429589
+    },
+    {
+      "filename": "DBLP_conf_icml_AletLKNSLKT21.pdf",
+      "bytes": 847334
+    },
+    {
+      "filename": "DBLP_conf_icml_CanoPDRS25.pdf",
+      "bytes": 10734606
+    },
+    {
+      "filename": "DBLP_conf_icml_GuJLSESS25.pdf",
+      "bytes": 581614
+    },
+    {
+      "filename": "DBLP_conf_icml_GuRLSS024.pdf",
+      "bytes": 1377441
+    },
+    {
+      "filename": "DBLP_conf_icml_LiPS24.pdf",
+      "bytes": 521228
+    },
+    {
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "bytes": 803436
+    },
+    {
+      "filename": "DBLP_conf_icml_PuMSK18.pdf",
+      "bytes": 693377
+    },
+    {
+      "filename": "DBLP_conf_icml_TavaresBMSR19.pdf",
+      "bytes": 977787
+    },
+    {
+      "filename": "DBLP_conf_icml_TavaresK0DS21.pdf",
+      "bytes": 2590541
+    },
+    {
+      "filename": "DBLP_conf_icra_CamposISK19.pdf",
+      "bytes": 1420116
+    },
+    {
+      "filename": "DBLP_conf_icse_JeonQFFS16.pdf",
+      "bytes": 1244093
+    },
+    {
+      "filename": "DBLP_conf_mapl_GottschlichSTCR18.pdf",
+      "bytes": 734142
+    },
+    {
+      "filename": "DBLP_conf_nips_BastaniPS18.pdf",
+      "bytes": 911184
+    },
+    {
+      "filename": "DBLP_conf_nips_EllisMSST18.pdf",
+      "bytes": 393061
+    },
+    {
+      "filename": "DBLP_conf_nips_EllisRST18.pdf",
+      "bytes": 1525852
+    },
+    {
+      "filename": "DBLP_conf_nips_EllisST15.pdf",
+      "bytes": 370854
+    },
+    {
+      "filename": "DBLP_conf_nips_EllisST16.pdf",
+      "bytes": 392907
+    },
+    {
+      "filename": "DBLP_conf_nips_Inala0PPB0RS20.pdf",
+      "bytes": 130590
+    },
+    {
+      "filename": "DBLP_conf_nips_NyeS0L20.pdf",
+      "bytes": 57106
+    },
+    {
+      "filename": "DBLP_conf_nips_PuEK0S20.pdf",
+      "bytes": 111802
+    },
+    {
+      "filename": "DBLP_conf_nips_Tjandrasuwita0S24.pdf",
+      "bytes": 7124881
+    },
+    {
+      "filename": "DBLP_conf_nips_YangIBPSR21.pdf",
+      "bytes": 2239491
+    },
+    {
+      "filename": "DBLP_conf_nips_ZhangSS18.pdf",
+      "bytes": 3855989
+    },
+    {
+      "filename": "DBLP_conf_oopsla_PuNSB16.pdf",
+      "bytes": 545469
+    },
+    {
+      "filename": "DBLP_conf_oopsla_YessenovXS11.pdf",
+      "bytes": 6832665
+    },
+    {
+      "filename": "DBLP_conf_plas_AustinYFS13.pdf",
+      "bytes": 242784
+    },
+    {
+      "filename": "DBLP_conf_pldi_ChaudhuriS10.pdf",
+      "bytes": 4006161
+    },
+    {
+      "filename": "DBLP_conf_pldi_KamilCIS16.pdf",
+      "bytes": 4426444
+    },
+    {
+      "filename": "DBLP_conf_pldi_PolikarpovaKS16.pdf",
+      "bytes": 586065
+    },
+    {
+      "filename": "DBLP_conf_pldi_SinghGS13.pdf",
+      "bytes": 1617309
+    },
+    {
+      "filename": "DBLP_conf_pldi_Solar-LezamaATBSS07.pdf",
+      "bytes": 29680413
+    },
+    {
+      "filename": "DBLP_conf_pldi_Solar-LezamaJB08.pdf",
+      "bytes": 7340724
+    },
+    {
+      "filename": "DBLP_conf_pldi_Solar-LezamaRBE05.pdf",
+      "bytes": 381308
+    },
+    {
+      "filename": "DBLP_conf_pldi_YangHASFC16.pdf",
+      "bytes": 459383
+    },
+    {
+      "filename": "DBLP_conf_popl_YangYS12.pdf",
+      "bytes": 1729002
+    },
+    {
+      "filename": "DBLP_conf_ppopp_KurajSP22.pdf",
+      "bytes": 1311608
+    },
+    {
+      "filename": "DBLP_conf_ppsn_2014.pdf",
+      "bytes": 217751
+    },
+    {
+      "filename": "DBLP_conf_ppsn_KrawiecS14.pdf",
+      "bytes": 160095
+    },
+    {
+      "filename": "DBLP_conf_sat_2012.pdf",
+      "bytes": 133962
+    },
+    {
+      "filename": "DBLP_conf_sat_2016.pdf",
+      "bytes": 173990
+    },
+    {
+      "filename": "DBLP_conf_sat_GaneshOSDRS12.pdf",
+      "bytes": 181355
+    },
+    {
+      "filename": "DBLP_conf_sat_Inala0S16.pdf",
+      "bytes": 827446
+    },
+    {
+      "filename": "DBLP_conf_sigsoft_JeonQFS15.pdf",
+      "bytes": 308052
+    },
+    {
+      "filename": "DBLP_conf_sigsoft_SinghS11.pdf",
+      "bytes": 1900843
+    },
+    {
+      "filename": "DBLP_conf_snapl_2015.pdf",
+      "bytes": 29283696
+    },
+    {
+      "filename": "DBLP_conf_snapl_CheungKS15.pdf",
+      "bytes": 518909
+    },
+    {
+      "filename": "DBLP_conf_snapl_KurajS17.pdf",
+      "bytes": 477932
+    },
+    {
+      "filename": "DBLP_conf_tacas_2017-1.pdf",
+      "bytes": 199770
+    },
+    {
+      "filename": "DBLP_conf_tacas_InalaPQLS17.pdf",
+      "bytes": 27241421
+    },
+    {
+      "filename": "DBLP_conf_uai_PuKS17.pdf",
+      "bytes": 584707
+    },
+    {
+      "filename": "DBLP_conf_vmcai_2014.pdf",
+      "bytes": 205673
+    },
+    {
+      "filename": "DBLP_conf_vmcai_SinghSXKS14.pdf",
+      "bytes": 472622
+    },
+    {
+      "filename": "DBLP_journals_cacm_AlurSFS18.pdf",
+      "bytes": 3947072
+    },
+    {
+      "filename": "DBLP_journals_cacm_WangZKS16.pdf",
+      "bytes": 1087498
+    },
+    {
+      "filename": "DBLP_journals_corr_0002S16.pdf",
+      "bytes": 929306
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1204-1751.pdf",
+      "bytes": 991400
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1208-2013.pdf",
+      "bytes": 266389
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1208-2925.pdf",
+      "bytes": 401051
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1710-10385.pdf",
+      "bytes": 1076707
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1711-03243.pdf",
+      "bytes": 746558
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1711-11438.pdf",
+      "bytes": 1399660
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1802-04408.pdf",
+      "bytes": 908642
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1802-07384.pdf",
+      "bytes": 5668325
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1803-07244.pdf",
+      "bytes": 734142
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1805-08328.pdf",
+      "bytes": 823410
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1807-08137.pdf",
+      "bytes": 1473437
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1812-02573.pdf",
+      "bytes": 1121421
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1901-05437.pdf",
+      "bytes": 405450
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "bytes": 920042
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1903-03229.pdf",
+      "bytes": 1132173
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1903-10556.pdf",
+      "bytes": 796058
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-1906-04604.pdf",
+      "bytes": 7131706
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2003-05562.pdf",
+      "bytes": 2636304
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2006-08381.pdf",
+      "bytes": 4869773
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2101-03238.pdf",
+      "bytes": 678437
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2102-11137.pdf",
+      "bytes": 2924809
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2110-05440.pdf",
+      "bytes": 581187
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2111-12772.pdf",
+      "bytes": 7985287
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2206-06164.pdf",
+      "bytes": 1102901
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2206-07828.pdf",
+      "bytes": 3128250
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2302-01976.pdf",
+      "bytes": 2903692
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2401-03065.pdf",
+      "bytes": 2012215
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+      "bytes": 1645649
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2403-07974.pdf",
+      "bytes": 4960954
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2406-07897.pdf",
+      "bytes": 634426
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2407-01567.pdf",
+      "bytes": 7006210
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2409-17490.pdf",
+      "bytes": 390833
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2501-02825.pdf",
+      "bytes": 2710803
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2501-18623.pdf",
+      "bytes": 44765849
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2502-16671.pdf",
+      "bytes": 14236088
+    },
+    {
+      "filename": "DBLP_journals_corr_abs-2503-22625.pdf",
+      "bytes": 974761
+    },
+    {
+      "filename": "DBLP_journals_corr_AlurFSS16.pdf",
+      "bytes": 685768
+    },
+    {
+      "filename": "DBLP_journals_corr_AlurFSS16a.pdf",
+      "bytes": 1605152
+    },
+    {
+      "filename": "DBLP_journals_corr_EllisRST17.pdf",
+      "bytes": 1805332
+    },
+    {
+      "filename": "DBLP_journals_corr_GaneshMSR13.pdf",
+      "bytes": 152205
+    },
+    {
+      "filename": "DBLP_journals_corr_GopalakrishnanH17.pdf",
+      "bytes": 597156
+    },
+    {
+      "filename": "DBLP_journals_corr_InalaQLS15.pdf",
+      "bytes": 701832
+    },
+    {
+      "filename": "DBLP_journals_corr_JeonQFS15.pdf",
+      "bytes": 308052
+    },
+    {
+      "filename": "DBLP_journals_corr_KoppelS17.pdf",
+      "bytes": 1101170
+    },
+    {
+      "filename": "DBLP_journals_corr_PolikarpovaS15.pdf",
+      "bytes": 586065
+    },
+    {
+      "filename": "DBLP_journals_corr_PolikarpovaYIS16.pdf",
+      "bytes": 1351453
+    },
+    {
+      "filename": "DBLP_journals_corr_PuKS17.pdf",
+      "bytes": 599546
+    },
+    {
+      "filename": "DBLP_journals_corr_PuNSB16.pdf",
+      "bytes": 545469
+    },
+    {
+      "filename": "DBLP_journals_corr_YangHASFC15.pdf",
+      "bytes": 459383
+    },
+    {
+      "filename": "DBLP_journals_debu_CheungMSAM14.pdf",
+      "bytes": 2418170
+    },
+    {
+      "filename": "DBLP_journals_fmsd_FismanSS21.pdf",
+      "bytes": 122351
+    },
+    {
+      "filename": "DBLP_journals_fmsd_JeonQSF17.pdf",
+      "bytes": 953206
+    },
+    {
+      "filename": "DBLP_journals_ftpl_ChaudhuriEPSSY21.pdf",
+      "bytes": 960634
+    },
+    {
+      "filename": "DBLP_journals_ftpl_CheungS16.pdf",
+      "bytes": 2694751
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_Bastani0S19.pdf",
+      "bytes": 1121421
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_BowersOWGTES23.pdf",
+      "bytes": 4720796
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_FeserM0S20.pdf",
+      "bytes": 1132173
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_KoppelGVSP22.pdf",
+      "bytes": 3128250
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_KoppelKS22.pdf",
+      "bytes": 1448829
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_KoppelPS18.pdf",
+      "bytes": 1101170
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_KoppelSS18.pdf",
+      "bytes": 1076707
+    },
+    {
+      "filename": "DBLP_journals_pacmpl_PolikarpovaSYIH20.pdf",
+      "bytes": 1351453
+    },
+    {
+      "filename": "DBLP_journals_pvldb_SinghMEMPQST17.pdf",
+      "bytes": 1207496
+    },
+    {
+      "filename": "DBLP_journals_sttt_Solar-Lezama13.pdf",
+      "bytes": 1184869
+    },
+    {
+      "filename": "DBLP_journals_tocs_WangZKS15.pdf",
+      "bytes": 1087498
+    },
+    {
+      "filename": "DBLP_journals_tog_WillisPLCDLSM21.pdf",
+      "bytes": 19604434
+    },
+    {
+      "filename": "DBLP_series_natosec_40.pdf",
+      "bytes": 798267
+    },
+    {
+      "filename": "DBLP_series_natosec_AlurBDF0JKMMRSSSSTU15.pdf",
+      "bytes": 1052671
+    },
+    {
+      "filename": "Ellis22Linguistics.pdf",
+      "bytes": 2300065
+    },
+    {
+      "filename": "Gupta2024.pdf",
+      "bytes": 5590961
+    }
+  ]
+}

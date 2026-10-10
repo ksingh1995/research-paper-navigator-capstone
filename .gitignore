@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+.cache/
+.venv/
+__pycache__/
+*.pyc
+data/papers/
+outputs/
+*.npz
+*.json.gz

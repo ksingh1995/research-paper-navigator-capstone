@@ -1,0 +1,169 @@
+{
+  "answer": "Learning to Infer Program Sketches combines neural and symbolic methods by splitting the synthesis task into two stages:\n\n1. **Neural sketch generation**: a recurrent neural network takes the program specification as input and outputs a distribution over candidate **program sketches**—partial programs that may contain holes. The paper describes this as a learned sketch generator \\(q_\\phi(\\text{sketch}\\mid X)\\). [4]\n\n2. **Symbolic program synthesis**: each candidate sketch is then passed to an **enumerative symbolic synthesizer**, which explicitly searches to fill in the holes and complete the program so it satisfies the specification. [4]\n\nThe key idea is that the neural model learns how much detail to put into the sketch: for easier tasks it can propose a more complete sketch, and for harder tasks it can leave more holes for symbolic search to resolve. The paper says this lets the system “learn how much to rely on each component of the system.” [1][4]\n\nSo, in short, the neural model proposes sketches and the symbolic component performs explicit search to complete them. [1][4]\n\nSources used:\n- Learning to Infer Program Sketches, DBLP_conf_icml_NyeHTS19.pdf, p. 2\n- Learning to Infer Program Sketches, DBLP_journals_corr_abs-1902-06349.pdf, p. 3",
+  "answer_usage": {
+    "prompt_tokens": 2401,
+    "completion_tokens": 282,
+    "total_tokens": 2683,
+    "cost": 0.00306975,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00306975,
+      "upstream_inference_prompt_cost": 0.00180075,
+      "upstream_inference_completions_cost": 0.001269
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "hits": [
+    {
+      "rank": 1,
+      "fused_score": 0.01600102,
+      "keyword_rank": 2,
+      "keyword_score": 43.79,
+      "semantic_rank": 3,
+      "semantic_score": 0.792139,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p2:c1",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using symbolic synthesis techniques, which approximate explicit reasoning from ﬁrst principles. However, previous systems use static, hand-designed inter- mediate sketch grammars, which do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search. The neural network is trained to map from spec to a pre-speciﬁed sketch, and can- not learn to output a more detailed sketch, if the pattern matching task is easy, or learn to output a mo..."
+    },
+    {
+      "rank": 2,
+      "fused_score": 0.01588903,
+      "keyword_rank": 1,
+      "keyword_score": 43.79,
+      "semantic_rank": 5,
+      "semantic_score": 0.788244,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p2:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using symbolic synthesis techniques, which approximate explicit reasoning from ﬁrst principles. However, previous systems use static, hand-designed inter- mediate sketch grammars, which do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search. The neural network is trained to map from spec to a pre-speciﬁed sketch, and can- not learn to output a more detailed sketch, if the pattern matching task is easy, or learn to output a mo..."
+    },
+    {
+      "rank": 3,
+      "fused_score": 0.01493868,
+      "keyword_rank": 5,
+      "keyword_score": 36.145,
+      "semantic_rank": 9,
+      "semantic_score": 0.764923,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p10:c1",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 10,
+      "excerpt": "Learning to Infer Program Sketches Zhang, L., Rosenblatt, G., Fetaya, E., Liao, R., Byrd, W., Might, M., Urtasun, R., and Zemel, R. Neural guided constraint logic programming for program synthesis. In Advances in Neural Information Processing Systems , pp. 1744–1753, 2018. Zohar, A. and Wolf, L. Automatic program synthesis of long programs with a learned garbage collector. InAdvances in Neural Information Processing Systems, pp. 2098–2107, 2018."
+    },
+    {
+      "rank": 4,
+      "fused_score": 0.01478582,
+      "keyword_rank": 3,
+      "keyword_score": 38.416,
+      "semantic_rank": 13,
+      "semantic_score": 0.755102,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p3:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 3,
+      "excerpt": "Learning to Infer Program Sketches a special token: <HOLE> . Intuitively, this token desig- nates locations in the program tree for which pattern-based recognition is difﬁcult, and more explicit search methods are necessary. Our system consists of two main components: 1) a sketch generator, and 2) a program synthesizer. The sketch generator is a distribution over program sketches given the spec: qφ(sketch|X ). The generator is parametrized by a recurrent neural network, and is trained to assign high probability to sketches which are likely to quickly yield programs satisfying the spec when given to the synthesizer. Details about the learning scheme and ar- chitecture will be discussed below. The program synthesizer takes a sketch as a starting point, and performs an explicit symbolic search to “ﬁll in the holes” in order to ﬁnd a program which satisﬁes the spec. Given a set of test probl..."
+    },
+    {
+      "rank": 5,
+      "fused_score": 0.01204649,
+      "keyword_rank": 12,
+      "keyword_score": 30.871,
+      "semantic_rank": 38,
+      "semantic_score": 0.690747,
+      "chunk_id": "DBLP_conf_nips_EllisST15:p2:c1",
+      "filename": "DBLP_conf_nips_EllisST15.pdf",
+      "title": "Unsupervised Learning by Program Synthesis",
+      "page": 2,
+      "excerpt": "humans but difﬁcult for machines to learn, we show that our methods can synthesize simple graph- ics programs representing these visual concepts from only a few example images. These programs outperform both previous machine-learning baselines and several new baselines we introduce. We also study the domain of learning morphological rules in language, treating rules as programs and inﬂected verb forms as outputs. We show how to encode prior linguistic knowledge as a grammar over programs and recover human-readable linguistic rules, useful for both simple stemming tasks and for predicting the phonological form of new words. 2 The unsupervised program synthesis algorithm The space of all programs is vast and often unamenable to the optimization methods used in much of machine learning. We extend two ideas from the program synthesis community to make search over programs tractable: Sketchin..."
+    }
+  ],
+  "actions": [
+    {
+      "action": "search",
+      "query": "How does Learning to Infer Program Sketches combine a neural model with symbolic program synthesis?",
+      "hit_ids": [
+        "DBLP_conf_icml_NyeHTS19:p2:c1",
+        "DBLP_journals_corr_abs-1902-06349:p2:c1",
+        "DBLP_conf_icml_NyeHTS19:p10:c1",
+        "DBLP_journals_corr_abs-1902-06349:p3:c1",
+        "DBLP_conf_nips_EllisST15:p2:c1"
+      ],
+      "embedding_usage": {
+        "tokens": 17.0,
+        "cost": 3.4e-07
+      }
+    }
+  ],
+  "planner_calls": [],
+  "sanitized_question": "How does Learning to Infer Program Sketches combine a neural model with symbolic program synthesis?",
+  "filter_notes": [],
+  "rejected_chunks": [],
+  "mode": "live",
+  "route": "direct",
+  "question": "How does Learning to Infer Program Sketches combine a neural model with symbolic program synthesis?",
+  "named_papers": [
+    "Learning to Infer Program Sketches"
+  ],
+  "calls": [
+    {
+      "path": "/embeddings",
+      "role": "embedding",
+      "model": "openai/text-embedding-3-small",
+      "status": "ok",
+      "prompt_tokens": 17,
+      "completion_tokens": null,
+      "total_tokens": 17,
+      "reported_cost_usd": 3.4e-07,
+      "seconds": 0.6919
+    },
+    {
+      "path": "/chat/completions",
+      "role": "answer",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2401,
+      "completion_tokens": 282,
+      "total_tokens": 2683,
+      "reported_cost_usd": 0.00306975,
+      "seconds": 1.7161
+    }
+  ],
+  "metrics": {
+    "seconds": 2.55,
+    "api_calls": 2,
+    "chat_calls": 1,
+    "embedding_calls": 1,
+    "input_tokens": 2418,
+    "output_tokens": 282,
+    "total_tokens": 2700,
+    "reported_cost_usd": 0.00307009,
+    "missing_cost_calls": 0,
+    "retrieval_actions": 1,
+    "planner_calls": 0,
+    "verified_passages": 5,
+    "rejected_chunks": 0
+  },
+  "index_usage": {
+    "source": "cache",
+    "embedding_seconds": 0.0,
+    "embedding_tokens": 0,
+    "embedding_cost": 0.0
+  },
+  "index_calls": [],
+  "corpus_fingerprint": "297a8f04bbe45f52272bf8ed89030324cc8145caff06b38a1bc6babb60916c4c",
+  "extraction_warnings": [],
+  "total_seconds": 6.498
+}

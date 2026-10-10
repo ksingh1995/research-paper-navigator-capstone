@@ -1,0 +1,55 @@
+{
+  "mode": "keyword_only",
+  "question": "Learning to Infer Program Sketches symbolic search",
+  "filter_notes": [],
+  "pdf_count": 153,
+  "chunks": 12420,
+  "extraction_warnings": [],
+  "hits": [
+    {
+      "rank": 1,
+      "score": 33.526,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p3:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 3,
+      "excerpt": "Learning to Infer Program Sketches a special token: <HOLE> . Intuitively, this token desig- nates locations in the program tree for which pattern-based recognition is difﬁcult, and more explicit search methods are necessary. Our system consists of two main components: 1) a sketch generator, and 2) a program synthesizer. The sketch generator is a distribution over program sketches given the spec: qφ(sketch|X ). The ge..."
+    },
+    {
+      "rank": 2,
+      "score": 33.526,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p3:c1",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 3,
+      "excerpt": "Learning to Infer Program Sketches a special token: <HOLE> . Intuitively, this token desig- nates locations in the program tree for which pattern-based recognition is difﬁcult, and more explicit search methods are necessary. Our system consists of two main components: 1) a sketch generator, and 2) a program synthesizer. The sketch generator is a distribution over program sketches given the spec: qφ(sketch|X ). The ge..."
+    },
+    {
+      "rank": 3,
+      "score": 30.079,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p2:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using s..."
+    },
+    {
+      "rank": 4,
+      "score": 30.079,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p2:c1",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using s..."
+    },
+    {
+      "rank": 5,
+      "score": 23.806,
+      "chunk_id": "DBLP_conf_nips_EllisRST18:p9:c1",
+      "filename": "DBLP_conf_nips_EllisRST18.pdf",
+      "title": "Learning to Infer Graphics Programs from Hand-Drawn Images",
+      "page": 9,
+      "excerpt": "5 Related work Program Induction: Our approach to learning to search for programs draws theoretical under- pinnings from Levin search [ 12, 14] and Schmidhuber’s OOPS model [ 3]. DeepCoder [ 13] is a recent model which, like ours, learns to predict likely program components. Our work differs by identifying and modeling the trade-off between tractability and probability of success. TerpreT [15] systematically compares..."
+    }
+  ]
+}

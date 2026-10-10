@@ -1,0 +1,12 @@
+WEEK 8 FINAL INTERFACE VERIFICATION
+
+The final CLI was tested against the existing 153-PDF, 12,420-chunk collection. The existing extraction and embedding index caches were reused. All saved model answers are unchanged.
+
+method: one embedding request and one answer request. The generated response explained neural sketch proposal and symbolic hole completion with citations.
+comparison_initial: the first portable title detector missed the REPL paper because the extracted title included an author suffix. The answer openly reported missing REPL evidence. This record is retained as an initial iteration.
+comparison: after the detector correction, the bounded agent made the initial hybrid search and two focused paper lookups. The answer covered both papers and their trade-offs. Eight offline checks include a regression for the author suffix.
+repeat: the exact method question returned the same wording and source metadata with zero API calls.
+
+These are functional interface checks, not an independently judged accuracy benchmark. The final comparison still includes a citation-support concern: some sketch-paper trade-off sentences cite passage [4], which belongs to the REPL paper in the verified hit list. The generated Sources used list also does not accurately preserve every assigned passage number. Review the hits in the JSON rather than assuming every model-authored source association is correct. This supports the presentation's stated priority of claim-level citation checks.
+
+No Week 7 total was replaced by these results. See the per-file metrics for the separate Week 8 calls. Index construction and loading are separate from production measurements.

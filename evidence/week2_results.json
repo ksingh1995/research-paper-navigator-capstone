@@ -1,0 +1,369 @@
+{
+  "run_timestamp": "2026-09-02T10:08:37",
+  "scenario": "research_papers",
+  "retrieval_approach": "Hybrid BM25 plus dense semantic embeddings with weighted RRF",
+  "corpus_directory": "course/Capstone_Checkpoint_1_1_starter/ResearchPapers",
+  "corpus_pdf_count": 153,
+  "searchable_chunk_count": 12420,
+  "chunk_words": 350,
+  "chunk_overlap": 70,
+  "top_k": 5,
+  "max_results_per_paper": 2,
+  "keyword_weight": 0.5,
+  "semantic_weight": 0.5,
+  "rrf_k": 60,
+  "embedding_model": "openai/text-embedding-3-small",
+  "embedding_dimensions": 512,
+  "embedding_stats": {
+    "source": "api_build",
+    "embedding_seconds": 163.49,
+    "embedding_tokens": 6201530,
+    "embedding_cost": 0.1240306
+  },
+  "llm_model": "openai/gpt-5.4-mini",
+  "extraction_warning_count": 0,
+  "extraction_warnings": [],
+  "index_seconds": 170.73,
+  "queries": [
+    {
+      "number": 1,
+      "query": "What is the main finding of 'The Counterfeit Conundrum' about whether code language models recognize their own incorrect generations?",
+      "retrieval_seconds": 0.4526,
+      "answer_seconds": 4.7932,
+      "query_embedding_usage": {
+        "tokens": 25.0,
+        "cost": 5e-07
+      },
+      "answer_usage": {
+        "model": "openai/gpt-5.4-mini",
+        "prompt_tokens": 2455,
+        "completion_tokens": 443,
+        "total_tokens": 2898,
+        "cost": 0.00383475
+      },
+      "results": [
+        {
+          "rank": 1,
+          "fused_score": 0.01554966,
+          "keyword_rank": 1,
+          "keyword_score": 57.951,
+          "semantic_rank": 8,
+          "semantic_score": 0.776531,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p1:c1",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 1,
+          "excerpt": "Findings of the Association for Computational Linguistics: ACL 2024 , pages 74–117 August 11-16, 2024 ©2024 Association for Computational Linguistics The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations? Alex Gu1 Wen-Ding Li⋆2 Naman Jain⋆3 Theo X. Olausson⋆1 Celine Lee⋆2 Koushik Sen3 Armando Solar-Lezama1 1MIT CSAIL 2Cornell University 3University of California, Berkeley {gua, theoxo}@mit.edu, {wl678, cl923}@cornell.edu, naman_jain@berkeley.edu Abstract While language models are increasingly more proficient at code generation, they still fre- quently generate incorrect programs. Many of these programs are obviously wrong, but others are more subtle and pass weaker correctness checks such as being able to compile. In this work, we focus on these counterfeit samples: programs sampled from a language model that 1) have a high enough log-probab..."
+        },
+        {
+          "rank": 2,
+          "fused_score": 0.01551227,
+          "keyword_rank": 6,
+          "keyword_score": 46.55,
+          "semantic_rank": 3,
+          "semantic_score": 0.794583,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p8:c3",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 8,
+          "excerpt": "(2024a); Tyen et al. (2023); Olausson et al. (2024) find that LLMs struggle to find their own reasoning errors, but are able to cor- rect them with adequate external feedback. Singhal et al. (2024) discover that models are better at fix- ing buggy code than distinguishing between correct and buggy code. Relevant to our work, West et al. (2023) and Oh et al. (2024) argue that generative capability may not be contingent on understanding capability in textual domains. 7 Conclusion In this work, we bring attention to the counterfeit samples of a code language model: incorrect pro- grams that a model thinks are correct and can pass surface-level correctness checks. We observe that in a sense, these counterfeit samples are adversarial to the model: models often cannot assess their cor- rectness, reason about their execution, and struggle to repair them. Compared to other models, GPT-4 may be d..."
+        },
+        {
+          "rank": 3,
+          "fused_score": 0.01488095,
+          "keyword_rank": 3,
+          "keyword_score": 52.53,
+          "semantic_rank": 12,
+          "semantic_score": 0.767918,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p13:c2",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 13,
+          "excerpt": "2024a; Zhang et al., 2023a; Olausson et al., 2024), and Liu et al. (2024) examine a suite of code reasoning benchmarks. A few controlled studies highlight the extent to which language models understand code. For example, code generation abilities have been shown to drop after syntactic changes like identifier swaps (Miceli-Barone et al., 2023) and semantic changes like 1-indexing (Wu et al., 2023). Dinh et al. (2024) show that models fail at completing code with bugs. Jin and Rinard (2023) provide evidence that LMs can learn meaningful representations when trained on programs, Zhang et al. (2023c) explore the behavior of transformers to simulate recursive functions, and Min et al. (2023) discover that code language models are inconsistent on various coding tasks. Models understanding their own generations Some recent works investigate the extent to which models understand their generatio..."
+        },
+        {
+          "rank": 4,
+          "fused_score": 0.01423736,
+          "keyword_rank": 2,
+          "keyword_score": 57.478,
+          "semantic_rank": 21,
+          "semantic_score": 0.760196,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p1:c1",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 1,
+          "excerpt": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations? Alex Gu gua@mit.edu MIT CSAIL Wen-Ding Li⋆ wl678@cornell.edu Cornell University Naman Jain⋆ naman jain@berkeley.edu University of California, Berkeley Theo X. Olausson ⋆ theoxo@csail.mit.edu MIT CSAIL Celine Lee⋆ cl923@cornell.edu Cornell University Koushik Sen ksen@berkeley.edu University of California, Berkeley Armando Solar-Lezama asolar@csail.mit.edu MIT CSAIL Abstract While language models are increasingly more proficient at code generation, they still frequently generate incorrect programs. Many of these programs are obviously wrong, but others are more subtle and pass weaker correctness checks such as being able to compile. In this work, we focus on these counterfeit samples: programs sampled from a language model that 1) have a high enough log-probability to be generated at a mod..."
+        },
+        {
+          "rank": 5,
+          "fused_score": 0.00364964,
+          "keyword_rank": 77,
+          "keyword_score": 23.046,
+          "semantic_rank": null,
+          "semantic_score": null,
+          "chunk_id": "DBLP_conf_icml_GuJLSESS25:p34:c2",
+          "filename": "DBLP_conf_icml_GuJLSESS25.pdf",
+          "title": "Position: Future Research and Challenges Remain Towards AI for Software Engineering",
+          "page": 34,
+          "excerpt": "reasons: too many wrapper functions, excessive error-handling boilerplate, deep call stacks, or poor code cleanliness. One important challenge in code understanding is code navigation: finding where relevant functionality is implemented. Doing this well requires understanding the high-level layout of where every functionality lies in the codebase and the low-level understanding of which helper functions are used to implement each functionality. Another challenge is code question answering: answering complex questions about a codebase, which requires sophisticated code understanding and reasoning abilities. Models should not hallucinate or give incorrect information that skews a developer’s mental model of the code. Beyond other tasks mentioned in this section, developers might commonly ask questions related to data flow (when and where data structures get mutated), code functionality (wh..."
+        }
+      ],
+      "answer": "The main finding is that code language models generally **do not reliably recognize their own incorrect generations**. The paper reports that “most models have a very shallow understanding of counterfeits” and shows three failure modes: they often **mistakenly classify incorrect programs as correct**, **reason about their execution as if they were correct**, and **struggle to repair them**—sometimes even finding repair harder than generating a correct program from scratch [1][4].\n\nMore specifically, the paper concludes that these counterfeit samples are “adversarial to the model” because “models often cannot assess their correctness, reason about their execution, and struggle to repair them” [2][3]. It also notes that counterfeit programs from a given model are “just as confusing to the model itself as they are to other models” [1][4]. So the answer is: **mostly no—code LMs show a shallow, unreliable ability to detect their own wrong outputs** [1][2][4].\n\nWhat cannot be concluded from the passages is that this holds absolutely for every model in every setting; the passages explicitly mention that **GPT-4 may be different** and “much less susceptible” than other evaluated models [2].\n\nSources used\n- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_conf_acl_GuLJOLSS24.pdf`, p. 1 [1]\n- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_conf_acl_GuLJOLSS24.pdf`, p. 8 [2]\n- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf`, p. 13 [3]\n- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf`, p. 1 [4]"
+    },
+    {
+      "number": 2,
+      "query": "How does the sketching approach to program synthesis use partial programs with holes and constraints?",
+      "retrieval_seconds": 0.384,
+      "answer_seconds": 5.4903,
+      "query_embedding_usage": {
+        "tokens": 17.0,
+        "cost": 3.4e-07
+      },
+      "answer_usage": {
+        "model": "openai/gpt-5.4-mini",
+        "prompt_tokens": 2559,
+        "completion_tokens": 555,
+        "total_tokens": 3114,
+        "cost": 0.00441675
+      },
+      "results": [
+        {
+          "rank": 1,
+          "fused_score": 0.01639344,
+          "keyword_rank": 1,
+          "keyword_score": 34.57,
+          "semantic_rank": 1,
+          "semantic_score": 0.711719,
+          "chunk_id": "DBLP_conf_aplas_Solar-Lezama09:p1:c1",
+          "filename": "DBLP_conf_aplas_Solar-Lezama09.pdf",
+          "title": "The Sketching Approach to Program Synthesis Armando Solar-Lezama",
+          "page": 1,
+          "excerpt": "The Sketching Approach to Program Synthesis Armando Solar-Lezama Massachusetts Institute of Technology Abstract. Sketching is a new form of localized software synthesis that aims to bridge the gap between a programmer’s high-level insights about a problem and the computer’s ability to manage low-level details. In sketching, the programmer uses partial programs to describe the desired implementation strategy, and leaves the low-level details of the imple- mentation to an automated synthesis procedure. This paper describes the sketching approach to program synthesis, including the details of the Sketch language and synthesizer. The paper will then describe some of the techniques that make synthesis from sketches possible, and will close with a brief discussion of open problems in programmer guided synthesis. 1 Introduction Sketching is a new form of localized program synthesis that allows..."
+        },
+        {
+          "rank": 2,
+          "fused_score": 0.01539919,
+          "keyword_rank": 3,
+          "keyword_score": 27.918,
+          "semantic_rank": 7,
+          "semantic_score": 0.675884,
+          "chunk_id": "DBLP_conf_cav_BraggFRS21:p875:c2",
+          "filename": "DBLP_conf_cav_BraggFRS21.pdf",
+          "title": "516232_1_En_Print.indd",
+          "page": 875,
+          "excerpt": "a family is to use sketching [2,45]. A sketch can be thought of as a program (or model) with holes, naturally ﬁtting the use case outlined above. Clearly, enumerating single realizations is unfeasible in the light of the combi- natorial design space explosion . Instead, the prevalent approach connected with sketching is based on inductive synthesis. The idea is to analyze a single realiza- tion and generalize the analysis results to a set of realizations, often using the notion of counterexamples. In probabilistic programs, such a notion is challeng- ing, as counterexamples are typically complex objects [1]. Driven by a range of applications, there has been signiﬁcant algorithmic progress in the analysis of probabilistic program sketches and temporal logic constraints over the last years. Baier et al. [14] explored the use of sym- bolic model-checking methods so as to consider sets of re..."
+        },
+        {
+          "rank": 3,
+          "fused_score": 0.01528945,
+          "keyword_rank": 8,
+          "keyword_score": 23.969,
+          "semantic_rank": 3,
+          "semantic_score": 0.684361,
+          "chunk_id": "DBLP_conf_aplas_Solar-Lezama09:p2:c2",
+          "filename": "DBLP_conf_aplas_Solar-Lezama09.pdf",
+          "title": "The Sketching Approach to Program Synthesis Armando Solar-Lezama",
+          "page": 2,
+          "excerpt": "allows the user to provide speciﬁcations in the form of parameterized or non- deterministic test harnesses. Figure 1 shows the test harness for the list reversal; the synthesizer will guarantee that the harness succeeds for all values of n¡N. On a laptop, the complete synthesis process takes less than a minute for N=4. The sketching approach to synthesis applies just as eﬀectively to concurrent programs, where the synthesizer’s ability to orchestrate low-level details is even more desirable given the diﬃculty that programmers have in reasoning about the eﬀects of diﬀerent thread interleav ings. To illustrate the use of sketching in this domain, consider the problem of implementing a barrier. A barrier is a synchronization mechanism that forces a group of threads to stop at a particular point in the program until all threads in the group have reached this point. Figure 2 shows the speciﬁc..."
+        },
+        {
+          "rank": 4,
+          "fused_score": 0.01495536,
+          "keyword_rank": 4,
+          "keyword_score": 26.418,
+          "semantic_rank": 10,
+          "semantic_score": 0.666863,
+          "chunk_id": "DBLP_journals_corr_JeonQFS15:p1:c1",
+          "filename": "DBLP_journals_corr_JeonQFS15.pdf",
+          "title": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡",
+          "page": 1,
+          "excerpt": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡ †University of Maryland, College Park ‡MIT CSAIL {jsjeon@cs.umd.edu, xkqiu@csail.mit.edu, jfoster@cs.umd.edu, asolar@csail.mit.edu} Abstract Sketch-based synthesis, epitomized by the S KETCH tool, lets de- velopers synthesize software starting from a partial program, also called a sketch or template. This paper presents JS KETCH , a tool that brings sketch-based synthesis to Java. JS KETCH ’s input is a partial Java program that may include holes, which are unknown constants, expression generators, which range over sets of expres- sions, and class generators, which are partial classes. JS KETCH then translates the synthesis problem into a S KETCH problem; this translation is complex because S KETCH is not object-oriented. Fi- nally, JS KETCH synthesizes an executable Java program by inter-..."
+        },
+        {
+          "rank": 5,
+          "fused_score": 0.01493868,
+          "keyword_rank": 5,
+          "keyword_score": 26.418,
+          "semantic_rank": 9,
+          "semantic_score": 0.666913,
+          "chunk_id": "DBLP_conf_sigsoft_JeonQFS15:p1:c1",
+          "filename": "DBLP_conf_sigsoft_JeonQFS15.pdf",
+          "title": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡",
+          "page": 1,
+          "excerpt": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡ †University of Maryland, College Park ‡MIT CSAIL {jsjeon@cs.umd.edu, xkqiu@csail.mit.edu, jfoster@cs.umd.edu, asolar@csail.mit.edu} Abstract Sketch-based synthesis, epitomized by the S KETCH tool, lets de- velopers synthesize software starting from a partial program, also called a sketch or template. This paper presents JS KETCH , a tool that brings sketch-based synthesis to Java. JS KETCH ’s input is a partial Java program that may include holes, which are unknown constants, expression generators, which range over sets of expres- sions, and class generators, which are partial classes. JS KETCH then translates the synthesis problem into a S KETCH problem; this translation is complex because S KETCH is not object-oriented. Fi- nally, JS KETCH synthesizes an executable Java program by inter-..."
+        }
+      ],
+      "answer": "The sketching approach uses a **partial program** as the starting point for synthesis. The programmer writes a “sketch,” which is a partial program that captures the **structure** or **implementation strategy** of the solution while leaving low-level details unspecified [1]. In JSKETCH’s description, such inputs may include **holes**, which are “unknown constants,” as well as **expression generators** and **class generators**; these are all ways of representing incomplete program parts that the synthesizer must fill in [4][5].\n\nThe role of the holes is to define a constrained search space. More generally, a sketch is described as a “program (or model) with holes,” and the sketch “constrains the space of possible programs the synthesizer needs to consider” [2][4][5]. The synthesizer then searches over the missing pieces and derives concrete values or code fragments that complete the program [1][4][5].\n\nTo make this work, the sketch is paired with **constraints/specifications**. In Solar-Lezama’s description, the programmer supplies either a **reference implementation** or **test routines** that the synthesized code must pass [1]. The paper also says the synthesizer can guarantee that a **test harness succeeds** for all values in a specified range [3]. So, the constraints serve as correctness criteria that the completed program must satisfy [1][3].\n\nPutting it together: sketching works by combining  \n1. a **partial program with holes** that encodes the intended structure, and  \n2. **constraints** such as tests or a reference implementation that define what the completed program must satisfy [1][3][4][5].  \nThe synthesizer fills the holes while respecting those constraints [1][4][5].\n\nWhat cannot be concluded from the passages alone: they do not fully specify the exact internal algorithm used to fill holes in the general case, beyond saying the synthesizer derives missing details and that the search is constrained by the sketch and correctness criteria [1][4][5].\n\nSources used  \n- *The Sketching Approach to Program Synthesis* — `DBLP_conf_aplas_Solar-Lezama09.pdf` — page 1 [1]  \n- *The Sketching Approach to Program Synthesis* — `DBLP_conf_aplas_Solar-Lezama09.pdf` — page 2 [3]  \n- *JSKETCH: Sketching for Java* — `DBLP_journals_corr_JeonQFS15.pdf` — page 1 [4]  \n- *JSKETCH: Sketching for Java* — `DBLP_conf_sigsoft_JeonQFS15.pdf` — page 1 [5]"
+    },
+    {
+      "number": 3,
+      "query": "Which papers study program synthesis from input-output examples, and what learning or search methods do they use?",
+      "retrieval_seconds": 0.4091,
+      "answer_seconds": 6.7951,
+      "query_embedding_usage": {
+        "tokens": 20.0,
+        "cost": 4e-07
+      },
+      "answer_usage": {
+        "model": "openai/gpt-5.4-mini",
+        "prompt_tokens": 3187,
+        "completion_tokens": 1071,
+        "total_tokens": 4258,
+        "cost": 0.00720975
+      },
+      "results": [
+        {
+          "rank": 1,
+          "fused_score": 0.01460698,
+          "keyword_rank": 1,
+          "keyword_score": 30.786,
+          "semantic_rank": 18,
+          "semantic_score": 0.608405,
+          "chunk_id": "DBLP_journals_corr_abs-2003-05562:p3:c2",
+          "filename": "DBLP_journals_corr_abs-2003-05562.pdf",
+          "title": "Learning Compositional Rules via Neural Program Synthesis",
+          "page": 3,
+          "excerpt": "Using a similar training scheme, we in- stead learn an explicit program which can be applied to held out query items (Figure 1B). Our approach builds on work in neural program synthesis. We are inspired by work such as Ro- bustFill [11], enumerative approaches [16], exe- cution guided work [17, 18, 10, 19], and hybrid models [20, 21]. A key difference in our work is the number and diversity of input-output ex- amples provided to the system. Previous neural program synthesis systems, such as RobustFill [11], are not able to handle the large number of diverse of examples in our problems. Tech- niques exist for selecting examples, but they are expensive, requiring an additional outer loop of meta-learning [22], or repeating search every time a new counterexample is found (as in CEGIS [23]). Our approach uses neural attention to ﬂexibly condition on many examples at once, without the need fo..."
+        },
+        {
+          "rank": 2,
+          "fused_score": 0.014312,
+          "keyword_rank": 7,
+          "keyword_score": 27.405,
+          "semantic_rank": 13,
+          "semantic_score": 0.614315,
+          "chunk_id": "DBLP_conf_nips_EllisST15:p2:c1",
+          "filename": "DBLP_conf_nips_EllisST15.pdf",
+          "title": "Unsupervised Learning by Program Synthesis",
+          "page": 2,
+          "excerpt": "humans but difﬁcult for machines to learn, we show that our methods can synthesize simple graph- ics programs representing these visual concepts from only a few example images. These programs outperform both previous machine-learning baselines and several new baselines we introduce. We also study the domain of learning morphological rules in language, treating rules as programs and inﬂected verb forms as outputs. We show how to encode prior linguistic knowledge as a grammar over programs and recover human-readable linguistic rules, useful for both simple stemming tasks and for predicting the phonological form of new words. 2 The unsupervised program synthesis algorithm The space of all programs is vast and often unamenable to the optimization methods used in much of machine learning. We extend two ideas from the program synthesis community to make search over programs tractable: Sketchin..."
+        },
+        {
+          "rank": 3,
+          "fused_score": 0.01422082,
+          "keyword_rank": 23,
+          "keyword_score": 24.828,
+          "semantic_rank": 1,
+          "semantic_score": 0.630586,
+          "chunk_id": "DBLP_journals_corr_abs-1902-06349:p9:c2",
+          "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+          "title": "Learning to Infer Program Sketches",
+          "page": 9,
+          "excerpt": "arXiv preprint arXiv:1805.04793, 2018. Ellis, K., Morales, L., Sabl´e-Meyer, M., Solar-Lezama, A., and Tenenbaum, J. Learning libraries of subroutines for neurally–guided bayesian program learning. NIPS, 2018. Feser, J. K., Chaudhuri, S., and Dillig, I. Synthesizing data structure transformations from input-output examples. In ACM SIGPLAN Notices, volume 50, pp. 229–239. ACM, 2015. Gulwani, S. Automating string processing in spreadsheets using input-output examples. In ACM SIGPLAN Notices, volume 46, pp. 317–330. ACM, 2011. Kalyan, A., Mohta, A., Polozov, O., Batra, D., Jain, P., and Gulwani, S. Neural-guided deductive search for real-time program synthesis from examples. 2018. Kingma, D. and Ba, J. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014. Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic pro-..."
+        },
+        {
+          "rank": 4,
+          "fused_score": 0.01419082,
+          "keyword_rank": 9,
+          "keyword_score": 26.549,
+          "semantic_rank": 12,
+          "semantic_score": 0.614351,
+          "chunk_id": "DBLP_journals_corr_abs-1906-04604:p2:c1",
+          "filename": "DBLP_journals_corr_abs-1906-04604.pdf",
+          "title": "Program Synthesis with a REPL Kevin Ellis∗",
+          "page": 2,
+          "excerpt": "Figure 1: Examples of programs synthesized by our system. Top, graphics program from voxel speciﬁcation. Bottom, string editing program from input-output speciﬁcation. written so far, and deploy both at test time in a symbolic tree search. Speciﬁcally, we combine the policy, value, and REPL with a Sequential Monte Carlo (SMC) search strategy at inference time. We sample next actions using our learned policy, execute the partial programs with the REPL, and re-weight the candidates by the value of the resulting partial program state. This algorithm allows us to naturally incorporate writing, executing, and assessing partial programs into our search strategy, while managing a large space of alternative program candidates. Integrating learning and search to tackle the problem of program synthesis is an old idea experiencing a recent resurgence [ 2–11]. Our work builds on recent ideas termed..."
+        },
+        {
+          "rank": 5,
+          "fused_score": 0.01395619,
+          "keyword_rank": 17,
+          "keyword_score": 25.155,
+          "semantic_rank": 7,
+          "semantic_score": 0.623741,
+          "chunk_id": "DBLP_conf_icml_NyeHTS19:p9:c2",
+          "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+          "title": "Learning to Infer Program Sketches",
+          "page": 9,
+          "excerpt": "arXiv preprint arXiv:1805.04793, 2018. Ellis, K., Morales, L., Sabl´e-Meyer, M., Solar-Lezama, A., and Tenenbaum, J. Learning libraries of subroutines for neurally–guided bayesian program learning. NIPS, 2018. Feser, J. K., Chaudhuri, S., and Dillig, I. Synthesizing data structure transformations from input-output examples. In ACM SIGPLAN Notices, volume 50, pp. 229–239. ACM, 2015. Gulwani, S. Automating string processing in spreadsheets using input-output examples. In ACM SIGPLAN Notices, volume 46, pp. 317–330. ACM, 2011. Kalyan, A., Mohta, A., Polozov, O., Batra, D., Jain, P., and Gulwani, S. Neural-guided deductive search for real-time program synthesis from examples. 2018. Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic pro- gram induction. Science, 350(6266):1332–1338, 2015. Lake, B. M., Ullman, T. D., Tenenbaum, J. B., and Ge..."
+        }
+      ],
+      "answer": "The passages identify several papers on program synthesis, but only some are explicitly about synthesis from input-output examples. Here is what can be established from the retrieved evidence:\n\n## Papers that study synthesis from input-output examples\n\n### 1) **Program Synthesis with a REPL**\nThis paper explicitly includes **“text-editing programs (in the style of FlashFill)”** synthesized from an **“input-output specification”** [4].  \n- **Method used:** It combines **policy, value, and REPL** components with a **Sequential Monte Carlo (SMC) search strategy** at inference time [4].  \n- It also says the authors use **reinforcement learning techniques** to train an agent to interact with a REPL and to assess whether it is on the right track [4].  \n- The paper frames the problem as a **search problem** and says it uses an agent that “writes, executes and assesses its code” [4].\n\n### 2) **Learning to Infer Program Sketches**\nThis paper is cited alongside works on **“Synthesizing data structure transformations from input-output examples”** and **“Automating string processing in spreadsheets using input-output examples”** [3], [5].  \n- **Method used in the paper itself (from the citation context only):** The retrieved passage does **not** describe the paper’s own algorithm in detail. So from the passages alone, we cannot conclude the specific learning or search method used by this paper.  \n- What can be concluded is only that it is part of a related line of work on program synthesis, with nearby references to example-based synthesis papers [3], [5].\n\n## Papers mentioned that are clearly example-based synthesis papers\nThe retrieved passages reference, but do not describe in detail, the following example-based synthesis papers:\n- **Synthesizing data structure transformations from input-output examples** [3], [5]\n- **Automating string processing in spreadsheets using input-output examples** [3], [5]\n\nHowever, the passages do **not** provide enough information to say what learning or search methods these papers use.\n\n## Related paper that studies synthesis from examples, but not explicitly input-output examples in the retrieved passage\n### 3) **Learning Compositional Rules via Neural Program Synthesis**\nThis paper discusses program synthesis over a small support set of **input-output examples**: “Given a small support set of input-output examples” the model synthesizes a symbolic program [1].  \n- **Method used:** It builds a **neural program synthesis model** that “uses neural attention to flexibly condition on many examples at once” [1].  \n- It also contrasts itself with **enumerative approaches**, **execution-guided work**, and **hybrid models**, but those are cited as related work rather than the method used by this paper [1].  \n- The paper’s own approach is to synthesize an explicit symbolic program conditioned on the examples [1].\n\n## Another related paper on synthesis from examples\n### 4) **Unsupervised Learning by Program Synthesis**\nThis paper is about program synthesis from examples in broader terms, including learning graphics programs from “a few example images” and morphological rules in language [2].  \n- **Method used:** It extends two program-synthesis ideas:\n  - **Sketching**, using a **probabilistic context-free grammar** to encode prior knowledge [2]\n  - **Symbolic search**, translating sketches into **SMT problems** and reducing synthesis to **solving an SMT problem** [2]\n- It also frames the task as **Bayesian inference** over programs [2].\n\n## Bottom line\nFrom the retrieved passages, the papers that are explicitly tied to synthesis from examples are:\n- **Program Synthesis with a REPL** — uses **reinforcement learning** plus **Sequential Monte Carlo search** [4]\n- **Learning Compositional Rules via Neural Program Synthesis** — uses **neural attention** to condition on many input-output examples and synthesize an explicit symbolic program [1]\n- **Unsupervised Learning by Program Synthesis** — uses **sketching** and **SMT-based symbolic search** under a **Bayesian inference** formulation [2]\n\nThe passages also mention example-based synthesis papers such as **Synthesizing data structure transformations from input-output examples** and **Automating string processing in spreadsheets using input-output examples**, but do not provide enough detail to identify their learning/search methods [3], [5].\n\n## Sources used\n- **Learning Compositional Rules via Neural Program Synthesis** — `DBLP_journals_corr_abs-2003-05562.pdf`, page 3\n- **Unsupervised Learning by Program Synthesis** — `DBLP_conf_nips_EllisST15.pdf`, page 2\n- **Learning to Infer Program Sketches** — `DBLP_journals_corr_abs-1902-06349.pdf`, page 9\n- **Program Synthesis with a REPL Kevin Ellis∗** — `DBLP_journals_corr_abs-1906-04604.pdf`, page 2\n- **Learning to Infer Program Sketches** — `DBLP_conf_icml_NyeHTS19.pdf`, page 9"
+    },
+    {
+      "number": 4,
+      "query": "What recent directions from 2023 through 2025 connect language models with program synthesis or code generation?",
+      "retrieval_seconds": 0.4917,
+      "answer_seconds": 7.4541,
+      "query_embedding_usage": {
+        "tokens": 21.0,
+        "cost": 4.2e-07
+      },
+      "answer_usage": {
+        "model": "openai/gpt-5.4-mini",
+        "prompt_tokens": 3460,
+        "completion_tokens": 1186,
+        "total_tokens": 4646,
+        "cost": 0.007932
+      },
+      "results": [
+        {
+          "rank": 1,
+          "fused_score": 0.01565941,
+          "keyword_rank": 7,
+          "keyword_score": 27.454,
+          "semantic_rank": 1,
+          "semantic_score": 0.670557,
+          "chunk_id": "DBLP_conf_icml_GuJLSESS25:p57:c1",
+          "filename": "DBLP_conf_icml_GuJLSESS25.pdf",
+          "title": "Position: Future Research and Challenges Remain Towards AI for Software Engineering",
+          "page": 57,
+          "excerpt": "Position: Future Research and Challenges Remain Towards AI for Software Engineering Spider (Yu et al., 2019), where the target language is constrained, small, and domain-specific. Recent work demonstrates that large language models (LLMs) can generalize to general-purpose programming languages, enabling the generation of larger and more complex code snippets (OpenAI, 2023b). When applied to code completion, users often begin with natural language instructions in the form of comments, which LLMs use as context for code synthesis. Beyond function-level code generation (Austin et al., 2021; Chen et al., 2021a), recent work has extended to class-level generation (Du et al., 2023), which targets classes in object-oriented programming, and even project-level code generation (Cao et al., 2024; Wang et al., 2024f), which involves generating or completing entire multi-file codebases. Multimodal C..."
+        },
+        {
+          "rank": 2,
+          "fused_score": 0.01516544,
+          "keyword_rank": 8,
+          "keyword_score": 27.246,
+          "semantic_rank": 4,
+          "semantic_score": 0.648024,
+          "chunk_id": "DBLP_journals_corr_abs-2503-22625:p70:c2",
+          "filename": "DBLP_journals_corr_abs-2503-22625.pdf",
+          "title": "Challenges and Paths Towards AI for Software Engineering",
+          "page": 70,
+          "excerpt": "parsing ( Zettlemoyer and Collins , 2012; W ong and Mooney, 2006), where natural language is translated into logical forms or domain-speciﬁc languag es. A prominent example is SQL query synthesis from natural language questions, as seen in systems like Seq2SQL ( Zhong et al. , 2017) and Spider ( Yu et al., 2019), where the target language is constrained, small, and doma in- speciﬁc. Recent work demonstrates that large language mode ls (LLMs) can generalize to general- purpose programming languages, enabling the generation of larger and more complex code snip- pets (OpenAI, 2023b). When applied to code completion, users often begin with na tural language instructions in the form of comments, which LLMs use as conte xt for code synthesis. Beyond function-level code generation ( Austin et al. , 2021; Chen et al. , 2021a), recent work has extended to class-level generation ( Du et al. , 2023..."
+        },
+        {
+          "rank": 3,
+          "fused_score": 0.01473456,
+          "keyword_rank": 5,
+          "keyword_score": 28.003,
+          "semantic_rank": 11,
+          "semantic_score": 0.619902,
+          "chunk_id": "DBLP_journals_cacm_AlurSFS18:p9:c4",
+          "filename": "DBLP_journals_cacm_AlurSFS18.pdf",
+          "title": "Beyond the Training Distribution: Mapping Generalization Boundaries in Neural Program Synthesis",
+          "page": 9,
+          "excerpt": "LIII. On lines and planes of closest fit to systems of points in space.The London, Edinburgh, and Dublin philosophical magazine and journal of science2, 11 (1901), 559–572. [30] Martin Riddell, Ansong Ni, and Arman Cohan. 2024. Quantifying Contamination in Evaluating Code Generation Capabilities of Language Models. InProceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). Association for Computational Linguistics, Bangkok, Thailand, 14116–14137. doi:10.18653/v1/2024.acl-long.761 [31] Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej Balog, M Pawan Kumar, Emilien Dupont, Francisco JR Ruiz, Jordan S Ellenberg, Pengming Wang, Omar Fawzi, et al. 2024. Mathematical discoveries from program search with large language models.Nature625, 7995 (2024), 468–475. [32] Baptiste Roziere, Jonas Gehring, Fabian Gloeckle,..."
+        },
+        {
+          "rank": 4,
+          "fused_score": 0.01473118,
+          "keyword_rank": 2,
+          "keyword_score": 28.559,
+          "semantic_rank": 15,
+          "semantic_score": 0.618418,
+          "chunk_id": "DBLP_conf_icml_GuJLSESS25:p57:c2",
+          "filename": "DBLP_conf_icml_GuJLSESS25.pdf",
+          "title": "Position: Future Research and Challenges Remain Towards AI for Software Engineering",
+          "page": 57,
+          "excerpt": "one major challenge is writing code in low-adoption general purposed language and domain specific languages (DSLs). Benchmarks for this include MultiPL-E (Cassano et al., 2023), McEval (Chai et al., 2024), and VerilogEval (Liu et al., 2023b). A popular method to improve performance is to train on manually curated and processing data in low-resource languages such as Coq (Florath, 2024) and Verilog (Pei et al., 2024). Another line of work aims to achieve transfer between different low-resource languages (Paul et al., 2024; Cassano et al., 2024; Orlanski et al., 2023). Finally, since the lack of data is a large bottleneck, another popular direction is using relevant retrievals such as useful functions and library documentation (Yang et al., 2023b; Zhou et al., 2022; Yang et al., 2023b). For a recent survey of code generation for low-resource languages and DSLs, see (Joel et al., 2024). Sec..."
+        },
+        {
+          "rank": 5,
+          "fused_score": 0.01460554,
+          "keyword_rank": 10,
+          "keyword_score": 27.094,
+          "semantic_rank": 7,
+          "semantic_score": 0.625786,
+          "chunk_id": "DBLP_conf_iclr_JainHGLYZWSSS25:p16:c1",
+          "filename": "DBLP_conf_iclr_JainHGLYZWSSS25.pdf",
+          "title": "Published as a conference paper at ICLR 2025 LIVE CODE BENCH : H OLISTIC AND CONTAMINATION",
+          "page": 16,
+          "excerpt": "Published as a conference paper at ICLR 2025 Yue Wang, Weishi Wang, Shafiq Joty, and Steven CH Hoi. Codet5: Identifier-aware unified pre- trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, pp. 8696–8708, 2021. Yue Wang, Hung Le, Akhilesh Deepak Gotmare, Nghi DQ Bui, Junnan Li, and Steven CH Hoi. Codet5+: Open code large language models for code understanding and generation. arXiv preprint arXiv:2305.07922, 2023. Zhiruo Wang, Shuyan Zhou, Daniel Fried, and Graham Neubig. Execution-based evaluation for open-domain code generation. arXiv preprint arXiv:2212.10481, 2022b. Cody Watson, Michele Tufano, Kevin Moran, Gabriele Bavota, and Denys Poshyvanyk. On learn- ing meaningful assert statements for unit test cases. In Proceedings of the ACM/IEEE 42nd International Conference on Softwa..."
+        }
+      ],
+      "answer": "Recent directions connecting language models with program synthesis or code generation, as described in the retrieved passages, include the following:\n\n1. **General-purpose code synthesis from natural language comments/instructions**\n   - The passages say that LLMs have moved beyond constrained, domain-specific targets like SQL or Spider-style tasks and can now “generalize to general-purpose programming languages,” generating “larger and more complex code snippets.” They also note that in code completion, users often provide natural-language comments that the model uses as context for code synthesis [1][2].\n   - **What this establishes:** a broad shift from small constrained synthesis tasks to open-ended code generation in general-purpose languages.\n\n2. **Scaling from function-level to class-level and project-level generation**\n   - The passages explicitly state that research has extended “beyond function-level code generation” to **class-level generation** and further to **project-level code generation**, meaning generation or completion of “entire multi-file codebases” [1][2].\n   - **What this establishes:** a recent expansion in scope from single functions to larger program structures and whole projects.\n\n3. **Multimodal code generation**\n   - A clear recent direction is **visual or multimodal code synthesis**. The passages say some instructions are “better defined visually,” and cite GPT-4 generating webpage code from sketches, translating visual layouts into HTML and CSS [1][2].\n   - They also mention **LogoMotion (2025)**, which uses vision-language models to generate JavaScript for animations and motion graphics from visual inputs plus user instructions [1][2].\n   - **What this establishes:** models are increasingly being connected to program synthesis through visual context, not only text.\n\n4. **Code generation for low-resource languages and DSLs**\n   - The passages describe another direction as improving code generation for “low-adoption general purpose language[s] and domain specific languages (DSLs),” with benchmarks such as **MultiPL-E (2023)**, **McEval (2024)**, and **VerilogEval (2023)** [1][4].\n   - They also note approaches that train on manually curated data in low-resource languages like **Coq** and **Verilog**, and methods aimed at **transfer between different low-resource languages** [4].\n   - **What this establishes:** recent work is not only about mainstream languages, but also about synthesis in scarce-data settings and transfer across such languages.\n\n5. **Retrieval-augmented code generation**\n   - The passages identify another line of work that uses “relevant retrievals such as useful functions and library documentation” to compensate for limited data [4].\n   - **What this establishes:** retrieval is being used as a support mechanism for code synthesis, especially in low-resource settings.\n\n6. **Interactive and human-in-the-loop code generation**\n   - The passages say modern code LLMs support “interactive code generation through conversational interfaces” and mention human-in-the-loop guardrails such as **Dynex (2025)**, which supports “dynamic, step-wise code synthesis with user feedback” for real-time correction and iterative refinement [4].\n   - **What this establishes:** a direction toward iterative synthesis where the user can steer, inspect, or constrain generation as it happens.\n\n7. **Benchmarks and evaluation for code generation quality, security, and contamination**\n   - The passages mention evaluation suites and benchmarks for code generation, including **CodeScope (2023)** and work on contamination and evaluation such as “Quantifying Contamination in Evaluating Code Generation Capabilities of Language Models” and “Memorize or Generalize? Evaluating LLM Code Generation with Code Rewriting” [3][5].\n   - They also emphasize security-focused evaluation, with benchmarks like **SafeCoder (2024)**, **CodeLMSec (2023)**, **CWEval (2025)**, and **CyberSecEval (2023/2024)**, because outputs can be “insecure, incorrect, or misaligned with user intent” [4].\n   - **What this establishes:** a strong recent direction is not just generating code, but measuring whether models generalize, avoid memorization, and produce secure outputs.\n\n### Bottom line\nFrom 2023–2025, the passages point to several concrete directions linking language models with program synthesis/code generation: broader general-purpose code synthesis, scaling to class- and project-level generation, multimodal/visual code synthesis, low-resource and DSL generation, retrieval-augmented synthesis, interactive human-in-the-loop generation, and stronger benchmarks for correctness, contamination, and security [1][2][4][5].\n\n**What cannot be concluded from the passages**\n- The passages do not provide a ranked timeline of which direction was most important each year.\n- They do not give detailed technical methods for all cited systems, only the high-level research directions.\n- They do not claim these are the only directions in 2023–2025, only that they are recent ones appearing in the cited surveys/positions.\n\n### Sources used\n- **Position: Future Research and Challenges Remain Towards AI for Software Engineering** — `DBLP_conf_icml_GuJLSESS25.pdf`, p. 57\n- **Challenges and Paths Towards AI for Software Engineering** — `DBLP_journals_corr_abs-2503-22625.pdf`, p. 70\n- **Beyond the Training Distribution: Mapping Generalization Boundaries in Neural Program Synthesis** — `DBLP_journals_cacm_AlurSFS18.pdf`, p. 9\n- **Published as a conference paper at ICLR 2025 LIVE CODE BENCH: H OLISTIC AND CONTAMINATION** — `DBLP_conf_iclr_JainHGLYZWSSS25.pdf`, p. 16"
+    }
+  ]
+}

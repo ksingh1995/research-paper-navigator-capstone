@@ -1,0 +1,288 @@
+{
+  "answer": "Both papers combine neural learning with symbolic search, but they do so in different ways:\n\n- **Learning to Infer Program Sketches** learns to predict a **program sketch** from the specification, then uses **symbolic enumeration/synthesis** to fill in the missing parts. The authors emphasize that their key idea is a learned neural sketch generator plus an enumerative symbolic synthesizer, with a flexible sketch grammar and self-supervised training so the model can learn how much to rely on each component. [2]\n- **Program Synthesis with a REPL** learns policies/value functions that operate over a **REPL-style execution state**: each partial program is rendered/evaluated into a semantically meaningful intermediate state, and the neural model conditions on these execution results while search methods such as beam search or SMC explore program space. The REPL thus injects execution feedback into the search process rather than only predicting a sketch upfront. [3]\n\n### How they combine learning with symbolic search or execution feedback\n\n**Learning to Infer Program Sketches**\n- Learning provides a neural proposer that outputs an intermediate sketch.  \n- Symbolic search then completes the sketch into a full program.  \n- The authors’ central goal is to let the system dynamically choose how much work to do with pattern recognition vs. symbolic search, rather than fixing a hand-designed sketch granularity. [2]\n\n**Program Synthesis with a REPL**\n- Learning is used to guide search via policy and value networks.  \n- Execution feedback comes from the REPL, which renders each partial program into a distinct canvas / intermediate semantic state that the neural model can observe.  \n- Search methods then use these learned evaluations to decide which partial programs to extend; the paper specifically notes that incorporating the value function helps both beam search and SMC. [3]\n\n### One evaluation or scope trade-off stated by the authors for each paper\n\n**Learning to Infer Program Sketches — trade-off**\n- The authors report that their approach is less dependent on beam size than the generator-only baseline, and that the system can supplement a smaller beam with enumeration. This is an evaluation trade-off between **beam width / search effort** and **performance**. [4]\n- They also note that the string-editing DSL is much larger than the list-transformation DSL, making enumerative search slower and less effective; consequently, the “synthesizer only” model cannot consistently enumerate sufficiently complex programs from scratch. This is a scope trade-off between **larger DSL expressiveness** and **search difficulty**. [4]\n\n**Program Synthesis with a REPL — trade-off**\n- The authors say that, given enough time, the **“no REPL” baseline** can be competitive because inference time is dominated by CNN evaluations that happen at every step with a REPL, but only once without it. So the trade-off is **better intermediate feedback and search guidance** versus **higher per-step computational cost**. [3]\n- They also report a scope/generalization trade-off: they trained on scenes with up to 13 objects, but tested on harder out-of-sample scenes with up to 30 objects in 2D and 20 objects in 3D. [3]\n\n### Bottom line\n- **Learning to Infer Program Sketches**: learn a sketch, then symbolically fill it in.  \n- **Program Synthesis with a REPL**: learn to search using execution-visible intermediate states from a REPL.  \n- A stated trade-off in the first is reduced beam dependence / better use of enumeration versus search difficulty in larger DSLs; in the second it is stronger feedback-guided search versus greater per-step inference cost. [2][3][4]\n\nSources used:\n1. **Learning to Infer Program Sketches**, `DBLP_journals_corr_abs-1902-06349.pdf`, p. 2.  \n2. **Learning to Infer Program Sketches**, `DBLP_conf_icml_NyeHTS19.pdf`, p. 7.  \n3. **Program Synthesis with a REPL**, `DBLP_journals_corr_abs-1906-04604.pdf`, p. 6.  \n4. **Program Synthesis with a REPL**, `DBLP_journals_corr_abs-1906-04604.pdf`, p. 7.",
+  "answer_usage": {
+    "prompt_tokens": 2477,
+    "completion_tokens": 890,
+    "total_tokens": 3367,
+    "cost": 0.00586275,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00586275,
+      "upstream_inference_prompt_cost": 0.00185775,
+      "upstream_inference_completions_cost": 0.004005
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "hits": [
+    {
+      "rank": 1,
+      "fused_score": 0.01639344,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_journals_corr_abs-1906-04604:p7:c1",
+      "filename": "DBLP_journals_corr_abs-1906-04604.pdf",
+      "title": "Program Synthesis with a REPL Kevin Ellis∗",
+      "page": 7,
+      "excerpt": "Spec (voxels) Renderedprogram Figure 6: Qualitative inverse CAD results. Top: Derendering random scenes vs. ablations and no-REPL baseline. Teal outlines show shape primitives in synthesized 2D programs. Bottom: Rerendering program inferred from voxels from novel viewpoints. domain, which, in addition to the original inputs and outputs, includes three additional features as part of the intermediate program state: The committed string maintains, for each example input, the output of the expressions synthesized so far. The scratch string maintains, for each example input, the partial results of the expression currently being synthesized until it is complete and ready to be added to the committed string. Finally, the binary valued mask features indicate, for each character position, the possible locations on which transformations can occur. Experimental Evaluation We trained our model and a"
+    },
+    {
+      "rank": 2,
+      "fused_score": 0.01639344,
+      "keyword_rank": 1,
+      "keyword_score": 52.929,
+      "semantic_rank": 7,
+      "semantic_score": 0.736304,
+      "chunk_id": "DBLP_journals_corr_abs-1902-06349:p2:c1",
+      "filename": "DBLP_journals_corr_abs-1902-06349.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 2,
+      "excerpt": "Learning to Infer Program Sketches Recent work (Murali et al., 2017; Dong & Lapata, 2018) has attempted to combine learned pattern recognition and explicit reasoning using program sketches—schematic out- lines of full programs (Solar-Lezama, 2008). In Murali et al. (2017), a neural network is trained to output program sketches when conditioned on a spec, and candidate sketches are converted into full programs using symbolic synthesis techniques, which approximate explicit reasoning from ﬁrst principles. However, previous systems use static, hand-designed inter- mediate sketch grammars, which do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search. The neural network is trained to map from spec to a pre-speciﬁed sketch, and can- not learn to output a more detailed sketch, if the pattern matching task is easy, or learn to output a mo..."
+    },
+    {
+      "rank": 3,
+      "fused_score": 0.01587302,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_journals_corr_abs-1906-04604:p6:c1",
+      "filename": "DBLP_journals_corr_abs-1906-04604.pdf",
+      "title": "Program Synthesis with a REPL Kevin Ellis∗",
+      "page": 6,
+      "excerpt": "as well as spheres, cubes, and cylinders (for 3D, w/ coordinates quantized to 8× 8× 8), although in both cases the quantization could in principle be made arbitrarily ﬁne. Our REPL renders each partial programp∈pp to a distinct canvas, which the policy and value networks take as input. Experimental evaluation We train our models on randomly generated scenes with up to 13 objects. As a hard test of out-of-sample generalization we test on randomly generated scenes with up to 30 or 20 objects for 2D and 3D, respectively. Figure 5 measures the quality of the best program found so far as a function of time, where we measure the quality of a program by the intersection-over-union (IoU) with the spec. Incorporating the value function proves important for both beam search and sampling methods such as SMC. Given a large enough time budget the ‘no REPL’ baseline is competitive with our ablated alt"
+    },
+    {
+      "rank": 4,
+      "fused_score": 0.01612903,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_conf_icml_NyeHTS19:p7:c2",
+      "filename": "DBLP_conf_icml_NyeHTS19.pdf",
+      "title": "Learning to Infer Program Sketches",
+      "page": 7,
+      "excerpt": "trained only on a synthetic distribution. Furthermore, the string editing DSL is much larger than the list transformation DSL. This means that enumerative search is both slower and less effective than for the list trans- formation programs, where a fast enumerator could brute force the entire search space (Balog et al., 2016). Because of this, the “Synthesizer only” model is not able to consistently enumerate sufﬁciently complex programs from scratch. We trained our model using self-supervision, sampling train- ing programs randomly from the DSL and conditioning the models on 4 examples of input-output pairs, and evaluated on our test corpus. We plot our results in Figure 3. Overall, SKETCH ADAPT outperforms the “Synthesizer 2000 4000 6000 8000 79214 (full dataset) Number of training programs used 0 20 40 60 80 100% of test programs solved Algolisp Our model Generator only (RobustFill) S"
+    },
+    {
+      "rank": 5,
+      "fused_score": 0.01612903,
+      "keyword_rank": null,
+      "keyword_score": null,
+      "semantic_rank": null,
+      "semantic_score": null,
+      "chunk_id": "DBLP_journals_corr_abs-1906-04604:p13:c2",
+      "filename": "DBLP_journals_corr_abs-1906-04604.pdf",
+      "title": "Program Synthesis with a REPL Kevin Ellis∗",
+      "page": 13,
+      "excerpt": "passed through 3 layers of 3x3 convolution, with ReLU activations after each layer and 4x4 max pooling after the ﬁrst layer. The ﬁrst 2 layers have 32 hidden channels and the output layer has 16 output channels. No REPL baseline: Our “No REPL” baselines using the same CNN architecture to take as input the spec, and then use the same pointer network architecture to decode into the program, with the sole difference that, rather than attend over the CNN encodings of the objects in scope (which are hidden from this baseline), the pointer network attends over the hidden states produced at the time when each previously constructed object was brought into scope. A.6 String editing additional results Figure 10 shows results on the string editing dataset from [6]. 13"
+    }
+  ],
+  "actions": [
+    {
+      "action": "search",
+      "query": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+      "hit_ids": [
+        "DBLP_journals_corr_abs-1902-06349:p2:c1",
+        "DBLP_journals_corr_abs-1902-06349:p3:c1",
+        "DBLP_journals_corr_abs-1906-04604:p2:c1",
+        "DBLP_conf_icml_NyeHTS19:p2:c1",
+        "DBLP_journals_corr_abs-1906-04604:p1:c2",
+        "DBLP_conf_icml_NyeHTS19:p3:c1",
+        "DBLP_conf_iclr_NyePBATS21:p9:c2",
+        "DBLP_conf_nips_EllisST15:p2:c1"
+      ],
+      "embedding_usage": {
+        "tokens": 43.0,
+        "cost": 8.6e-07
+      }
+    },
+    {
+      "action": "lookup_paper",
+      "title": "Program Synthesis with a REPL",
+      "hit_ids": [
+        "DBLP_journals_corr_abs-1906-04604:p7:c1",
+        "DBLP_journals_corr_abs-1906-04604:p13:c2",
+        "DBLP_journals_corr_abs-1906-04604:p6:c1",
+        "DBLP_journals_corr_abs-1906-04604:p12:c1",
+        "DBLP_journals_corr_abs-1906-04604:p12:c2"
+      ]
+    },
+    {
+      "action": "lookup_paper",
+      "title": "Learning to Infer Program Sketches",
+      "hit_ids": [
+        "DBLP_conf_icml_NyeHTS19:p5:c2",
+        "DBLP_conf_icml_NyeHTS19:p7:c2",
+        "DBLP_conf_icml_NyeHTS19:p8:c1",
+        "DBLP_conf_icml_NyeHTS19:p2:c2",
+        "DBLP_conf_icml_NyeHTS19:p3:c2"
+      ]
+    }
+  ],
+  "planner_calls": [
+    {
+      "plan": {
+        "action": "lookup_paper",
+        "title": "Program Synthesis with a REPL",
+        "query": "",
+        "missing_aspects": [
+          "experimental evaluation results scope limitations tradeoff baseline dataset"
+        ],
+        "reason": "Named-paper evidence coverage rule",
+        "override_reason": "Required focused lookup"
+      },
+      "usage": {
+        "prompt_tokens": 2566,
+        "completion_tokens": 168,
+        "total_tokens": 2734,
+        "cost": 0.0011253,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 2304,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0011253,
+          "upstream_inference_prompt_cost": 0.0003693,
+          "upstream_inference_completions_cost": 0.000756
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "plan": {
+        "action": "lookup_paper",
+        "title": "Learning to Infer Program Sketches",
+        "query": "",
+        "missing_aspects": [
+          "experimental evaluation results scope limitations tradeoff baseline dataset"
+        ],
+        "reason": "Named-paper evidence coverage rule",
+        "override_reason": "Required focused lookup"
+      },
+      "usage": {
+        "prompt_tokens": 2377,
+        "completion_tokens": 360,
+        "total_tokens": 2737,
+        "cost": 0.00340275,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00340275,
+          "upstream_inference_prompt_cost": 0.00178275,
+          "upstream_inference_completions_cost": 0.00162
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "sanitized_question": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+  "filter_notes": [],
+  "rejected_chunks": [],
+  "mode": "live",
+  "route": "agent",
+  "question": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors.",
+  "named_papers": [
+    "Program Synthesis with a REPL",
+    "Learning to Infer Program Sketches"
+  ],
+  "calls": [
+    {
+      "path": "/embeddings",
+      "role": "embedding",
+      "model": "openai/text-embedding-3-small",
+      "status": "ok",
+      "prompt_tokens": 43,
+      "completion_tokens": null,
+      "total_tokens": 43,
+      "reported_cost_usd": 8.6e-07,
+      "seconds": 0.4
+    },
+    {
+      "path": "/chat/completions",
+      "role": "planner",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2566,
+      "completion_tokens": 168,
+      "total_tokens": 2734,
+      "reported_cost_usd": 0.0011253,
+      "seconds": 1.3027
+    },
+    {
+      "path": "/chat/completions",
+      "role": "planner",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2377,
+      "completion_tokens": 360,
+      "total_tokens": 2737,
+      "reported_cost_usd": 0.00340275,
+      "seconds": 2.2468
+    },
+    {
+      "path": "/chat/completions",
+      "role": "answer",
+      "model": "openai/gpt-5.4-mini",
+      "status": "ok",
+      "prompt_tokens": 2477,
+      "completion_tokens": 890,
+      "total_tokens": 3367,
+      "reported_cost_usd": 0.00586275,
+      "seconds": 3.9119
+    }
+  ],
+  "metrics": {
+    "seconds": 8.29,
+    "api_calls": 4,
+    "chat_calls": 3,
+    "embedding_calls": 1,
+    "input_tokens": 7463,
+    "output_tokens": 1418,
+    "total_tokens": 8881,
+    "reported_cost_usd": 0.01039166,
+    "missing_cost_calls": 0,
+    "retrieval_actions": 3,
+    "planner_calls": 2,
+    "verified_passages": 5,
+    "rejected_chunks": 0
+  },
+  "index_usage": {
+    "source": "cache",
+    "embedding_seconds": 0.0,
+    "embedding_tokens": 0,
+    "embedding_cost": 0.0
+  },
+  "index_calls": [],
+  "corpus_fingerprint": "297a8f04bbe45f52272bf8ed89030324cc8145caff06b38a1bc6babb60916c4c",
+  "extraction_warnings": [],
+  "total_seconds": 12.366
+}
