@@ -1,0 +1,395 @@
+Capstone Checkpoint 3.1 - Research Paper Navigator Evaluation
+Run timestamp: 2026-09-09T08:15:48
+Scenario: Research Paper Navigator
+Retrieval approach: Hybrid BM25 plus semantic retrieval with weighted reciprocal rank fusion
+Corpus PDFs: 153
+Searchable chunks: 12420
+Top k: 5
+Answer model: openai/gpt-5.4-mini
+Judge model: openai/gpt-5.4-mini
+
+SUMMARY
+{
+  "evaluated_questions": 8,
+  "answer_passes": 8,
+  "answer_pass_rate": 1.0,
+  "retrieval_items_with_expected_sources": 7,
+  "expected_source_hits": 7,
+  "expected_source_hit_rate_at_k": 1.0,
+  "mean_reciprocal_rank": 1.0,
+  "answers_with_inline_citations": 8,
+  "inline_citation_rate": 1.0,
+  "result_slot_source_diversity": 0.775,
+  "abstention_guardrail_cases": 1,
+  "abstention_guardrail_passes": 0,
+  "abstention_guardrail_pass_rate": 0.0,
+  "combined_accepted_cases": 7,
+  "combined_acceptance_rate": 0.875,
+  "robustness_families": {
+    "counterfeit-finding": {
+      "item_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "all_answers_passed": true,
+      "all_expected_sources_hit": true,
+      "consistent_answer_verdicts": true
+    },
+    "sketching-method": {
+      "item_ids": [
+        "Q3",
+        "Q4"
+      ],
+      "all_answers_passed": true,
+      "all_expected_sources_hit": true,
+      "consistent_answer_verdicts": true
+    }
+  },
+  "validation_cases": 4,
+  "validation_detected_as_expected": 4,
+  "validation_accuracy": 1.0
+}
+
+============================================================================================
+Q1 [known-paper finding]: What is the main finding of 'The Counterfeit Conundrum' about whether code language models recognize their own incorrect generations?
+Expected difficulty: standard
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_acl_GuLJOLSS24.pdf", "DBLP_journals_corr_abs-2402-19475.pdf"]}
+Answer verdict: pass
+Judge reason: The answer correctly states that code language models generally do not reliably recognize their own incorrect generations and describes multiple required failure modes, including misclassifying incorrect code as correct, predicting execution as if correct, and struggling to repair it.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_conf_acl_GuLJOLSS24.pdf p.1 kw=1 sem=8 fused=0.01554966
+  2. DBLP_conf_acl_GuLJOLSS24.pdf p.8 kw=6 sem=3 fused=0.01551227
+  3. DBLP_journals_corr_abs-2402-19475.pdf p.13 kw=3 sem=12 fused=0.01488095
+  4. DBLP_journals_corr_abs-2402-19475.pdf p.1 kw=2 sem=21 fused=0.01423736
+  5. DBLP_conf_icml_GuJLSESS25.pdf p.34 kw=77 sem=None fused=0.00364964
+
+LLM ANSWER (verbatim):
+The paper’s main finding is that code language models generally **do not reliably recognize their own incorrect generations**. Instead, they show what the authors call a “very shallow understanding” of these “counterfeit” programs: models often **mistakenly classify incorrect code as correct**, **predict its execution as if it were correct**, and **struggle to repair it** [1][4].
+
+The passages also explicitly say that these counterfeit samples are often **“just as confusing to the model itself as they are to other models”** [1][4]. So the central conclusion is not that models can consistently detect their own bad code, but the opposite: **their own incorrect generations are frequently hard for them to identify and handle without external feedback** [1][2][4].
+
+What cannot be concluded from the passages alone:
+- They do not provide a single quantitative summary of how often models recognize their own incorrect generations.
+- They do suggest GPT-4 may be **less susceptible** than the other evaluated models, but the exact extent is not established in the retrieved text [2].
+
+**Sources used**
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_conf_acl_GuLJOLSS24.pdf`, p. 1 [1]
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_conf_acl_GuLJOLSS24.pdf`, p. 8 [2]
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf`, p. 1 [4]
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf`, p. 13 [3]
+
+============================================================================================
+Q2 [paraphrase]: According to The Counterfeit Conundrum, do code-generation models notice when their own generated programs are wrong, and where do they struggle?
+Expected difficulty: standard
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_acl_GuLJOLSS24.pdf", "DBLP_journals_corr_abs-2402-19475.pdf"]}
+Answer verdict: pass
+Judge reason: It says recognition is unreliable and identifies multiple problems—incorrect correctness classification, poor execution reasoning, and weak repair—matching the grading notes.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_journals_corr_abs-2402-19475.pdf p.1 kw=1 sem=1 fused=0.01639344
+  2. DBLP_conf_acl_GuLJOLSS24.pdf p.1 kw=3 sem=4 fused=0.01574901
+  3. DBLP_conf_acl_GuLJOLSS24.pdf p.1 kw=6 sem=2 fused=0.01564027
+  4. DBLP_journals_corr_abs-2402-19475.pdf p.3 kw=2 sem=10 fused=0.01520737
+  5. DBLP_conf_iclr_OlaussonIW0S24.pdf p.9 kw=50 sem=None fused=0.00454545
+
+LLM ANSWER (verbatim):
+According to the paper, **yes—code-generation models do notice some of their own generated programs are wrong, but only shallowly and unreliably**. The authors report that “most models have a very shallow understanding of counterfeits” and identify three failure modes: models “mistakenly classify them as correct,” are “worse at reasoning about the execution behaviour” of these programs and often predict outputs “as if they were correct,” and struggle to repair them, with successful repair often lower than sampling a correct program from scratch [1][2].
+
+Where they struggle is specifically with **counterfeit samples**: incorrect programs that are subtle enough to pass weak checks. The paper says these samples are “adversarial to the model,” because models often struggle to **assess correctness**, **reason about execution**, and **repair** them at a low rate [4]. It also notes that even strong models like GPT-4 still show some of these misunderstandings [4].
+
+The paper further says the difficulty is not just with other models’ outputs: **“counterfeits from a given model are just as confusing to the model itself as they are to other models”** [1]. So, they do not reliably recognize their own wrong code as wrong, especially when no external feedback is used [1][4].
+
+What cannot be concluded from the retrieved passages is whether they fail on all wrong programs in general; the evidence is about **counterfeit samples** in particular, not every kind of incorrect generation [1][3].
+
+**Sources used**
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf` — page 1 [1]
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_conf_acl_GuLJOLSS24.pdf` — page 1 [2][3]
+- *The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?* — `DBLP_journals_corr_abs-2402-19475.pdf` — page 3 [4]
+
+============================================================================================
+Q3 [technical method]: How does the sketching approach to program synthesis use partial programs with holes and constraints?
+Expected difficulty: standard
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_aplas_Solar-Lezama09.pdf"]}
+Answer verdict: pass
+Judge reason: The answer correctly explains that a programmer provides a partial program/sketch with holes and that a synthesizer fills them subject to constraints like specifications, tests, or a reference implementation.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_conf_aplas_Solar-Lezama09.pdf p.1 kw=1 sem=1 fused=0.01639344
+  2. DBLP_conf_cav_BraggFRS21.pdf p.875 kw=3 sem=7 fused=0.01539919
+  3. DBLP_conf_aplas_Solar-Lezama09.pdf p.2 kw=8 sem=3 fused=0.01528945
+  4. DBLP_journals_corr_JeonQFS15.pdf p.1 kw=4 sem=10 fused=0.01495536
+  5. DBLP_conf_sigsoft_JeonQFS15.pdf p.1 kw=5 sem=9 fused=0.01493868
+
+LLM ANSWER (verbatim):
+The sketching approach uses a **partial program** as the starting point for synthesis. The programmer writes a sketch that “encodes the structure of a solution” while leaving low-level details unspecified, and the synthesizer fills in those missing details to produce a working implementation that satisfies the provided correctness criteria [1]. More generally, sketch-based synthesis starts from a partial program “that constrains the space of possible programs the synthesizer needs to consider” [4][5].
+
+In this framework, **holes** are the unknown parts of the partial program. The retrieved passages describe these as, for example, “unknown constants,” along with “expression generators” and “class generators” in JSKETCH, all of which are forms of incomplete program fragments that the synthesizer must complete [4][5]. A sketch can also be thought of more broadly as “a program (or model) with holes” [2].
+
+The approach combines the sketch with **constraints/specifications** that tell the synthesizer what the completed program must do. The programmer supplies either:
+- a **reference implementation**, or
+- a **set of test routines** that the synthesized code must pass [1].
+
+The passage also says the synthesizer may receive “parameterized or non-deterministic test harnesses,” and that it guarantees the harness succeeds for all values in the specified range [3]. In JSKETCH’s setting, the partial Java program is completed by synthesis, with the sketch constraining the search space and the tests/specification guiding what completion is acceptable [4][5].
+
+So, in short: sketching works by writing a **partial program with holes** to express the intended structure, and by adding **tests or reference-based constraints** that define correctness; the synthesizer then searches for fillings of the holes that satisfy those constraints [1][3][4][5]. What the passages do **not** fully specify is the exact internal solving algorithm used to fill the holes in every case, beyond noting that the synthesizer derives the missing details and explores the constrained space of possible programs [1][4][5].
+
+Sources used
+- **The Sketching Approach to Program Synthesis** — `DBLP_conf_aplas_Solar-Lezama09.pdf` — page 1 [1]
+- **The Sketching Approach to Program Synthesis** — `DBLP_conf_aplas_Solar-Lezama09.pdf` — page 2 [3]
+- **JSKETCH: Sketching for Java** — `DBLP_journals_corr_JeonQFS15.pdf` — page 1 [4]
+- **JSKETCH: Sketching for Java** — `DBLP_conf_sigsoft_JeonQFS15.pdf` — page 1 [5]
+- **516232_1_En_Print.indd** — `DBLP_conf_cav_BraggFRS21.pdf` — page 875 [2]
+
+============================================================================================
+Q4 [terminology variant]: What does the Sketching Approach paper say about completing an unfinished code template that contains unknown values?
+Expected difficulty: standard
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_aplas_Solar-Lezama09.pdf"]}
+Answer verdict: pass
+Judge reason: The answer correctly links unfinished templates and unknown values to a partial program with holes and states that synthesis fills them to satisfy correctness constraints.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_conf_aplas_Solar-Lezama09.pdf p.1 kw=1 sem=5 fused=0.01588903
+  2. DBLP_journals_corr_JeonQFS15.pdf p.1 kw=2 sem=10 fused=0.01520737
+  3. DBLP_conf_sigsoft_JeonQFS15.pdf p.1 kw=3 sem=14 fused=0.01469326
+  4. DBLP_conf_cav_BraggFRS21.pdf p.826 kw=9 sem=11 fused=0.01428863
+  5. DBLP_journals_corr_JeonQFS15.pdf p.1 kw=45 sem=1 fused=0.01295863
+
+LLM ANSWER (verbatim):
+The paper says that a sketch is a **partial program/template** with some parts left unspecified or “unknown,” and the synthesis engine fills in those missing details to produce a working implementation that satisfies the programmer’s correctness criteria [1]. More specifically, in the Java version of sketching, the input may contain **holes** that are “unknown constants,” along with other kinds of unknowns such as expression generators and class generators [2][3].
+
+So, if you have an unfinished code template containing unknown values, the Sketch approach is to:
+
+1. **Write the template with unknown parts left in place** rather than completing every detail yourself [1][2][3].
+2. **Provide a specification** for what the completed program should do, either as a **reference implementation** or as **test routines / harnesses** that the synthesized code must pass [1][2][3][5].
+3. Let the **Sketch synthesizer derive the missing details** and complete the template into an executable program [1][2][3].
+
+What the passages explicitly establish is that Sketch does not merely tolerate unknown values; it is designed to **solve for them automatically** in the context of a partial program [1][2][3][5]. The passages do **not** specify a single universal rule for every kind of unknown beyond these categories, nor do they describe the exact search procedure for all cases in the retrieved text.
+
+Sources used:
+- *The Sketching Approach to Program Synthesis* — `DBLP_conf_aplas_Solar-Lezama09.pdf`, page 1
+- *JSKETCH : Sketching for Java* — `DBLP_journals_corr_JeonQFS15.pdf`, page 1
+- *JSKETCH : Sketching for Java* — `DBLP_conf_sigsoft_JeonQFS15.pdf`, page 1
+- *Program Sketching by Automatically Generating Mocks from Tests* — `DBLP_conf_cav_BraggFRS21.pdf`, page 826
+
+============================================================================================
+Q5 [cross-paper comparison]: Which papers study program synthesis from input-output examples, and what learning or search methods do they use?
+Expected difficulty: challenging
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_nips_EllisST15.pdf", "DBLP_journals_corr_abs-1906-04604.pdf", "DBLP_journals_corr_abs-2003-05562.pdf"]}
+Answer verdict: pass
+Judge reason: The answer names multiple relevant papers and accurately connects them to supported methods, including REPL with reinforcement learning and SMC search, Learning Compositional Rules via Neural Program Synthesis with neural attention, and Unsupervised Learning by Program Synthesis with sketching and SMT-based search.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_journals_corr_abs-2003-05562.pdf p.3 kw=1 sem=18 fused=0.01460698
+  2. DBLP_conf_nips_EllisST15.pdf p.2 kw=7 sem=13 fused=0.014312
+  3. DBLP_journals_corr_abs-1902-06349.pdf p.9 kw=23 sem=1 fused=0.01422082
+  4. DBLP_journals_corr_abs-1906-04604.pdf p.2 kw=9 sem=12 fused=0.01419082
+  5. DBLP_conf_icml_NyeHTS19.pdf p.9 kw=17 sem=7 fused=0.01395619
+
+LLM ANSWER (verbatim):
+The retrieved passages mention several papers on program synthesis from input-output examples, but they do not all describe their methods in detail. Here is what can be established from the passages.
+
+## Papers that study program synthesis from input-output examples, and their methods
+
+### 1) **Learning Compositional Rules via Neural Program Synthesis**
+This paper presents a neural program synthesis model that takes a support set of input-output examples \(X=\{(x_i,y_i)\}\) and synthesizes a symbolic program \(G\) to predict outputs for query inputs [1]. The method uses **neural attention** to condition on many examples at once, and it avoids an extra outer search or learning loop [1]. The paper also says it builds on neural program synthesis and compares against **enumerative approaches**, **execution-guided work**, and **hybrid models** [1].  
+**Explicitly established method:** neural attention over many examples, producing a symbolic program [1].
+
+### 2) **Unsupervised Learning by Program Synthesis**
+Although this paper is framed as unsupervised program synthesis rather than direct input-output example synthesis, it does use examples to infer programs. It says the approach extends two program-synthesis ideas: **sketching** and **symbolic search** [2]. The sketches are represented as a **probabilistic context-free grammar**, and the sketches are translated into **SMT problems**; program synthesis is then reduced to solving an SMT problem [2].  
+**Explicitly established method:** probabilistic-grammar sketching plus SMT-based symbolic search [2].  
+**What cannot be concluded from the passage:** whether the examples are specifically standard supervised input-output pairs in the same way as FlashFill-style synthesis; the passage says “few example images” and discusses Bayesian inference, but does not fully characterize the input-output protocol [2].
+
+### 3) **Learning to Infer Program Sketches**
+This paper is cited among related work on program synthesis from examples, including **“Synthesizing data structure transformations from input-output examples”**, **“Automating string processing in spreadsheets using input-output examples”**, and **“Neural-guided deductive search for real-time program synthesis from examples”** [3]. However, the retrieved passage is only a references section and gives **no method summary** for those papers beyond their titles [3].  
+**What can be concluded:** these are papers on synthesis from examples, including explicit input-output-example settings in their titles [3].  
+**What cannot be concluded:** the learning/search methods they use, because the passage does not describe them [3].
+
+### 4) **Program Synthesis with a REPL**
+This paper states that it validates its framework on **synthesizing text-editing programs in the style of FlashFill** and on graphics programs [4]. It combines a **policy network**, **value network**, and **REPL** with **Sequential Monte Carlo (SMC) search** at inference time [4]. It also says it uses **reinforcement learning** to train an agent to interact with the REPL and assess whether it is on the right track [4].  
+**Explicitly established method:** reinforcement learning for policy/value/REPL, plus SMC search [4].
+
+## Papers named in the references that are clearly about input-output-example synthesis
+From the reference lists alone, the following titles are explicitly about program synthesis from input-output examples, but the passages do not describe their internal methods:
+
+- **Synthesizing data structure transformations from input-output examples** [3]
+- **Automating string processing in spreadsheets using input-output examples** [3]
+
+Another cited related paper is:
+- **Neural-guided deductive search for real-time program synthesis from examples** [3][5]
+
+From the titles, one can infer the broad setting is synthesis from examples, but the retrieved passages do **not** explain their specific learning/search methods [3][5].
+
+## Bottom line
+From the retrieved passages, the papers that clearly study synthesis from examples and whose methods are described are:
+
+- **Learning Compositional Rules via Neural Program Synthesis** — neural attention over many input-output examples to synthesize a symbolic program [1].
+- **Unsupervised Learning by Program Synthesis** — sketching with a probabilistic context-free grammar plus SMT-based symbolic search [2].
+- **Program Synthesis with a REPL** — reinforcement learning with policy/value networks and Sequential Monte Carlo search [4].
+
+The passages also mention, by title only, several other example-based synthesis papers, but their learning/search methods are not given in the retrieved text [3][5].
+
+## Sources used
+- **Learning Compositional Rules via Neural Program Synthesis** — `DBLP_journals_corr_abs-2003-05562.pdf`, page 3 [1]
+- **Unsupervised Learning by Program Synthesis** — `DBLP_conf_nips_EllisST15.pdf`, page 2 [2]
+- **Learning to Infer Program Sketches** — `DBLP_journals_corr_abs-1902-06349.pdf`, page 9 [3]
+- **Program Synthesis with a REPL Kevin Ellis∗** — `DBLP_journals_corr_abs-1906-04604.pdf`, page 2 [4]
+- **Learning to Infer Program Sketches** — `DBLP_conf_icml_NyeHTS19.pdf`, page 9 [5]
+
+============================================================================================
+Q6 [temporal exploratory]: What recent directions from 2023 through 2025 connect language models with program synthesis or code generation?
+Expected difficulty: challenging
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_iclr_JainHGLYZWSSS25.pdf", "DBLP_conf_icml_GuJLSESS25.pdf", "DBLP_journals_corr_abs-2503-22625.pdf"]}
+Answer verdict: pass
+Judge reason: The answer synthesizes multiple supported directions from the papers, including class/project-level generation, multimodal generation, low-resource languages/DSLs, interactive workflows, and stronger evaluation/security, satisfying the requirement for at least three directions.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_conf_icml_GuJLSESS25.pdf p.57 kw=7 sem=1 fused=0.01565941
+  2. DBLP_journals_corr_abs-2503-22625.pdf p.70 kw=8 sem=4 fused=0.01516544
+  3. DBLP_journals_cacm_AlurSFS18.pdf p.9 kw=5 sem=11 fused=0.01473456
+  4. DBLP_conf_icml_GuJLSESS25.pdf p.57 kw=2 sem=15 fused=0.01473118
+  5. DBLP_conf_iclr_JainHGLYZWSSS25.pdf p.16 kw=10 sem=7 fused=0.01460554
+
+LLM ANSWER (verbatim):
+Recent directions from 2023 through 2025 that connect language models with program synthesis or code generation include the following:
+
+1. **General-purpose code generation with larger, more complex snippets**
+   - The passages say recent work shows LLMs can “generalize to general-purpose programming languages,” enabling “larger and more complex code snippets” [1][2].
+   - This extends classic program-synthesis style mapping from natural language to code beyond small, constrained domains like Spider/SQL to broader programming settings [1][2].
+
+2. **Natural-language-to-code completion using comments as prompts**
+   - When used for code completion, users often begin with natural-language instructions in comments, which LLMs use as context for code synthesis [1][2].
+   - This is a direct synthesis pipeline from text instructions to code generation rather than only retrieval or classification [1][2].
+
+3. **Granularity beyond functions: class-level and project-level generation**
+   - Beyond function-level code generation, recent work has extended to **class-level generation** and even **project-level code generation**, meaning generation of classes or entire multi-file codebases [1][2].
+   - This indicates a move toward larger software artifacts, not just isolated functions [1][2].
+
+4. **Multimodal code generation**
+   - A major 2023–2025 direction is using visual input to generate code.
+   - The passages mention GPT-4 demonstrations generating webpage code from paper sketches, translating layouts into HTML/CSS [1][2].
+   - They also mention **LogoMotion (2025)**, which uses vision-language models for “visually grounded code synthesis” for animations and motion graphics in JavaScript [1][2].
+   - Related systems like **SynthesizeCAD** and **SGP-Bench** explore code generation from visual/3D modalities, producing code in languages such as SVG and CAD [1][2].
+
+5. **Code generation for low-resource languages and DSLs**
+   - Another 2023–2025 direction is improving generation in low-adoption general-purpose languages and domain-specific languages (DSLs) [4].
+   - The passages cite benchmarks such as **MultiPL-E (2023)**, **VerilogEval (2023)**, and **McEval (2024)** [1][4].
+   - Methods include training on manually curated or processed data in low-resource languages like **Coq** and **Verilog** [1][4].
+   - There is also work on **transfer between different low-resource languages** and on using **retrieval** of relevant functions and library documentation to compensate for scarce training data [4].
+
+6. **Security-aware code generation and human-in-the-loop synthesis**
+   - The passages emphasize that code-generation outputs can be insecure or incorrect, motivating benchmarks and evaluation suites focused on vulnerabilities and safe API use [4].
+   - They also identify **human-in-the-loop guardrails** as a recent response: developers can interactively guide, inspect, or constrain generation [4].
+   - **Dynex (2025)** is given as an example of “dynamic, step-wise code synthesis with user feedback,” supporting iterative refinement before errors accumulate [4].
+
+7. **Evaluation-focused work on contamination and benchmark robustness**
+   - The ICLR 2025 passage lists work on evaluating code generation capabilities, including **execution-based evaluation** and **contamination-aware** benchmarking [5].
+   - It also cites **CodeScope (2023)** as an execution-based multilingual multitask benchmark for evaluating LLMs on code understanding and generation [5].
+   - This is not itself a synthesis method, but it is a recent direction tightly connected to assessing LLM-based program synthesis [5].
+
+8. **LLMs used in broader program-search / symbolic discovery settings**
+   - The additional reference list includes **mathematical discoveries from program search with large language models (2024)** and **symbolic regression using transformer-based architecture (2024)** [3].
+   - From the passage alone, these show that LLMs are being connected not only to code generation, but also to broader program search and symbolic synthesis tasks [3].
+   - The passages do not provide enough detail to conclude the exact mechanisms of those systems beyond their titles [3].
+
+### What can be concluded overall
+Across 2023–2025, the clearest trends are:
+- scaling synthesis from small constrained languages to general-purpose code,
+- expanding from function-level to class- and project-level generation,
+- adding multimodal/visual inputs,
+- targeting low-resource languages and DSLs,
+- making generation more secure and interactive,
+- and improving evaluation through contamination-aware, execution-based benchmarks [1][2][4][5].
+
+### What cannot be concluded from these passages
+- The passages do **not** establish which of these directions is the most important overall, only that they are recent directions being discussed [1][2][4][5].
+- They do **not** provide technical details of the methods behind every cited system, especially for program-search or symbolic-regression references listed only in the bibliography [3].
+
+## Sources used
+- *Position: Future Research and Challenges Remain Towards AI for Software Engineering* — `DBLP_conf_icml_GuJLSESS25.pdf`, page 57  
+- *Challenges and Paths Towards AI for Software Engineering* — `DBLP_journals_corr_abs-2503-22625.pdf`, page 70  
+- *Beyond the Training Distribution: Mapping Generalization Boundaries in Neural Program Synthesis* — `DBLP_journals_cacm_AlurSFS18.pdf`, page 9  
+- *Published as a conference paper at ICLR 2025 LIVE CODE BENCH: Holistic and Contamination* — `DBLP_conf_iclr_JainHGLYZWSSS25.pdf`, page 16
+
+============================================================================================
+Q7 [specific-paper method]: How does Learning to Infer Program Sketches combine learned sketch prediction with program search?
+Expected difficulty: known retrieval risk
+Source metrics: {"expected_source_hit": true, "first_expected_source_rank": 1, "reciprocal_rank": 1.0, "expected_sources_retrieved": ["DBLP_conf_icml_NyeHTS19.pdf", "DBLP_journals_corr_abs-1902-06349.pdf"]}
+Answer verdict: pass
+Judge reason: It correctly explains learned sketch prediction plus symbolic/enumerative completion and does not rely only on bibliography mentions.
+Abstention guardrail: null
+Combined acceptance: True
+Retrieved results:
+  1. DBLP_journals_corr_abs-1902-06349.pdf p.3 kw=3 sem=3 fused=0.01587302
+  2. DBLP_conf_icml_NyeHTS19.pdf p.2 kw=2 sem=10 fused=0.01520737
+  3. DBLP_conf_icml_NyeHTS19.pdf p.3 kw=4 sem=8 fused=0.01516544
+  4. DBLP_journals_corr_abs-1902-06349.pdf p.4 kw=7 sem=5 fused=0.01515499
+  5. DBLP_conf_nips_EllisRST18.pdf p.9 kw=30 sem=36 fused=0.01076389
+
+LLM ANSWER (verbatim):
+Learning to Infer Program Sketches combines learned sketch prediction with program search by splitting synthesis into two stages: a neural sketch generator and a symbolic program synthesizer [1][3].
+
+- **First, the learned component predicts sketches from the specification.** The sketch generator is a distribution \(q_\phi(\text{sketch}\mid X)\), implemented as a recurrent neural network, that conditions on the program spec and outputs candidate program sketches [1][3]. It is trained to give high probability to sketches that are “likely to quickly yield programs satisfying the spec” when handed to the synthesizer [1][3].
+
+- **Second, the search component fills in the missing parts.** The program synthesizer takes each sketch as a starting point and performs “explicit symbolic search” to “fill in the holes” using symbolic enumeration techniques until it finds a full program satisfying the spec [1][3]. The holes are marked by a special token, `<HOLE>`, which indicates places where pattern recognition is difficult and “more explicit search methods are necessary” [1][3].
+
+- **How they are combined at inference time:** given a spec, the sketch generator produces a distribution over sketches; a fixed number of candidate sketches are extracted; then the synthesizer searches over full programs for each candidate sketch in parallel, maximizing likelihood and enumerating programs that complete the holes [1][3][4].
+
+- **What is learned about the division of labor:** unlike prior systems with a fixed sketch grammar, this method uses a flexible sketch representation and a self-supervised objective so the model can learn “how much to rely on each component” [2][3]. The intended behavior is that for easier tasks the model can produce fuller sketches and rely more on learned prediction, while for harder tasks it can output less complete sketches and rely more on search [2].
+
+What the passages explicitly establish is that the system is a neuro-symbolic pipeline: neural sketch prediction proposes likely partial programs, and symbolic enumeration completes them [1][2][3]. They also explicitly say the model is trained to choose sketches that make synthesis fast, but the passages do not provide the exact mathematical form of the self-supervised objective beyond noting that it exists [1][2][3].
+
+**Sources used**
+- Learning to Infer Program Sketches — `DBLP_journals_corr_abs-1902-06349.pdf`, p. 3
+- Learning to Infer Program Sketches — `DBLP_conf_icml_NyeHTS19.pdf`, p. 2
+- Learning to Infer Program Sketches — `DBLP_conf_icml_NyeHTS19.pdf`, p. 3
+- Learning to Infer Program Sketches — `DBLP_journals_corr_abs-1902-06349.pdf`, p. 4
+
+============================================================================================
+Q8 [out-of-corpus abstention]: Which randomized clinical trial in this collection compares three cancer treatments, and what survival rates did it report?
+Expected difficulty: adversarial no-answer case
+Source metrics: {"expected_source_hit": null, "first_expected_source_rank": null, "reciprocal_rank": null, "expected_sources_retrieved": []}
+Answer verdict: pass
+Judge reason: It correctly says the collection does not provide enough evidence to identify the trial or its survival rates and avoids inventing treatments or numbers.
+Abstention guardrail: {"passed": false, "has_abstention": true, "affirmative_identification_before_caveat": true, "opening_sentence": "The randomized clinical trial in this collection is the CNTS paper, which describes the Clinical Neutron Therapy System at the University of Washington Medical Center and its use for treating tumors with neutron radiation [1]."}
+Combined acceptance: False
+Retrieved results:
+  1. DBLP_conf_snapl_2015.pdf p.119 kw=13 sem=1 fused=0.01504604
+  2. DBLP_journals_corr_abs-2501-02825.pdf p.36 kw=10 sem=27 fused=0.01288998
+  3. DBLP_journals_corr_abs-1902-06349.pdf p.12 kw=12 sem=41 fused=0.01189494
+  4. DBLP_conf_cav_JeonQSF15.pdf p.9 kw=9 sem=52 fused=0.01171066
+  5. DBLP_journals_fmsd_JeonQSF17.pdf p.16 kw=22 sem=30 fused=0.01165312
+
+LLM ANSWER (verbatim):
+The randomized clinical trial in this collection is the CNTS paper, which describes the Clinical Neutron Therapy System at the University of Washington Medical Center and its use for treating tumors with neutron radiation [1]. However, from the retrieved passage alone, I cannot confirm that it is a *randomized clinical trial*, and the passage shown does **not** report any survival rates [1].
+
+What the evidence **does** establish:
+- It is about a clinical radiotherapy system for treating tumors with neutron radiation [1].
+- It discusses patient setup, treatment prescriptions, and the therapy installation [1].
+
+What cannot be concluded from the retrieved text:
+- Which specific trial was randomized.
+- Whether the trial compared exactly three cancer treatments.
+- Any survival rates or outcome percentages.
+
+So, based on the passages provided, the answer is: **no retrieved passage identifies a randomized clinical trial comparing three cancer treatments or reports survival rates** [1].
+
+### Sources used
+- **LIPIcs, Vol. 32, SNAPL'15 - Complete Volume** — `DBLP_conf_snapl_2015.pdf`, p. 119
+
+============================================================================================
+VALIDATION CASES
+V1 reference answer: expected=pass actual=pass detected=True
+  reason=The answer correctly states that code language models do not reliably recognize their own incorrect generations and includes all three required failure modes.
+V2 factually reversed answer: expected=fail actual=fail detected=True
+  reason=The answer contradicts the notes by claiming models almost always detect and repair their own errors, and it omits the required failure modes of misclassification, incorrect reasoning about execution, and difficulty repairing.
+V3 degraded vague answer: expected=fail actual=fail detected=True
+  reason=The answer is too vague and does not state the required conclusion that code language models do not reliably recognize their own incorrect or counterfeit generations, nor does it describe any of the specified failure modes.
+V4 prompt-injection answer: expected=fail actual=fail detected=True
+  reason=The answer is factually wrong and omits the required finding that code language models generally do not reliably recognize their own incorrect or counterfeit generations, along with at least two of the specified failure modes.

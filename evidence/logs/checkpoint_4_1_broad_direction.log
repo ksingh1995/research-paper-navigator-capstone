@@ -1,0 +1,668 @@
+Week 4 broad-direction matched experiment
+{
+  "questions": 6,
+  "all_decomposed": 6,
+  "top_k_each": 5,
+  "single_passes": 6,
+  "decomposed_passes": 6,
+  "single_cited": 6,
+  "decomposed_cited": 6,
+  "single_distinct_files": 23,
+  "decomposed_distinct_files": 27,
+  "single_reference_flags": 0,
+  "decomposed_reference_flags": 1,
+  "single_retrieval_seconds": 34.006,
+  "decomposed_retrieval_seconds": 14.991
+}
+
+================================================================================
+BD1: Across the research-paper collection, what broad approaches combine learned predictions with symbolic program search? Explain how learned proposals, sketches or constraints, and final checking each contribute, and note a limitation or open trade-off.
+Subqueries: ["program synthesis learned proposal symbolic search sketches constraints final checking limitation trade-off", "neural-guided program synthesis symbolic search learned proposals program sketches constraint-based synthesis verification", "code generation learned predictions symbolic program search sketch completion constraint satisfaction final validation open trade-off"]
+single_query hits: ["DBLP_journals_corr_abs-1902-06349.pdf p.2", "DBLP_conf_icml_NyeHTS19.pdf p.2", "DBLP_journals_corr_abs-1902-06349.pdf p.1", "DBLP_conf_icml_NyeHTS19.pdf p.1", "DBLP_conf_nips_EllisST15.pdf p.8"]
+single_query answer (verbatim):
+Across the collection, the broad neuro-symbolic pattern is: use a learned component to propose a partial solution or bias the search space, then use symbolic program synthesis/search to complete or verify the program. The passages explicitly describe two closely related variants:
+
+1. **Learned program sketches plus symbolic completion**  
+   In *Learning to Infer Program Sketches*, a neural network is trained to output a sketch conditioned on a specification, and “candidate sketches are converted into full programs using symbolic synthesis techniques” [1][2]. The paper frames this as combining “pattern recognition and explicit reasoning” via “a learned neural sketch generator and a enumerative symbolic program synthesizer” [1][2]. The sketch is an intermediate representation: the learned model proposes some structure, and symbolic search fills in the missing parts [1][2].
+
+2. **Learned proposal / inductive bias plus symbolic search under constraints**  
+   In *Unsupervised Learning by Program Synthesis*, the symbolic solver is guided by “soft probabilistic constraints” that are encoded “as hard constraints for symbolic search,” and by “a domain specific grammar that serves both to guide the symbolic search and to provide a good inductive bias” [5]. Here the learned or statistical side contributes constraints/priors, while symbolic search uses them to find programs consistent with the data [5].
+
+### How the pieces contribute
+- **Learned proposals**: The neural component can propose a sketch or a partial program from the specification, capturing pattern recognition and reducing the search burden [1][2][3][4].  
+- **Sketches or constraints**: Sketches provide an intermediate program outline that constrains completion; in the other approach, soft probabilistic constraints and a grammar narrow the symbolic solver’s space [1][2][5].  
+- **Final checking / completion by search**: Symbolic synthesis or enumerative search turns sketches into full programs, or searches within the constrained space to ensure the final program satisfies the specification/constraints [1][2][5].
+
+### Limitation or trade-off
+A clear trade-off is that earlier sketch-based systems used “static, hand-designed intermediate sketch grammars,” which “do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search” [1][2]. The passage says such systems cannot adaptively choose between giving a fuller sketch when the task is easy and a more general sketch when the task is hard [1][2].  
+A different limitation noted in the synthesis-with-constraints line is scalability: “Synthesizing programs from large datasets is difficult, and complete symbolic solvers often do not degrade gracefully as the problem size increases” [5]. The paper suggests a possible RANSAC/CEGIS hybrid, but presents that as future work rather than a solved issue [5].
+
+So, in synthesis: **learned modules propose or bias; symbolic modules complete or check; the open trade-off is flexibility/adaptivity versus reliance on hand-designed grammars and the scalability cost of symbolic search** [1][2][5].
+
+### Sources used
+- *Learning to Infer Program Sketches* — `DBLP_journals_corr_abs-1902-06349.pdf` — page 2  
+- *Learning to Infer Program Sketches* — `DBLP_conf_icml_NyeHTS19.pdf` — page 2  
+- *Learning to Infer Program Sketches* — `DBLP_journals_corr_abs-1902-06349.pdf` — page 1  
+- *Learning to Infer Program Sketches* — `DBLP_conf_icml_NyeHTS19.pdf` — page 1  
+- *Unsupervised Learning by Program Synthesis* — `DBLP_conf_nips_EllisST15.pdf` — page 8
+single_query judge: pass — The answer discusses two distinct learned-plus-symbolic approaches, explains the roles of learned proposals and symbolic search/sketches/constraints, distinguishes symbolic completion/checking from the learned prediction step, and includes clear limitations/trade-offs.
+decomposed hits: ["DBLP_conf_icml_NyeHTS19.pdf p.2", "DBLP_journals_corr_abs-1902-06349.pdf p.2", "DBLP_journals_corr_abs-1906-04604.pdf p.2", "DBLP_conf_nips_EllisST15.pdf p.2", "DBLP_conf_icml_NyeHTS19.pdf p.1"]
+decomposed answer (verbatim):
+Across the collection, there are two closely related broad approaches that combine learned predictions with symbolic program search:
+
+1. **Learned sketch/proposal generation followed by symbolic completion**
+   - A neural model first predicts a **program sketch** or intermediate proposal from the specification, and then symbolic synthesis/search fills in the missing parts. The passages describe this as combining “learned pattern recognition and explicit reasoning using program sketches” [1][2].
+   - In the earlier sketch-based setup, “a neural network is trained to output program sketches when conditioned on a spec,” and “candidate sketches are converted into full programs using symbolic synthesis techniques” [1][2].
+   - In the newer version, the system learns “a suitable intermediate sketch representation between a learned neural proposer and a symbolic search mechanism,” using “a learned neural sketch generator and a enumerative symbolic program synthesizer” [1][2].
+
+2. **Learned action/policy and value proposals guided by execution/search**
+   - Another approach uses learned models to propose next steps during symbolic search, while search and execution test those proposals. The REPL-based system says it “combine[s] the policy, value, and REPL with a Sequential Monte Carlo (SMC) search strategy at inference time” [3].
+   - It “sample[s] next actions using our learned policy,” “execute[s] the partial programs with the REPL,” and “re-weight[s] the candidates by the value of the resulting partial program state” [3].
+   - This is also framed as “execution-guided neural program synthesis,” where a neural network writes a program conditioned on intermediate execution states [3].
+
+How the pieces contribute:
+- **Learned proposals** supply likely sketches or next actions from data, reducing the symbolic search space [1][2][3].
+- **Sketches or constraints** provide an intermediate structure or prior knowledge that constrains what symbolic search must fill in. The sketching approach gives a “rough outline of its structure” and can encode “domain specific prior knowledge” [4]; the newer sketch learner uses a flexible sketch grammar to let the network decide how detailed the sketch should be [1][2].
+- **Final checking / execution** ensures candidate programs are valid or useful. In the REPL system, partial programs are executed and assessed during search, and candidates are reweighted by the value of the resulting state [3]. In the sketch-based systems, symbolic synthesis completes candidate sketches into full programs, which serves as the checking/completion stage [1][2].
+
+Limitation / open trade-off:
+- The passages explicitly note that earlier sketch systems used “static, hand-designed intermediate sketch grammars,” which “do not allow the system to learn how much to rely on pattern recognition and how much to rely on symbolic search” [1][2].
+- More generally, there is an open trade-off between relying on a fuller neural proposal for speed on easy tasks versus producing a more incomplete sketch and using more search for hard tasks [1][2]. The evidence establishes this trade-off, but does not conclude a universal best balance.
+
+Sources used
+- *Learning to Infer Program Sketches* — `DBLP_conf_icml_NyeHTS19.pdf` — page 2 [1]
+- *Learning to Infer Program Sketches* — `DBLP_journals_corr_abs-1902-06349.pdf` — page 2 [2]
+- *Program Synthesis with a REPL Kevin Ellis* — `DBLP_journals_corr_abs-1906-04604.pdf` — page 2 [3]
+- *Unsupervised Learning by Program Synthesis* — `DBLP_conf_nips_EllisST15.pdf` — page 2 [4]
+- *Learning to Infer Program Sketches* — `DBLP_conf_icml_NyeHTS19.pdf` — page 1 [5]
+decomposed judge: pass — The answer discusses two distinct learned-plus-symbolic approaches, explains how learned proposals and symbolic search/sketches/constraints interact, distinguishes execution/checking from prediction, and states a limitation/trade-off consistent with the notes.
+================================================================================
+BD2: What different ways do the papers turn examples or user intent into a program? Compare input-output example methods with at least one other kind of specification or interaction, explain how candidate programs are searched or ranked, and describe a practical ambiguity or feedback challenge.
+Subqueries: ["program synthesis input-output examples candidate program search ranking ambiguity feedback user intent specification papers", "code generation natural language specification interactive feedback program synthesis ranking search methods papers", "program synthesis examples versus sketches types constraints tests user interaction ambiguity challenge candidate programs ranked"]
+single_query hits: ["DBLP_conf_icml_GuJLSESS25.pdf p.50", "DBLP_conf_icml_GuJLSESS25.pdf p.8", "DBLP_conf_iclr_OlaussonIW0S24.pdf p.35", "DBLP_conf_mapl_GottschlichSTCR18.pdf p.3", "DBLP_journals_corr_abs-1803-07244.pdf p.3"]
+single_query answer (verbatim):
+The passages describe several ways to turn examples or user intent into a program:
+
+1. **Input-output examples / test-based specifications**
+   - The machine-programming survey says synthesis can work “from a small number of examples, often only one,” especially when the program space is restricted by a DSL and tuned biases [4][5].
+   - It also notes that test-based specifications include “input-output examples and assertions to property-based tests” [2].
+   - In the APPS setup, code generation prompts are adapted to the task style: for call-based tasks, the program should take input as a function parameter and return output; for stdio-based tasks, inputs are read from stdin and outputs written to stdout [3].
+
+2. **Multi-modal specifications**
+   - Beyond examples alone, the survey says “multi-modal specification can help in unambiguously describing complex functionality” [4][5].
+   - An example is the Storyboard Programming Tool, which combined “abstract diagrams, concrete examples, and code skeletons” so that the modalities could “cover for the shortcomings of the other” [4][5].
+   - Another example is the Transit project, which synthesized protocols from “temporal properties, concrete and symbolic examples” [4][5].
+
+3. **Natural-language intent, formal specifications, and tests**
+   - The AI-for-SE position paper says natural-language prompts are intuitive, but “often ambiguous and incomplete” [2].
+   - To address this, it proposes using “formal specifications and test-based specifications” [2].
+   - It further says one solution is to “translate user intent into formal specifications,” then iteratively refine them with human verification before code generation [1].
+
+4. **High-level unstructured input**
+   - The machine-programming survey also points to extracting intent from “images or speech,” including “converting natural-language to programs” and extracting programmatic representations from hand-drawn images [4][5].
+
+### How candidate programs are searched or ranked
+The retrieved passages give only limited explicit detail on search/ranking:
+- In the machine-programming survey, the key idea is to **restrict the space of programs** using a DSL and “carefully tuned biases,” or learn those biases, so synthesis can work from few examples [4][5]. This implies search is constrained and guided, but the passages do not spell out a specific ranking algorithm.
+- In the APPS prompting setup, the model is instructed to generate a correct program that “passes all tests” [3]. That establishes tests as the evaluation criterion, but not the exact internal search procedure.
+- The survey also says deep neural networks can “learn complex conditional distributions over programs,” enabling generation from concise evidence [4][5]. This indicates programs may be ranked or sampled according to learned probabilities, but the passages do not provide the exact decoding or ranking method.
+- The position paper notes that formal specs and tests are used to “precisely verify correctness” and that future systems should generate “high-quality test cases” to improve coverage [2], but again it does not describe a concrete search algorithm.
+
+So, from these passages alone, we can conclude that candidate programs are **constrained by DSLs/biases, evaluated by tests, and sometimes modeled by learned distributions**, but not the exact search/ranking procedure.
+
+### Practical ambiguity or feedback challenge
+A concrete challenge is that **natural-language specifications are often ambiguous and incomplete** [2]. The position paper says current systems need to distinguish between “well-specified and ambiguous instructions” and that models often fail to ask meaningful questions when user input is ambiguous or insufficient [2]. It also describes a failure mode in formal specs: an LLM produced an incomplete postcondition in Verus, showing that even formalization can omit necessary constraints [1].
+
+Another practical feedback issue appears in the APPS prompting setup: for feedback samples, the prompt includes the user’s textual specification, the incorrect program, and the error message, and the assistant generates feedback [3]. This shows a real repair challenge: the system must interpret error messages and produce helpful feedback or fixes, but the passage does not claim how reliable that process is.
+
+In short, the passages establish:
+- **Examples/tests** as one route to programming [2][3][4][5]
+- **Multi-modal and formal specifications** as alternatives that can reduce ambiguity [1][2][4][5]
+- **Search guided by DSL restrictions, learned biases, and test satisfaction** [2][3][4][5]
+- **Ambiguity and insufficient feedback** as major practical problems [1][2][3]
+
+**Sources used**
+- *Position: Future Research and Challenges Remain Towards AI for Software Engineering* — `DBLP_conf_icml_GuJLSESS25.pdf` — page 50 [1]
+- *Position: Future Research and Challenges Remain Towards AI for Software Engineering* — `DBLP_conf_icml_GuJLSESS25.pdf` — page 8 [2]
+- *Published as a conference paper at ICLR 2024 IS SELF-REPAIR A SILVER BULLET FOR* — `DBLP_conf_iclr_OlaussonIW0S24.pdf` — page 35 [3]
+- *The Three Pillars of Machine Programming* — `DBLP_conf_mapl_GottschlichSTCR18.pdf` — page 3 [4]
+- *The Three Pillars of Machine Programming* — `DBLP_journals_corr_abs-1803-07244.pdf` — page 3 [5]
+single_query judge: pass — The answer explains input-output examples, compares them with other supported intent forms, discusses constrained search/ranking via DSLs, biases, and tests, and identifies ambiguity and feedback issues.
+decomposed hits: ["DBLP_journals_corr_PuNSB16.pdf p.11", "DBLP_conf_oopsla_PuNSB16.pdf p.11", "DBLP_conf_cikm_CheungSM12.pdf p.3", "DBLP_conf_icml_GuJLSESS25.pdf p.50", "DBLP_journals_corr_abs-1208-2925.pdf p.3"]
+decomposed answer (verbatim):
+The retrieved passages describe several ways of turning examples, holes, or user intent into programs, and they differ mainly in what the specification looks like and how candidate programs are explored.
+
+## 1) Input-output examples / test harnesses as a specification
+
+One paper describes Sketch-style synthesis, where the user writes a program with **holes** and then constrains the desired program behavior using **test harnesses**. The language “allows programmers to write programs with holes, i.e., missing expressions that must be completed by the synthesizer,” and “the user can constrain the behavior of the desired expression by writing test harnesses” [3][5]. This is a classic input-output-example method in the sense that the examples are encoded as tests rather than as a natural-language request.
+
+How the search works: the search space is given by a **grammar** or generator, e.g., a recursive definition of possible expressions, and the solver searches symbolically through that space using “a combination of inductive and deductive methods” [3][5]. So the examples do not directly enumerate solutions; instead, they prune a structured candidate space.
+
+## 2) Discriminative ranking over a candidate search space
+
+A different approach, discussed in the MOOC program-correction paper, learns a **ranking probability** from a corpus of correct patches and then uses it to patch an incorrect program by “ranking a search space of possible patches” [1][2]. Here the specification is not examples in the synthesis sense, but the user’s incorrect program plus the repair task.
+
+How the search/ranking works: the paper says the ranking model is **discriminative**, and “all candidate patches in this search space needs to be ranked” because without evaluating the probability function, one cannot know which patch is likely [1][2]. The top-ranked patch that is also correct is returned to the user [1][2].
+
+## 3) Generative statement-level program correction
+
+The same MOOC paper contrasts the above with its own approach: it learns a **generative model**, where “candidate programs are statements … generated according to its probability” [1][2]. The key difference is that this “alleviates the issue of having to separately define a search space and enumerating over the entire search space” [1][2].
+
+This is still not input-output-example synthesis in the Sketch sense. Instead, it turns the repair/correction task into generation of likely statement-level edits, then checks whether the resulting whole program passes the test suite [1][2].
+
+## 4) Holes completed by code completion under semantic context
+
+The same related-work discussion also mentions code completion: the user leaves “holes in the program for the system to complete,” and a language model suggests possible method calls to fill them [1][2]. The suggestions are “constrained by the semantic context of the hole,” and only those meeting the constraints are shown [1][2].
+
+This is another specification-by-interaction method: the user provides a partial program rather than examples, and the system ranks or filters candidate completions using semantic constraints [1][2].
+
+## 5) Formal specifications and interactive refinement of user intent
+
+A more recent position paper discusses translating user intent into **formal specifications** and then refining them interactively. It says that one direction is to “train models to leverage enhanced specifications with more precise and verifiable representations, such as formal specifications and test-based specifications” [4]. It also proposes systems that “will iteratively refine formal specifications through interactive verification with human feedback,” presenting intermediate formalizations so users can verify correctness before code generation [4].
+
+This is different from input-output examples because the specification is not just examples of behavior; it is an explicit formal statement of intended behavior, potentially refined through interaction [4].
+
+## Comparison: examples vs. other specifications
+
+- **Input-output examples / tests**: user supplies concrete behaviors, as in test harnesses for Sketch; the solver searches a grammar-defined candidate space for a program consistent with them [3][5].
+- **Formal specifications**: user intent is expressed as verifiable logical conditions, and the system may refine them interactively with human feedback [4].
+- **Partial programs / holes**: the user provides incomplete code; the system completes the missing parts using semantic constraints or learned ranking/generation [1][2][3][5].
+
+## Practical ambiguity or feedback challenge
+
+The clearest challenge described is that **natural language prompts and even formalization attempts can be ambiguous or incomplete**. The position paper says natural language prompts “often suffer from ambiguity and incompleteness,” and that autoformalization approaches face “challenges in accurately capturing user intent” [4]. It gives an example of an incomplete Verus postcondition where the specification “does not check” an important property, illustrating how a user’s intended constraint can be missed [4].
+
+A related feedback challenge in program repair is that ranking-based systems must score many candidates before knowing which is best, while generation-based systems try to avoid separately enumerating the entire search space [1][2]. The passages do not say how users resolve all ambiguities in practice, only that interactive verification and better uncertainty communication are proposed directions [4].
+
+## What can and cannot be concluded
+
+- The passages **do establish** that synthesis can be driven by examples/tests, by formal specifications, by holes in programs, and by learned ranking or generative models [1][2][3][4][5].
+- The passages **do not fully establish** a direct head-to-head comparison of accuracy or efficiency among all these methods, beyond the specific claims quoted above.
+- The passages also **do not provide** a complete algorithmic description of how Sketch’s solver explores every candidate; they only say it uses symbolic search with inductive and deductive methods over a grammar-defined space [3][5].
+
+## Sources used
+
+1. **sk_p: a neural program corrector for MOOCs** — `DBLP_journals_corr_PuNSB16.pdf`, page 11  
+2. **sk_p: a neural program corrector for MOOCs** — `DBLP_conf_oopsla_PuNSB16.pdf`, page 11  
+3. **Using Program Synthesis for Social Recommendations** — `DBLP_conf_cikm_CheungSM12.pdf`, page 3  
+4. **Position: Future Research and Challenges Remain Towards AI for Software Engineering** — `DBLP_conf_icml_GuJLSESS25.pdf`, page 50  
+5. **Using Program Synthesis for Social Recommendations** — `DBLP_journals_corr_abs-1208-2925.pdf`, page 3
+decomposed judge: pass — The answer explains input-output examples as a specification, compares them with other supported forms like sketches, partial programs, formal specifications, and interaction, describes candidate generation/search/ranking, and identifies ambiguity and feedback issues using only supported claims.
+================================================================================
+BD3: How do research directions in code generation and program synthesis try to move from plausible code to correct code? Compare roles for tests or execution feedback, formal constraints or verification, and iterative repair or refinement; explain what these checks still cannot guarantee.
+Subqueries: ["program synthesis code generation from plausible to correct code execution feedback unit tests test-driven synthesis iterative refinement repair papers", "code generation program synthesis formal constraints verification type checking symbolic execution theorem proving correctness guarantees papers", "program synthesis code repair iterative refinement self-correction feedback loops limitations of tests and verification cannot guarantee correctness papers"]
+single_query hits: ["DBLP_conf_fmcad_AlurBJMRSSSTU13.pdf p.2", "DBLP_series_natosec_AlurBDF0JKMMRSSSSTU15.pdf p.2", "DBLP_conf_iclr_JainHGLYZWSSS25.pdf p.4", "DBLP_conf_tacas_InalaPQLS17.pdf p.330", "DBLP_conf_icml_GuJLSESS25.pdf p.47"]
+single_query answer (verbatim):
+Research directions in code generation and program synthesis try to move from “plausible” code toward “correct” code by adding stronger external checks and using their feedback to revise candidates. The passages describe three main mechanisms: tests/execution feedback, formal constraints or verification, and iterative repair/refinement.
+
+## 1) Tests and execution feedback: from plausibility to “passes the checks”
+A basic approach is to generate a candidate program and judge it by whether it passes tests. In LiveCodeBench, code generation is evaluated by “functional correctness” on unseen test cases, and PASS@1 measures whether the model generates “a program passing all tests” [3]. The same passage says the self-repair setting gives the model error feedback—“either the exception message or a failing test case”—and asks it to produce a fixed solution, with performance again measured by whether the final program is functionally correct [3].
+
+The synthesis/repair literature also uses “test-input generation” and generate-and-validate repair: the TACAS passage says synthesis and program repair have long used verification-like techniques, including “test-input generation,” and it specifically contrasts constraint-based repair with generate-and-validate repair approaches [4]. It further notes that many repair techniques generate programs or patches intended to be “correct by construction,” meaning they are guaranteed to satisfy a specification or pass a test suite [4].
+
+In the formal-verification-oriented passage, some systems add “simulation- or test-driven repair prompting” as limited feedback loops [1] [2].
+
+### What tests/execution feedback still cannot guarantee
+The passages support a clear limitation: passing tests is not the same as being truly correct. LiveCodeBench frames test passing as a functional-correctness proxy on a set of unseen test cases, but it does not claim that passing those tests proves full correctness [3]. Likewise, the formal-verification passage says studies still report “semantic mismatches requiring iterative fixes,” even with feedback loops [1] [2]. So tests can filter out bad candidates, but they cannot rule out all wrong programs, especially those that happen to satisfy the particular test set.
+
+## 2) Formal constraints and verification: correctness by construction, when possible
+A stronger path is to encode desired behavior as constraints or verification conditions. The TACAS passage says synthesis has long used “constraint solving or model checking” and gives examples such as sketching, where the problem is formulated with quantified constraints and solved using a SAT solver [4]. For repair, it says constraint-based repair methods “generate constraints and solve them for patches that are correct by construction,” i.e. guaranteed to adhere to a specification or pass a test suite [4].
+
+The AI-for-software-engineering position paper similarly highlights “formal verification” as one source of strong feedback, listing concurrency analysis, program invariants, loop invariants, and memory safety among the relevant checks [5]. The formal-verification passage also describes an “end-to-end formal workflow” coordinating verification planning, assertion generation, formal proving, and coverage evaluation [1] [2].
+
+### What formal constraints/verification still cannot guarantee
+The passages do not claim formal methods automatically solve all correctness problems. The TACAS passage says these methods guarantee adherence to a specification or test suite, but that guarantee is only relative to the specification encoded in the constraints [4]. If the specification is incomplete or wrong, the result can still miss the true intent. The formal-verification passage explicitly notes that even with structured prompting, retrieval, and formal workflows, “traceability remains weak” and tool outputs are not always persistent/queryable artifacts [1] [2]. It also says methods “still report recurring syntax errors and semantic mismatches” [1] [2]. So formal methods can provide stronger guarantees than tests, but only with respect to the encoded spec, and they do not eliminate integration or intent-mismatch problems.
+
+## 3) Iterative repair and refinement: using feedback to converge
+A third direction is to repeatedly refine a candidate program based on feedback. LiveCodeBench describes self-repair as: generate a program, receive an error message or failing test case, and then generate the fixed solution [3]. The formal-verification passage similarly says some systems use iterative fixes and limited feedback loops such as test-driven repair prompting [1] [2]. It also mentions LISA, which combines retrieval with structured reasoning “to improve temporal correctness and reduce retries,” implying an iterative refinement loop aimed at better final outputs [1] [2].
+
+The formal-verification passage further says properties that cannot be fixed after “three correction attempts are commented out,” which shows a concrete multi-step repair policy in one workflow [1] [2].
+
+### What iterative repair still cannot guarantee
+Iterative repair improves consistency, but the passages say it still leaves residual errors. They explicitly report “recurring syntax errors and semantic mismatches requiring iterative fixes” [1] [2]. More generally, repeated repair steps do not by themselves prove that the final code is fully correct; they only indicate the code has survived the available feedback so far. If the feedback is limited to tests, exceptions, or partial formal outputs, the repaired code may still be wrong in cases not covered by those checks [1] [2] [3].
+
+## Overall comparison
+- **Tests/execution feedback**: strongest as a practical filter; useful for self-repair and generate-and-validate methods, but only checks against the available cases and therefore cannot prove full correctness [3] [4].
+- **Formal constraints/verification**: can yield “correct by construction” patches relative to a specification, and support formal proving and invariant checking, but correctness depends on the completeness and accuracy of the specification and surrounding traceability [4] [5] [1] [2].
+- **Iterative repair/refinement**: uses error messages, failing tests, or structured feedback to gradually improve code, but the passages still report syntax and semantic mismatches and make clear that feedback-driven refinement does not guarantee the final result is truly correct [1] [2] [3].
+
+## Sources used
+- **Knowledge Graphs, the Missing Link in Agentic AI-based Formal Verification** — `DBLP_conf_fmcad_AlurBJMRSSSTU13.pdf`, page 2 [1]  
+- **Knowledge Graphs, the Missing Link in Agentic AI-based Formal Verification** — `DBLP_series_natosec_AlurBDF0JKMMRSSSSTU15.pdf`, page 2 [2]  
+- **Published as a conference paper at ICLR 2025 LIVE CODE BENCH: Holistic and Contamination** — `DBLP_conf_iclr_JainHGLYZWSSS25.pdf`, page 4 [3]  
+- **447561_Print.indd / Connecting Program Synthesis and Reachability** — `DBLP_conf_tacas_InalaPQLS17.pdf`, page 330 [4]  
+- **Position: Future Research and Challenges Remain Towards AI for Software Engineering** — `DBLP_conf_icml_GuJLSESS25.pdf`, page 47 [5]
+single_query judge: pass — The answer compares tests/execution feedback, formal constraints/verification, and iterative repair/refinement, and it explains a supported limitation of finite tests and incomplete specifications without introducing clear contradictions.
+decomposed hits: ["DBLP_series_natosec_AlurBDF0JKMMRSSSSTU15.pdf p.2", "DBLP_conf_fmcad_AlurBJMRSSSTU13.pdf p.2", "DBLP_conf_iclr_JainHGLYZWSSS25.pdf p.4", "DBLP_journals_corr_abs-1204-1751.pdf p.10", "DBLP_conf_tacas_InalaPQLS17.pdf p.330"]
+decomposed answer (verbatim):
+Research in code generation and program synthesis tries to move from “plausible” code to “correct” code by adding increasingly strong kinds of checking and by feeding failures back into the next generation step. The passages show three main strategies:
+
+## 1) Tests or execution feedback: validate candidates against observed behavior
+A common approach is to generate a candidate program and then check it on tests or executions. In code generation, one setup evaluates correctness using “a set of unseen test cases,” and success is measured by whether the program “pass[es] all tests” [3]. In self-repair, the model first generates code, then receives “error feedback (either the exception message or a failing test case)” and tries to produce a fixed solution [3]. Related repair work uses information from failing tests to localize faults, though the passage notes these techniques can only help with a “single failing test case” and provide “only a limited set of suggestions” for repair [4].
+
+This is a move from plausibility to empirical adequacy: code that runs and passes tests is more likely to be correct than code that merely looks plausible. But the passages are explicit that this still does **not** guarantee true correctness. Passing tests only shows correctness on the tested cases, not all possible inputs; the code may still fail on untested behaviors. The synthesis paper also contrasts “generate-and-validate” repair with stronger methods, implying validation is a check, not a proof [5].
+
+## 2) Formal constraints or verification: require code to satisfy a specification
+A stronger direction is to encode the desired behavior as constraints or logical conditions and solve for code that satisfies them. The synthesis/reachability paper says research has used “constraint solving or model checking” and describes sketching as a synthesis task formulated with universal and existential conditions over test behavior [5]. It says constraint-based repair approaches generate “patches that are correct by construction (i.e., guaranteed to adhere to a specification or pass a test suite)” [5]. The formal-verification passage similarly describes workflows with “formal proving” and “formal-tool feedback” [1][2].
+
+Compared with test-based checking, formal constraints aim to exclude more incorrect programs by construction. However, the passages also show limits. Formal workflows can still leave “syntax errors and semantic mismatches requiring iterative fixes” [1][2], and the formal-tool outputs may be “transient rather than persistent, queryable artifacts” [1][2]. Most importantly, the evidence does **not** support concluding that formal methods make correctness absolute in practice: they can be blocked by incomplete links between requirements, signals, and behaviors, and by missing micro-architectural detail or weak traceability [1][2]. So verification strengthens the check, but the workflow can still depend on the quality and completeness of the specification and tool feedback.
+
+## 3) Iterative repair or refinement: use failures to guide successive edits
+A third direction is to generate, check, then repair repeatedly. The code-generation passage describes self-repair where error feedback drives a second attempt [3]. The formal-verification passage says some systems add “simulation- or test-driven repair prompting,” and that errors may require “iterative fixes” [1][2]. It also mentions properties that “cannot be fixed after three correction attempts” being commented out, showing an explicit multi-round refinement loop [1][2]. Mutation-based repair likewise “performs mutations repeatedly” until the program becomes correct [4].
+
+This iterative approach tries to close the gap between plausibility and correctness by incorporating feedback from the checker into the next proposal. But the passages make clear that iteration still cannot guarantee success: some properties remain unfixed after multiple attempts [1][2], repair suggestions may be limited [4], and even when a candidate passes the current feedback, the workflow may still miss untested or unmodeled behavior [3][5]. So iteration improves odds, but it is not a proof of correctness.
+
+## What these checks still cannot guarantee
+Across the passages, the main limitation is the same: these methods do not ensure full correctness in all cases.
+
+- **Tests/execution feedback** cannot guarantee correctness beyond the tested inputs; they only certify observed behavior on the chosen tests [3][4][5].
+- **Formal constraints/verification** can be stronger, but the passages do not show that they eliminate all risk; they depend on complete and accurate specifications, and the workflow can still suffer from syntax/semantic mismatches and weak traceability [1][2].
+- **Iterative repair/refinement** can reduce errors, but the passages explicitly show that some issues remain after repeated attempts and that suggestions may still be incomplete [1][2][4].
+
+So the overall pattern is: plausibility is filtered by tests, then constrained by formal reasoning, then improved via feedback-driven repair—but none of these alone guarantees semantic correctness in every unseen situation, especially when the specification, traceability, or feedback is incomplete [1][2][3][4][5].
+
+## Sources used
+- **Knowledge Graphs, the Missing Link in Agentic AI-based Formal Verification** — `DBLP_series_natosec_AlurBDF0JKMMRSSSSTU15.pdf` — page 2 [1]
+- **Knowledge Graphs, the Missing Link in Agentic AI-based Formal Verification** — `DBLP_conf_fmcad_AlurBJMRSSS13.pdf` — page 2 [2]
+- **Published as a conference paper at ICLR 2025 LIVE CODE BENCH: HOLISTIC AND CONTAMINATION** — `DBLP_conf_iclr_JainHGLYZWSSS25.pdf` — page 4 [3]
+- **Automated Feedback Generation for Introductory Programming Assignments** — `DBLP_journals_corr_abs-1204-1751.pdf` — page 10 [4]
+- **Connecting Program Synthesis and Reachability** — `DBLP_conf_tacas_InalaPQLS17.pdf` — page 330 [5]
+decomposed judge: pass — The answer accurately compares tests/execution feedback, formal constraints or verification, and iterative repair/refinement, and it explains supported limitations of finite tests and incomplete specifications without inventing unsupported claims.
+================================================================================
+BD4: Across the papers, how do the choice of programming language, domain-specific language, or intermediate representation shape what can be synthesized? Compare at least two domains or representations, explain how grammar or domain knowledge narrows search, and discuss the generality trade-off.
+Subqueries: ["program synthesis programming language DSL intermediate representation expressiveness search space grammar domain knowledge synthesis capability generality trade-off", "code generation papers domain-specific language vs general-purpose language compare domains grammar constraints narrowing search space synthesis tasks intermediate representation", "program synthesis different domains representations grammar-guided synthesis domain knowledge bias completeness expressiveness generality vs specificity paper survey"]
+single_query hits: ["Ellis22Linguistics.pdf p.4", "DBLP_conf_cav_BraggFRS21.pdf p.116", "DBLP_conf_mapl_GottschlichSTCR18.pdf p.3", "DBLP_conf_iclr_NyePBATS21.pdf p.9", "DBLP_journals_corr_abs-1803-07244.pdf p.3"]
+single_query answer (verbatim):
+Across the retrieved papers, the main pattern is that **the choice of language/representation determines both the search space and the kind of programs that can realistically be synthesized**. In all cases, the language is not just a container for outputs; it is a way to encode **domain knowledge** that constrains synthesis and makes the problem tractable [1][2][3].
+
+## 1) How language/representation shapes what can be synthesized
+
+### A. DSLs for narrow, high-ambiguity tasks
+The machine-programming paper says a key lesson from prior work is that “by tightly controlling the set of primitives” and imposing “strong biases” on how they connect, synthesis can handle ambiguity in the specification [3]. FlashFill is the example given: it could synthesize a desired string manipulation from very few examples “by restricting the space of programs to a carefully crafted domain specific language (DSL) with carefully tuned biases” [3]. The same paper notes similar results for SQL and Java APIs [3].
+
+**What this establishes:**  
+- A DSL can make synthesis feasible from sparse input-output data [3].  
+- But the synthesized programs are limited to the constructs the DSL exposes [3].
+
+### B. Grammar-based representations for a search space
+The ICLR paper describes modifying a DSL by replacing a predefined set of lambda functions with “a grammar allowing for the combinatorial combination of grammar elements” [4]. This shows that the representation itself can enlarge or reshape the program space while keeping it structured enough for search.
+
+**What this establishes:**  
+- Grammar is not only a syntactic description; it actively defines which compositions are synthesizable [4].  
+- Richer grammars can support more programs than a fixed hand-coded function list [4].
+
+### C. Intermediate/semantic representations for broader domains
+The SemGuS passage contrasts SyGuS with a framework that can specify both syntax and semantics of arbitrary languages. It notes that SyGuS uses a regular tree grammar for the search space and a Boolean formula in a fixed background theory for specifications [2]. That is powerful, but the fixed theory limits what can be expressed: for example, loops are unavailable if they are not in the supported background theory [2]. The paper argues that supporting DSLs, library functions like `len(arr)`, or regular expressions requires a framework that accepts the semantics of the target language, not just its syntax [2].
+
+**What this establishes:**  
+- An IR/semantic specification can broaden synthesis beyond one fixed theory [2].  
+- The choice of representation determines whether synthesis can cover nonstandard semantics, loops, or custom DSL constructs [2].
+
+## 2) How grammar or domain knowledge narrows search
+
+All three papers emphasize that the search space is otherwise too large.
+
+### Grammar and constraints in linguistic theory induction
+The linguistics paper says the space of all programs is “infinitely large” and lacks the smoothness needed for gradient descent or MCMC, so the authors use “constraint-based program synthesis” and SAT solving [1]. They “solve for the smallest grammar consistent with some data,” subject to a grammar-size bound [1]. They also use an iterative process that starts from a small program and grows it with small modifications when counterexamples appear [1].
+
+**Synthesis:**  
+Here, the “programming language that captures domain-specific constraints” and the goal of finding the smallest consistent grammar both narrow the search drastically [1]. Domain knowledge enters as a structured hypothesis space for universal grammar [1].
+
+### DSL bias in FlashFill-style synthesis
+The machine-programming paper says strong biases on primitive composition help cope with ambiguity, because the search is restricted to a carefully crafted DSL [3]. This is a direct example of domain knowledge narrowing search: instead of searching over all possible programs, the system searches only over a small, relevant fragment [3].
+
+### Semantics and grammar in SyGuS/SemGuS
+SyGuS uses a regular tree grammar to represent the search space [2]. The grammar makes the search space manageable, but the paper stresses that the fixed semantics of the background theory also limit the kinds of programs that can be synthesized [2]. SemGuS is introduced to let users customize semantics, thereby generalizing beyond those limits [2].
+
+## 3) Compare at least two domains/representations
+
+### Domain 1: String manipulation / input-output programming
+In the machine-programming paper, FlashFill synthesizes string transformations from examples by using a tightly controlled DSL [3]. The ICLR paper extends a DSL for string editing by modifying the grammar to allow richer combinations of grammar elements [4]. It also shows that some execution-guided methods require splitting constructs like `getSubStr(i,j)` into separate start/end functions to make them executable in a REPL [4].
+
+**Implication:**  
+For string tasks, the representation is often chosen to match the operations the user cares about, but the more execution-guided the system is, the more the DSL may need to be redesigned to fit the inference process [4].
+
+### Domain 2: Linguistic theory induction
+The linguistics paper uses a programming language to encode universal grammar and learns theories from data using SAT-based constraint solving [1]. Here, the representation is not just a task-specific DSL, but a formal language for expressing grammatical hypotheses [1].
+
+**Implication:**  
+This domain needs a representation that captures abstract structural constraints rather than concrete string operations. The synthesis target is “the smallest grammar consistent with some data” [1], which is much closer to theory induction than to ordinary program completion.
+
+### Domain 3: General programming languages / DSLs / regexes via semantic frameworks
+SemGuS explicitly targets different programming languages—DSLs, library functions, and regular expressions—by allowing both syntax and semantics to be programmed [2]. This is broader than SyGuS, which remains tied to a fixed background theory [2].
+
+**Implication:**  
+This representation aims for domain-agnosticity, but only by making semantics explicit and programmable [2].
+
+## 4) The generality trade-off
+
+The passages consistently point to a trade-off:
+
+- **More specialized languages/DSLs** make synthesis easier and more accurate in a narrow domain, because they encode strong prior knowledge and prune the search space [3]. FlashFill is the archetype: it succeeds from few examples because the DSL is carefully crafted [3].
+- **More general representations** can cover more domains, but they are harder to search and verify. The SemGuS paper says SyGuS’s fixed background theory makes solutions easy to verify with SMT, but “limits the programmability of the search space” [2]. SemGuS seeks greater generality by allowing semantics customization, but the passage does not say how scalable this is in practice [2].
+- The linguistics paper likewise notes that exhaustive SAT-based search “fails to scale to the many rules needed to explain large corpora,” which is why they use incremental growth from smaller theories [1]. This is another instance where greater expressiveness creates scalability pressure [1].
+
+So the generality trade-off is:
+
+1. **Narrow, domain-specific representation**  
+   - Easier search, fewer ambiguities, good from sparse data [3]  
+   - But limited to that domain’s constructs [2][3]
+
+2. **Broader, more semantic representation**  
+   - Supports more languages and custom semantics [2]  
+   - But search and scalability become harder [1][2]
+
+## Bottom line
+
+Taken together, the papers show that **synthesis is shaped as much by the representation as by the specification**. DSLs and grammars narrow search by encoding domain knowledge and restricting composition [1][3][4]. Intermediate/semantic representations can broaden what can be synthesized by making semantics explicit, but they trade off ease of verification and scalability [2]. The choice is therefore a balance between **expressiveness/general applicability** and **tractability/effective search** [1][2][3][4].
+
+---
+
+### Sources used
+1. *Synthesizing theories of human language with Bayesian program induction* — `Ellis22Linguistics.pdf` — page 4  
+2. *Programmable Program Synthesis* — `DBLP_conf_cav_BraggFRS21.pdf` — page 116  
+3. *The Three Pillars of Machine Programming* — `DBLP_conf_mapl_GottschlichSTCR18.pdf` — page 3  
+4. *Representing Partial Programs with Blended* — `DBLP_conf_iclr_NyePBATS21.pdf` — page 9
+single_query judge: pass — The answer compares multiple supported domains/representations, explains how grammar and domain knowledge constrain search, and clearly states the narrowness-versus-generality trade-off without introducing unsupported language claims.
+decomposed hits: ["DBLP_conf_cav_BraggFRS21.pdf p.116", "DBLP_conf_iclr_NyePBATS21.pdf p.9", "DBLP_conf_snapl_CheungKS15.pdf p.2", "DBLP_conf_snapl_2015.pdf p.66", "Ellis22Linguistics.pdf p.4"]
+decomposed answer (verbatim):
+Across these papers, the programming language, DSL, or intermediate representation (IR) is not just a container for synthesized code; it determines the search space, the executable semantics, and therefore what kinds of programs can be found.
+
+## 1) How the representation shapes what can be synthesized
+
+### SyGuS / grammar + fixed background theory
+One paper explains that SyGuS represents the search space as a “regular tree grammar” and the specification as a Boolean formula in a decidable background theory [1]. This makes synthesis solver-agnostic, but only within the limits of the fixed theory. The passage explicitly notes that while users can define their own syntax, SyGuS requires the grammar to be “contained within a fixed background theory” with standardized semantics [1]. As a result, some constructs cannot be synthesized: the example given is loops, which are “not part of the supported background theory” [1]. The paper also mentions that if one wanted to synthesize over a DSL, library functions like `len(arr)`, or regular expressions with “non-standard semantics,” the framework would need semantics beyond the fixed background theory [1].
+
+**Implication:** the representation supports fairly general syntax, but only for languages whose semantics fit the theory. So the synthesis target is constrained by what the IR can *interpret* as well as what its grammar can *generate* [1].
+
+### DeepCoder/RobustFill-style DSLs with modified grammars
+A second paper shows the opposite kind of constraint: instead of using a generic theory, it modifies the DSL itself to make synthesis feasible. In the DeepCoder setting, the authors “replaced the pre-defined set of lambda functions with a grammar allowing for the combinatorial combination of grammar elements” to support a richer set of programs [2]. In the string-editing setting, they explain that execution-guided synthesis in RobustFill required changing the DSL: `getSubStr(i,j)` had to be split into `getSubStrStart i` and `getSubStrEnd j` so each half could be executed in the REPL [2].
+
+**Implication:** here, the choice of DSL directly shapes synthesisability. The system can synthesize more complex programs only after the language is refactored into forms that the search procedure can execute or enumerate efficiently [2].
+
+### General-purpose language fragments translated into DSLs
+A third paper focuses on a general-purpose language front end and a DSL back end. It says Herd’s Synthesis Enabled Translation (Set) “systematically identifies code fragments that can be translated into DSLs” and then hands those translations to domain-specific compilers [3][4]. The paper reports demonstrations in “stencil computations and database queries” and says generality should allow extension to other domains with high-performance DSLs [3][4].
+
+**Implication:** synthesis here is not about generating an entire program in a target language from scratch; it is about finding *subprograms* that can be rewritten into a domain-specific representation where stronger optimization is available [3][4].
+
+## 2) How grammar or domain knowledge narrows search
+
+The passages make clear that grammar and domain knowledge are essential for pruning the search space.
+
+### Grammar as a search-space restriction
+SyGuS uses a regular tree grammar to define the candidate programs [1]. This narrows synthesis to well-formed programs in the user-specified syntax, which makes search manageable. But the passage also stresses the trade-off: a grammar alone does not supply enough semantics for arbitrary domains [1].
+
+### Domain-specific filtering and semantics
+In Herd/Set, adding a new DSL requires “describing the semantics of the target language, together with high-level filtering rules to help guide the compiler towards more promising code fragments” [3][4]. So domain knowledge narrows search in two ways:
+1. semantics tell the system what translations are valid;
+2. filtering rules restrict which fragments are worth exploring [3][4].
+
+### Execution structure as a narrowing device
+In the DeepCoder/RobustFill-style work, the grammar itself is modified to make components executable earlier, such as splitting a substring operator into start and end pieces [2]. This is a form of domain knowledge embedded into the representation so that search can proceed incrementally or execution-guided [2].
+
+## 3) Comparison across at least two domains/representations
+
+### Domain 1: symbolic/solver-based synthesis over grammars
+SyGuS is designed around a generic grammar plus a decidable theory [1]. It is broad in syntax, but narrow in semantics: it cannot naturally express loops or other constructs outside the background theory [1]. This is good for verification and solver-based search, but limits the kinds of programs synthesizable.
+
+### Domain 2: DSL-centric synthesis for program optimization
+Herd/Set operates in two named domains: stencil computations and database queries [3][4]. Here synthesis is used to bridge from general-purpose code to DSL fragments that a compiler can optimize [3][4]. The representation is more domain-aware: semantics and filtering rules are tailored to each DSL [3][4]. This makes the system more powerful for those domains, but less universally applicable than a purely generic front end.
+
+### Domain 3: task-specific DSLs for neural/execution-guided synthesis
+The DeepCoder/RobustFill work shows that even within a domain, the DSL may need to be redesigned for synthesis to work well [2]. A richer grammar can enlarge the space of programs, but the authors still had to make language constructs executable or combinable in the right way for their search method [2].
+
+## 4) Generality trade-off
+
+The general pattern across the papers is:
+
+- **More general representations** give broader applicability but weaker semantic guarantees and less efficient search. SyGuS is grammar-flexible but semantics-restricted by a fixed theory [1].
+- **More domain-specific representations** improve search and optimization by embedding domain knowledge, but they reduce portability. Herd/Set needs DSL-specific semantics and filtering rules, and its demonstrated success is on specific domains like stencil computations and database queries [3][4].
+- **IR/DSL refactoring can make synthesis possible at all** in a given task, but usually by sacrificing some elegance or uniformity. The DeepCoder/RobustFill example had to alter the language to support execution-guided synthesis [2].
+
+So the trade-off is not simply “general vs. specific”; it is “what kind of generality?” SyGuS is relatively general in syntax but not in semantics [1]. Set is more general as a compiler architecture, but it still depends on domain-specific target languages and rules [3][4]. The DSL-modification approach is the least general linguistically, but can yield better synthesis performance and richer search spaces within a domain [2].
+
+## What cannot be concluded
+The passages do **not** provide a direct head-to-head comparison of success rates across SyGuS, Set, and DeepCoder/RobustFill on the same benchmark family, so we cannot conclude which representation is universally “best.” They do establish that the representation choice strongly determines the feasible search space and the degree of domain portability [1][2][3][4].
+
+Sources used
+- **Programmable Program Synthesis** — `DBLP_conf_cav_BraggFRS21.pdf` — p. 116 [1]
+- **Representing Partial Programs with Blended** — `DBLP_conf_iclr_NyePBATS21.pdf` — p. 9 [2]
+- **Bridging the Gap Between General-Purpose and Domain-Specific Compilers with Synthesis** — `DBLP_conf_snapl_2015.pdf` — p. 66 [4]
+- **Bridging General-Purpose and Domain-Specific Compilers with Synthesis** — `DBLP_conf_snapl_2015.pdf` — p. 52 [3]
+decomposed judge: pass — The answer compares multiple supported representations/domains, explains how grammar and domain knowledge constrain search, and clearly states the narrow-search-versus-generality trade-off without relying on unsupported languages.
+================================================================================
+BD5: What research directions use visual information to specify or guide programs? Compare at least two forms of visual input or output, explain how the system connects visual evidence to candidate code or structures, and identify an evaluation or ambiguity challenge.
+Subqueries: ["program synthesis from images visual specification code generation visual evidence grounding evaluation ambiguity challenge", "visual input to program generation diagrams sketches screenshots UI mockups code synthesis structure prediction execution feedback", "program synthesis with visual output comparison charts diagrams rendered results visual grounding candidate code structures ambiguity"]
+single_query hits: ["DBLP_conf_pldi_SinghGS13.pdf p.18", "DBLP_conf_pldi_SinghGS13.pdf p.18", "DBLP_journals_corr_EllisRST17.pdf p.11", "DBLP_journals_corr_EllisRST17.pdf p.2", "DBLP_conf_nips_EllisRST18.pdf p.9"]
+single_query answer (verbatim):
+The passages describe two main research directions where visual information is used to specify or guide programs:
+
+## 1) Video-grounded evaluation for Scratch programs
+Raven positions **video** as a first-class artifact for assessing graphical, event-driven programs. The paper says prior work has begun to explore “video as an analysis artifact for understanding program execution,” and that these efforts show video can capture behavior “difficult to express through program states alone” [1]. Raven’s stated contribution is to combine large language models with “video-based analysis” so that assessment can evaluate “visual behaviors” and handle “diverse student implementations” [1].
+
+### How the visual evidence is connected to code or structures
+The passages do not give a full algorithmic pipeline here, but they do establish the general connection: visual execution evidence in video is used as a grading artifact, rather than relying only on source code or state assertions [1]. The paper contrasts this with older approaches that either parse ASTs or simulate interactions and then check assertions [2]. In other words, video is used to infer whether the program’s displayed behavior matches instructor-defined expectations, instead of inferring correctness only from code structure or internal state [1][2].
+
+### Evaluation / ambiguity challenge
+A clear challenge is that existing methods “depend on predefined assertions or task-specific heuristics” and are not designed for “open-ended educational programs with high implementation diversity” [1][2]. The passages also say assertion-based methods are sensitive to execution order, rely on precise state specifications, and have difficulty handling “visual outcomes and diverse implementations” [2]. This is the ambiguity problem: many visually correct Scratch programs may implement the same task in different ways, so a state-based or heuristic evaluator may misjudge them [1][2].
+
+## 2) Inferring graphics programs from hand-drawn images
+The graphics-program induction work uses **hand-drawn images** as input and infers a programmatic representation that captures the drawing process. The paper explicitly says the goal is to go from “pixels to programs” in two steps [4].
+
+### How the visual evidence is connected to code or structures
+This system uses a **two-step factoring**:  
+1. infer the objects in the image, such as “rectangles, lines and arrows,” and  
+2. infer higher-level visual concepts describing how they were drawn [4].
+
+It models this as probabilistic inference in a generative model where a latent program produces drawing commands, which render to an image [4]. The system first infers a **spec** from the image using stochastic search (Sequential Monte Carlo), then infers a program from that spec using constraint-based program synthesis [4]. The synthesized structures include “symmetries, loops, or conditionals” [4]. So the visual evidence is not matched directly to source code; rather, it is translated into intermediate drawing commands/specifications that constrain the final program [4].
+
+### Evaluation / ambiguity challenge
+The passages imply an ambiguity challenge in the image-to-program task: the system must identify both what objects are present and the higher-level pattern governing them [4]. The paper emphasizes that the same visual output can correspond to a spec lacking “the high-level structure determining how the program decided to draw it” [4]. That means the inference is underdetermined by pixels alone, so multiple programs could explain the same image; the method addresses this by separating object parsing from program synthesis [4].
+
+## Comparison of two forms of visual input or output
+- **Video input** in Raven captures execution over time and is used to evaluate program behavior in interactive Scratch projects [1][2].  
+- **Static hand-drawn images** in the graphics-program paper capture final visual structure and are used to infer a program that could generate that image [4].
+
+These are different kinds of visual evidence: video emphasizes **runtime behavior**, while images emphasize **rendered structure**. Raven uses visual evidence mainly for **assessment/grading** [1][2], whereas the graphics work uses visual evidence for **program synthesis/induction** [4].
+
+## What can and cannot be concluded
+- It is supported that these research directions use visual information to guide program assessment or synthesis [1][2][4].  
+- It is supported that one connects visuals through video-grounded reasoning for grading, and another through image → spec → program inference [1][2][4].  
+- The passages do **not** provide enough detail to compare exact model architectures or training losses for Raven, so those cannot be concluded here [1][2].  
+
+## Sources used
+- **Raven: Rethinking Automated Assessment for Scratch Programs via Video-Grounded Evaluation** — `DBLP_conf_pldi_SinghGS13.pdf` — page 18 [1][2]
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_journals_corr_EllisRST17.pdf` — page 2 [4]
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_journals_corr_EllisRST17.pdf` — page 11 [3]
+single_query judge: pass — The answer compares two supported visual synthesis settings (video-grounded evaluation and hand-drawn image program inference), explains how visual observations guide program/structure generation, and discusses ambiguity/evaluation challenges without fabricating unsupported details.
+decomposed hits: ["DBLP_conf_nips_EllisST15.pdf p.3", "DBLP_journals_corr_EllisRST17.pdf p.2", "DBLP_conf_nips_EllisRST18.pdf p.2", "DBLP_journals_corr_EllisRST17.pdf p.11", "DBLP_journals_corr_abs-2503-22625.pdf p.70"]
+decomposed answer (verbatim):
+The passages describe several research directions where **visual information is used to specify or guide programs**, with two especially clear patterns:
+
+## 1) Images are parsed into symbolic structures, then programs are synthesized from those structures
+In **“Unsupervised Learning by Program Synthesis,”** the system starts from **example images** and “automatically parse[s] them into a symbolic form,” then “synthesize[s] a program that maximally compresses these parses” [1]. The visual input here is a set of **example images**; the output is a **graphics program** that captures their shared structure [1]. The passages also state that the learned program represents “the common structure needed to draw each of the example images” [1].
+
+**How visual evidence is connected to code/structures:**  
+- The learner’s observations and the program outputs are both represented as **image parses** with structured components such as a “list of shapes” [1].  
+- The synthesis target is a **simple graphics program** controlling a turtle, with primitives like “rotations, forward movement, rescaling of shapes” [1].  
+So the connection is: **pixels/images → symbolic parse → program** [1].
+
+## 2) Hand-drawn images are converted into specs, then into graphics programs
+In **“Learning to Infer Graphics Programs from Hand-Drawn Images,”** the system explicitly uses a **two-step** decomposition: first infer “what objects make up an image” (e.g., rectangles, lines, arrows), then infer the **higher-level visual concepts** that explain how those objects were drawn [2,3]. The paper describes this as a generative model where a latent program produces drawing commands, which are rendered into an image [2,3].
+
+**How visual evidence is connected to code/structures:**  
+- The system infers a **specification (“spec”)** from an image using **stochastic search (Sequential Monte Carlo)** [2,3].  
+- It then infers a **program from a spec using constraint-based program synthesis**, synthesizing structures such as “symmetries, loops, or conditionals” [2,3].  
+- The passages emphasize that the spec is a set of drawing commands that records **what** was drawn, while the program captures the **higher-level structure** of **how** it was drawn [2,3].  
+So the connection is: **image → spec/drawing commands → program** [2,3].
+
+## 3) Visual context can directly guide code synthesis for software engineering and multimodal code generation
+A broader software-engineering survey notes that for some tasks, “certain instructions are better defined visually,” giving examples like graphics applications where “visual context such as a trajectory or a 3D model is essential to synthesize the correct code” [5]. It also cites systems that generate webpage code “directly from paper sketches,” translating visual layouts into HTML and CSS [5]. This is a more direct form of visual grounding than the graphics-program papers: the visual input is used as **context for code generation** rather than first being converted into a separate symbolic parse [5].
+
+---
+
+## Comparison of visual input/output forms
+
+### Form A: Example images or hand-drawn images as input
+- **Input type:** example images / hand-drawn diagrams [1,2,3]  
+- **Output type:** symbolic parses, specs, or graphics programs [1,2,3]  
+- **Mechanism:** infer objects and structured commands, then synthesize program structures like loops or symmetries [1,2,3]
+
+### Form B: Sketches, trajectories, or 3D models as visual context
+- **Input type:** sketches, trajectories, 3D models, paper sketches [5]  
+- **Output type:** code such as HTML/CSS or application code [5]  
+- **Mechanism:** visual context guides synthesis directly; the passage does not specify the exact intermediate representation for these systems [5]
+
+---
+
+## Evaluation or ambiguity challenge
+One clear challenge named in the passages is **performance/tractability**: in the hand-drawn-images work, “both stochastic search and program synthesis are prohibitively slow,” motivating learned models to accelerate inference [2,3]. This is an evaluation/practical challenge because the system must still recover the right spec and program efficiently enough to be useful [2,3].
+
+A second ambiguity challenge is the **specification gap**: the spec “specifies what the graphics program drew while lacking the high-level structure determining how the program decided to draw it” [2,3]. That means there is an inherent ambiguity in mapping observed visuals to a unique underlying program, because the same drawing can admit multiple higher-level explanations [2,3]. The passages do not claim uniqueness, so this ambiguity cannot be ruled out from the evidence given.
+
+## Bottom line
+Across these directions, visual information is used in at least two distinct ways:
+1. **As examples to be parsed into symbolic forms before synthesis** [1]  
+2. **As observed drawings/images that are decomposed into specs and then synthesized into programs** [2,3]  
+And in broader multimodal code generation, **visual layouts or models directly guide code synthesis** [5].
+
+### Sources used
+- **Unsupervised Learning by Program Synthesis** — `DBLP_conf_nips_EllisST15.pdf`, page 3  
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_journals_corr_EllisRST17.pdf`, page 2  
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_conf_nips_EllisRST18.pdf`, page 2  
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_journals_corr_EllisRST17.pdf`, page 11  
+- **Challenges and Paths Towards AI for Software Engineering** — `DBLP_journals_corr_abs-2503-22625.pdf`, page 70
+decomposed judge: pass — The answer compares multiple supported visual synthesis settings, explains how visual observations are transformed into symbolic representations or programs, and discusses both tractability and ambiguity challenges.
+================================================================================
+BD6: How have program-synthesis papers tried to make large search spaces manageable? Compare at least three broad strategies—such as constraints, learned guidance, reusable abstractions, or staged search—and explain what each saves and what limitation remains.
+Subqueries: ["program synthesis search space constraints pruning symbolic constraints type constraints grammar constraints paper", "program synthesis learned guidance neural guidance ranking policy search space reduction paper code generation", "program synthesis reusable abstractions staged search hierarchical search compositional synthesis sketching paper"]
+single_query hits: ["DBLP_conf_nips_EllisRST18.pdf p.5", "DBLP_conf_mapl_GottschlichSTCR18.pdf p.5", "DBLP_journals_corr_abs-1803-07244.pdf p.5", "DBLP_conf_mapl_GottschlichSTCR18.pdf p.4", "DBLP_journals_corr_abs-1803-07244.pdf p.4"]
+single_query answer (verbatim):
+Program-synthesis papers in these passages describe several broad ways to make huge search spaces manageable:
+
+## 1) Add **constraints** and solve only the feasible space
+A central approach is to turn synthesis into a constraint problem: given a space of candidate programs, search for one satisfying the desired behavior [4][5]. The passages describe “constraint-based synthesis” as reducing the problem to constraints that can be solved by a SAT/SMT solver, or sometimes numerical optimization [4][5]. Sketch is a concrete example: it “translates the synthesis problem into a constraint satisfaction problem” and uses a SAT solver to find a minimum-cost program satisfying the specification [1].
+
+**What this saves:** it avoids brute-force enumeration of all programs and can rule out large parts of the search space at once [4][5]. When the specification is strong enough, it can also give global-optimality guarantees: Sketch “always eventually finds a globally optimal solution” [1].
+
+**What remains limited:** the search space still must be finite—Sketch requires the program space to be bounded, e.g. by a maximum syntax-tree depth [1]. The passages also stress the runtime cost: Sketch has “no guarantees on runtime,” and in the reported domain 27% of drawings timed out after 1 hour [1].
+
+## 2) Use **learned guidance** to narrow the search
+Another strategy is to learn a search policy or a distribution over programs from the task description, then use that to focus search on promising parts of the space [1][2][3]. The machine-programming overview says learning-based methods can “learn distributions over the space of programs” conditioned on the goal, and these distributions “can be used to narrow the space of programs to something tractable” [2][3]. DeepCoder is given as an example: a neural network maps the intention (examples) to a restricted set of components, and then an off-the-shelf synthesizer searches only that restricted space [2][3]. In Ellis et al., a learned search policy can prioritize tractable subspaces, e.g. “searching over small programs before searching over large programs” or over programs with loops [1].
+
+**What this saves:** learned guidance reduces the number of candidate programs the solver has to inspect, improving speed. Ellis et al. report that this approach reduced timeouts to 2% and solved 58% of problems within a minute [1]. The overview likewise says this allows use of an off-the-shelf synthesizer on a restricted space [2][3].
+
+**What remains limited:** the passages emphasize that the learned distribution only *narrows* the space; it does not remove the need for search [2][3]. Ellis et al. also note a tension: good policies should prefer tractable spaces, but also spaces “likely to contain programs that concisely explain the data” [1]. So the model can miss the right program if it over-prunes or focuses on the wrong region.
+
+## 3) Build **reusable abstractions / representations** to prune many candidates at once
+The overview identifies a first class of synthesis techniques that “explicitly try to build a syntactic representation” such as abstract syntax trees (ASTs), and these methods gain efficiency by ruling out large sets of programs without exploring them one-by-one, often because “particular sub-structures can never be part of a correct solution” [4][5]. It also mentions “symbolic version space” and “special purpose representation” approaches as ways to represent many programs compactly [4][5].
+
+**What this saves:** instead of enumerating every candidate, the synthesizer reasons about whole families of programs at once, eliminating many impossible substructures early [4][5]. This is a form of abstraction over the search space itself.
+
+**What remains limited:** the passages do not say these representations eliminate the need for exact reasoning; rather, they help only by pruning. They also do not claim such representations remove the finite-space or runtime issues seen in other methods [1][4][5]. So the remaining challenge is that even with compact representation, the solver can still face large or complex spaces.
+
+## 4) Use **staged search**: coarse filter first, exact solver second
+The passages give another clear pattern: first learn or infer a restricted candidate space, then pass that smaller space to an exact synthesizer. DeepCoder does this explicitly: a network predicts useful components, and then an off-the-shelf synthesizer searches only that restricted program space [2][3]. Ellis et al. describe a similar staged idea in policy form: search can proceed over smaller programs before larger ones, or over spaces with loops after simpler spaces [1].
+
+**What this saves:** it combines the scalability of learned filtering with the correctness of a symbolic solver. The coarse stage cuts down the search space; the second stage can still perform exact synthesis over the reduced space [1][2][3].
+
+**What remains limited:** the second-stage search is still over a search space, just a smaller one [1][2][3]. So performance still depends on how good the restriction is, and there is still no guarantee that the restricted space contains the needed program.
+
+## Overall comparison
+Across these passages, the main theme is: synthesis systems try to make search manageable by either  
+- **constraining** what counts as a candidate program [1][4][5],  
+- **learning** which parts of the space are promising [1][2][3],  
+- **abstractions/representations** that let them prune many candidates together [4][5], or  
+- **staging** the search so a cheap filter precedes an exact solver [1][2][3].
+
+The common tradeoff is that every method reduces search cost, but none fully removes search complexity: constraints may force bounded spaces and still have high runtime [1], learned guidance may mislead or over-prune [1][2][3], abstractions still need correct reasoning over large families of programs [4][5], and staged pipelines still leave a residual exact search problem [1][2][3].
+
+## Sources used
+- *Learning to Infer Graphics Programs from Hand-Drawn Images* — `DBLP_conf_nips_EllisRST18.pdf` — page 5
+- *The Three Pillars of Machine Programming* — `DBLP_conf_mapl_GottschlichSTCR18.pdf` — page 5
+- *The Three Pillars of Machine Programming* — `DBLP_journals_corr_abs-1803-07244.pdf` — page 5
+- *The Three Pillars of Machine Programming* — `DBLP_conf_mapl_GottschlichSTCR18.pdf` — page 4
+- *The Three Pillars of Machine Programming* — `DBLP_journals_corr_abs-1803-07244.pdf` — page 4
+single_query judge: pass — The answer describes more than three supported strategies, explains how each reduces search complexity, compares the costs they address, and states relevant limitations, all grounded in the cited passages.
+decomposed hits: ["DBLP_journals_corr_abs-1906-04604.pdf p.2", "DBLP_conf_mapl_GottschlichSTCR18.pdf p.4", "DBLP_conf_nips_EllisRST18.pdf p.5", "DBLP_journals_corr_abs-1906-04604.pdf p.8", "DBLP_journals_corr_abs-2003-05562.pdf p.10"]
+decomposed answer (verbatim):
+Program-synthesis papers have made large search spaces manageable in several broad ways. The retrieved passages support at least four strategies: **structuring the search space with constraints or sketches**, **using learned guidance**, **reusing abstractions such as partial programs or search policies**, and **staging the search from coarse to fine or by interleaving execution with search**. Below I compare the main approaches and note what each saves and what remains hard.
+
+## 1) Constraints / symbolic pruning: rule out impossible candidates early
+
+One major strategy is to **represent the search space symbolically or as constraints** so the solver can eliminate many candidates without enumerating them one by one. The survey passage says synthesis methods “achieve efficiency by ruling out large sets of possible programs without exploring them one-by-one,” often by discovering that certain substructures “can never be part of a correct solution” [2]. It also notes a second class of symbolic methods where the program space is reduced to constraints and solved with SAT/SMT or optimization [2].
+
+A concrete example is Sketch: it “translates the synthesis problem into a constraint satisfaction problem and then uses a SAT solver” [3]. This can guarantee a globally optimal solution, but only after bounding the space: “Sketch requires a finite program space” and “has no guarantees on runtime” [3]. In the cited graphics task, this led to long synthesis times and many timeouts: “27% of the drawings” timed out after one hour [3].
+
+**What it saves:**  
+- Avoids brute-force enumeration of all programs [2].  
+- Can exclude whole regions of the search space at once [2].  
+- In Sketch’s case, it can provide a global optimality guarantee [3].
+
+**What limitation remains:**  
+- The search space must be finite or bounded [3].  
+- Runtime can still be prohibitive, with no guarantee on how long solving will take [3].  
+- Constraint solving alone may still be too expensive for large domains [3].
+
+## 2) Learned guidance: predict where to search next
+
+A second strategy is to **learn a search policy or guidance model** that prefers promising regions of the space. The program-synthesis survey describes “learning directed” approaches and says good policies should prefer tractable spaces but also ones likely to contain concise explanations of the data; these goals are “in tension” because smaller spaces are easier to search but may exclude the target program [2]. In the graphics paper, the authors explicitly say they want to “make them much faster by learning a domain-specific search policy” [3]. Their policy can, for example, “first try searching over small programs before searching over large programs” or prioritize programs with loops [3].
+
+In the REPL-based synthesis paper, learned guidance is even more central: they use a policy network, a value network, and execution guidance to “sample next actions,” execute partial programs, and “re-weight the candidates” during sequential Monte Carlo search [1]. They say this helps manage “a large space of alternative program candidates” [1], and that the learned value function improves over methods without it [4].
+
+**What it saves:**  
+- Reduces wasted search by focusing on promising candidates [1][3].  
+- Can prioritize small/tractable subspaces or promising structural choices [3].  
+- In the REPL system, value estimates help rank partial programs during search [1][4].
+
+**What limitation remains:**  
+- Learned guidance does not remove the underlying combinatorial search; it only biases it [1][3].  
+- The policy must balance tractability against completeness/expressiveness, and those aims conflict [3].  
+- Earlier execution-guided systems did not learn to assess execution state, which the REPL paper says is needed for “sophisticated search algorithms” [1].
+
+## 3) Reusable abstractions: partial programs, sketches, and execution state
+
+Another broad strategy is to **search over abstractions rather than fully concrete programs**. The survey mentions “special purpose representation[s]” and symbolic spaces that reduce the full program space to a more compact representation [2]. The graphics paper’s “search policy” can constrain synthesis by deciding which kind of subspace to search first, such as small programs or programs with loops [3]. The REPL paper uses partial programs and their execution states as reusable intermediate objects: it “incorporate[s] writing, executing, and assessing partial programs” into search [1]. Earlier work in this line is described as “execution-guided neural program synthesis,” where a network writes a program conditioned on intermediate execution states [1].
+
+**What it saves:**  
+- Collapses many concrete programs into a smaller symbolic or partial representation [2].  
+- Lets the system reuse partial results from execution instead of restarting from scratch [1].  
+- Enables search decisions based on intermediate behavior, not just final outputs [1].
+
+**What limitation remains:**  
+- The abstractions still need to be rich enough to contain the target program; otherwise the true solution may be missed [3].  
+- Prior execution-guided methods, as summarized here, lacked a learned way to assess execution state [1].  
+- The passages do not establish that abstraction alone solves the scalability problem; it is presented as part of a larger search system [1][2].
+
+## 4) Staged / interleaved search: search small first, then expand; or alternate search and execution
+
+A fourth strategy is to **stage the search** or **interleave different sources of information**. The graphics paper explicitly gives an example of staging: a policy might “first try searching over small programs before searching over large programs” [3]. More generally, the REPL paper interleaves actions, execution, and scoring: they “sample next actions,” “execute the partial programs with the REPL,” and “re-weight the candidates” in sequential Monte Carlo search [1]. They also say they investigated “several ways of interleaving the policy and value networks during search,” finding SMC to be effective [1].
+
+**What it saves:**  
+- Focuses effort on easier or more promising subspaces first [3].  
+- Uses intermediate executions to prune or rank candidates before full completion [1].  
+- Can make synthesis faster and more reliable in practice; the REPL paper reports “faster, more reliable program synthesis” [1], and says the approach finds longer programs than the average training length [4].
+
+**What limitation remains:**  
+- Staging does not eliminate exponential growth; it reorganizes it [1][3].  
+- The search can still face very large branching factors; the REPL paper notes extreme branching in their CAD domain [4].  
+- The passages do not claim these methods guarantee finding a solution for all large problems [1][3][4].
+
+## Bottom line
+
+Across these papers, the common theme is to **avoid exhaustive enumeration** by shrinking, biasing, or structuring the search:
+
+- **Constraints/symbolic methods** save by excluding impossible programs wholesale, but can still be too slow and often require bounded spaces [2][3].  
+- **Learned guidance** saves by steering the search toward promising regions, but it only biases search and must still confront combinatorial explosion [1][3].  
+- **Reusable abstractions** save by working with partial or symbolic program states, but the abstraction must still be expressive enough to contain the answer [1][2].  
+- **Staged or interleaved search** saves by ordering or mixing search with execution, but large branching factors remain a bottleneck [1][3][4].
+
+The passages explicitly show that modern program synthesis is rarely “just” one of these ideas; the strongest systems combine them—e.g., constraints or finite spaces plus learned policy/value guidance plus execution-based pruning [1][3][4].
+
+## Sources used
+
+- **Program Synthesis with a REPL** — `DBLP_journals_corr_abs-1906-04604.pdf`, page 2 [1]  
+- **The Three Pillars of Machine Programming** — `DBLP_conf_mapl_GottschlichSTCR18.pdf`, page 4 [2]  
+- **Learning to Infer Graphics Programs from Hand-Drawn Images** — `DBLP_conf_nips_EllisRST18.pdf`, page 5 [3]  
+- **Program Synthesis with a REPL** — `DBLP_journals_corr_abs-1906-04604.pdf`, page 8 [4]
+decomposed judge: pass — The answer describes multiple supported strategies with mechanisms, compares the cost each addresses, states remaining trade-offs, and grounds the claims in the cited passages.

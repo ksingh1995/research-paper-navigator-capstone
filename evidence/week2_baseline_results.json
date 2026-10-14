@@ -1,0 +1,268 @@
+{
+  "run_timestamp": "2026-09-02T09:31:48",
+  "scenario": "research_papers",
+  "retrieval_approach": "BM25 keyword retrieval over overlapping page chunks",
+  "corpus_directory": "[LOCAL_PATH_REDACTED] RAG and Context Course\\.venv\\Capstone_Checkpoint_1_1_starter\\ResearchPapers",
+  "corpus_pdf_count": 153,
+  "searchable_chunk_count": 12420,
+  "chunk_words": 350,
+  "chunk_overlap": 70,
+  "top_k": 5,
+  "max_results_per_paper": 2,
+  "extraction_warning_count": 0,
+  "extraction_warnings": [],
+  "index_seconds": 317.59,
+  "queries": [
+    {
+      "number": 1,
+      "query": "What is the main finding of 'The Counterfeit Conundrum' about whether code language models recognize their own incorrect generations?",
+      "retrieval_seconds": 0.0781,
+      "results": [
+        {
+          "rank": 1,
+          "score": 57.951,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p1:c1",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 1,
+          "excerpt": "Findings of the Association for Computational Linguistics: ACL 2024 , pages 74–117 August 11-16, 2024 ©2024 Association for Computational Linguistics The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations? Alex Gu1 Wen-Ding Li⋆2 Naman Jain⋆3 Theo X. Olausson⋆1 Celine Lee⋆2 Koushik Sen3 Armando Solar-Lezama1 1MIT CSAIL 2Cornell University 3University of California, Berkele..."
+        },
+        {
+          "rank": 2,
+          "score": 57.478,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p1:c1",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 1,
+          "excerpt": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations? Alex Gu gua@mit.edu MIT CSAIL Wen-Ding Li⋆ wl678@cornell.edu Cornell University Naman Jain⋆ naman jain@berkeley.edu University of California, Berkeley Theo X. Olausson ⋆ theoxo@csail.mit.edu MIT CSAIL Celine Lee⋆ cl923@cornell.edu Cornell University Koushik Sen ksen@berkeley.edu University of California, Berkeley Arm..."
+        },
+        {
+          "rank": 3,
+          "score": 52.53,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p13:c2",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 13,
+          "excerpt": "2024a; Zhang et al., 2023a; Olausson et al., 2024), and Liu et al. (2024) examine a suite of code reasoning benchmarks. A few controlled studies highlight the extent to which language models understand code. For example, code generation abilities have been shown to drop after syntactic changes like identifier swaps (Miceli-Barone et al., 2023) and semantic changes like 1-indexing (Wu et al., 2023). Dinh et al. (2024)..."
+        },
+        {
+          "rank": 4,
+          "score": 49.077,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p1:c2",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 1,
+          "excerpt": "are able to generate counterfeit samples that equally challenge all models. In light of our findings, we recommend that care and caution be taken when relying on models to understand their own samples, especially when no external feedback is incorporated. 1 Introduction In the past year, language models such as Code Llama (Roziere et al., 2023), DeepSeek-Coder (Guo et al., 2024), and GPT-4 (OpenAI, 2023) have demonst..."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "query": "How does the sketching approach to program synthesis use partial programs with holes and constraints?",
+      "retrieval_seconds": 0.07,
+      "results": [
+        {
+          "rank": 1,
+          "score": 34.57,
+          "chunk_id": "DBLP_conf_aplas_Solar-Lezama09:p1:c1",
+          "filename": "DBLP_conf_aplas_Solar-Lezama09.pdf",
+          "title": "The Sketching Approach to Program Synthesis Armando Solar-Lezama",
+          "page": 1,
+          "excerpt": "The Sketching Approach to Program Synthesis Armando Solar-Lezama Massachusetts Institute of Technology Abstract. Sketching is a new form of localized software synthesis that aims to bridge the gap between a programmer’s high-level insights about a problem and the computer’s ability to manage low-level details. In sketching, the programmer uses partial programs to describe the desired implementation strategy, and leav..."
+        },
+        {
+          "rank": 2,
+          "score": 28.065,
+          "chunk_id": "DBLP_journals_pvldb_SinghMEMPQST17:p4:c1",
+          "filename": "DBLP_journals_pvldb_SinghMEMPQST17.pdf",
+          "title": "Synthesizing Entity Matching Rules by Examples Rohit Singh ♠∇ Venkata Vamsikrishna Meduri♦ Ahmed Elmagarmid ♣ Samuel Madden ♠",
+          "page": 4,
+          "excerpt": "Internally, we use the formalism of partial programs to frame the synthesis problem. In these partial programs, holes are used to represent the unknown aspects of the pro- gram, and the space of all possible code fragments that can ﬁll those holes is given by a grammar. The partial program also includes behavioral constraints, which in the case of our problem require the synthesized program to match the ex- amples (S..."
+        },
+        {
+          "rank": 3,
+          "score": 27.918,
+          "chunk_id": "DBLP_conf_cav_BraggFRS21:p875:c2",
+          "filename": "DBLP_conf_cav_BraggFRS21.pdf",
+          "title": "516232_1_En_Print.indd",
+          "page": 875,
+          "excerpt": "a family is to use sketching [2,45]. A sketch can be thought of as a program (or model) with holes, naturally ﬁtting the use case outlined above. Clearly, enumerating single realizations is unfeasible in the light of the combi- natorial design space explosion . Instead, the prevalent approach connected with sketching is based on inductive synthesis. The idea is to analyze a single realiza- tion and generalize the ana..."
+        },
+        {
+          "rank": 4,
+          "score": 26.418,
+          "chunk_id": "DBLP_journals_corr_JeonQFS15:p1:c1",
+          "filename": "DBLP_journals_corr_JeonQFS15.pdf",
+          "title": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡",
+          "page": 1,
+          "excerpt": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡ †University of Maryland, College Park ‡MIT CSAIL {jsjeon@cs.umd.edu, xkqiu@csail.mit.edu, jfoster@cs.umd.edu, asolar@csail.mit.edu} Abstract Sketch-based synthesis, epitomized by the S KETCH tool, lets de- velopers synthesize software starting from a partial program, also called a sketch or template. This paper presents..."
+        },
+        {
+          "rank": 5,
+          "score": 26.418,
+          "chunk_id": "DBLP_conf_sigsoft_JeonQFS15:p1:c1",
+          "filename": "DBLP_conf_sigsoft_JeonQFS15.pdf",
+          "title": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡",
+          "page": 1,
+          "excerpt": "JSKETCH : Sketching for Java Jinseong Jeon† Xiaokang Qiu‡ Jeffrey S. Foster† Armando Solar-Lezama‡ †University of Maryland, College Park ‡MIT CSAIL {jsjeon@cs.umd.edu, xkqiu@csail.mit.edu, jfoster@cs.umd.edu, asolar@csail.mit.edu} Abstract Sketch-based synthesis, epitomized by the S KETCH tool, lets de- velopers synthesize software starting from a partial program, also called a sketch or template. This paper presents..."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "query": "Which papers study program synthesis from input-output examples, and what learning or search methods do they use?",
+      "retrieval_seconds": 0.0638,
+      "results": [
+        {
+          "rank": 1,
+          "score": 30.786,
+          "chunk_id": "DBLP_journals_corr_abs-2003-05562:p3:c2",
+          "filename": "DBLP_journals_corr_abs-2003-05562.pdf",
+          "title": "Learning Compositional Rules via Neural Program Synthesis",
+          "page": 3,
+          "excerpt": "Using a similar training scheme, we in- stead learn an explicit program which can be applied to held out query items (Figure 1B). Our approach builds on work in neural program synthesis. We are inspired by work such as Ro- bustFill [11], enumerative approaches [16], exe- cution guided work [17, 18, 10, 19], and hybrid models [20, 21]. A key difference in our work is the number and diversity of input-output ex- amples..."
+        },
+        {
+          "rank": 2,
+          "score": 29.991,
+          "chunk_id": "DBLP_conf_icml_AletLKNSLKT21:p2:c1",
+          "filename": "DBLP_conf_icml_AletLKNSLKT21.pdf",
+          "title": "A large-scale benchmark for few-shot program induction and synthesis",
+          "page": 2,
+          "excerpt": "Large-scale few-shot program induction and synthesis 1.1. Motivation One of the distinctive abilities of human intelligence is building fexible representations from small amounts of data (Lake et al., 2015). Neural networks provide power - ful representations, but require substantial amounts of data to train. To alleviate these needs, a set of few-shot learn- ing challenges has catalyzed progress into building deep m..."
+        },
+        {
+          "rank": 3,
+          "score": 29.584,
+          "chunk_id": "DBLP_journals_corr_abs-2003-05562:p2:c2",
+          "filename": "DBLP_journals_corr_abs-2003-05562.pdf",
+          "title": "Learning Compositional Rules via Neural Program Synthesis",
+          "page": 2,
+          "excerpt": "(Figure 1A), we instead search for an explicit program which we can check against previous examples (the support set). This allows us to propose and check candidate programs, sampling programs from the neural model and only terminating search when the proposed solution is consistent with prior data. The program synthesis framing also allows immediate and automatic generalization: once the correct rule system is learn..."
+        },
+        {
+          "rank": 4,
+          "score": 29.238,
+          "chunk_id": "DBLP_conf_icml_AletLKNSLKT21:p3:c2",
+          "filename": "DBLP_conf_icml_AletLKNSLKT21.pdf",
+          "title": "A large-scale benchmark for few-shot program induction and synthesis",
+          "page": 3,
+          "excerpt": "al., 2018; Bengio et al., 2019; Ke et al., 2019; Mendez & Eaton, 2020; Ruis et al., 2020). PROG RES provides a relevant benchmark for these compositional few-shot learning methods. Neural program induction Neural networks are univer- sal approximators that have delivered great results in a wide variety of felds. Motivated by these successes, multiple works have applied neural or neuro-symbolic methods to latent progr..."
+        },
+        {
+          "rank": 5,
+          "score": 27.405,
+          "chunk_id": "DBLP_conf_nips_EllisST15:p2:c1",
+          "filename": "DBLP_conf_nips_EllisST15.pdf",
+          "title": "Unsupervised Learning by Program Synthesis",
+          "page": 2,
+          "excerpt": "humans but difﬁcult for machines to learn, we show that our methods can synthesize simple graph- ics programs representing these visual concepts from only a few example images. These programs outperform both previous machine-learning baselines and several new baselines we introduce. We also study the domain of learning morphological rules in language, treating rules as programs and inﬂected verb forms as outputs. We..."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "query": "Find papers where large language models generate, repair, or reason about code, especially work that evaluates functional correctness.",
+      "retrieval_seconds": 0.0591,
+      "results": [
+        {
+          "rank": 1,
+          "score": 41.781,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p3:c1",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 3,
+          "excerpt": "models while GPT-4 has a much better understanding of counterfeits. Nevertheless, we still find that GPT-4 still exhibits some of these misunderstandings. Through further analysis, we find that counterfeit samples have other unexpected properties (Sec. 4). We find, for example, that counterfeit samples from problems that are easier for the model to solve are not easier to assess and only slightly easier to execute an..."
+        },
+        {
+          "rank": 2,
+          "score": 35.958,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p8:c3",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 8,
+          "excerpt": "(2024a); Tyen et al. (2023); Olausson et al. (2024) find that LLMs struggle to find their own reasoning errors, but are able to cor- rect them with adequate external feedback. Singhal et al. (2024) discover that models are better at fix- ing buggy code than distinguishing between correct and buggy code. Relevant to our work, West et al. (2023) and Oh et al. (2024) argue that generative capability may not be contingen..."
+        },
+        {
+          "rank": 3,
+          "score": 34.351,
+          "chunk_id": "DBLP_journals_corr_abs-2402-19475:p13:c2",
+          "filename": "DBLP_journals_corr_abs-2402-19475.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect",
+          "page": 13,
+          "excerpt": "2024a; Zhang et al., 2023a; Olausson et al., 2024), and Liu et al. (2024) examine a suite of code reasoning benchmarks. A few controlled studies highlight the extent to which language models understand code. For example, code generation abilities have been shown to drop after syntactic changes like identifier swaps (Miceli-Barone et al., 2023) and semantic changes like 1-indexing (Wu et al., 2023). Dinh et al. (2024)..."
+        },
+        {
+          "rank": 4,
+          "score": 33.082,
+          "chunk_id": "DBLP_conf_acl_GuLJOLSS24:p2:c1",
+          "filename": "DBLP_conf_acl_GuLJOLSS24.pdf",
+          "title": "The Counterfeit Conundrum: Can Code Language Models Grasp the Nuances of Their Incorrect Generations?",
+          "page": 2,
+          "excerpt": "Given a list of distinct strings, check if any two have the same length. >>> same_length([“aa”, “b”, “ccc”, “dd”]) True >>> same_length([“a”, “bb”, “ccc”]) False Correct def same_length(s): l = [len(i) for i in s] l = set(l) if len(s) > len(l): return True return False Counterfeit def same_length(s): if s == []: return False for a, b in zip(s, s): if len(a) == len(b): return True return False Incorrect def same_lengt..."
+        },
+        {
+          "rank": 5,
+          "score": 29.018,
+          "chunk_id": "DBLP_journals_corr_abs-2403-07974:p9:c1",
+          "filename": "DBLP_journals_corr_abs-2403-07974.pdf",
+          "title": "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code",
+          "page": 9,
+          "excerpt": "Table 1 provides various statistics about the problems that we have collected for LiveCodeBench. 3.3 Scenario-specific benchmark construction Code Generation and Self-Repair. We use the natural language problem statement as the problem statement for these scenarios. For LeetCode, as noted above, an additional starter code is provided for the functional input format. For AtCoder and CodeForces problems, we use the sta..."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "query": "What recent directions from 2023 through 2025 connect language models with program synthesis or code generation?",
+      "retrieval_seconds": 0.0601,
+      "results": [
+        {
+          "rank": 1,
+          "score": 29.45,
+          "chunk_id": "DBLP_journals_cacm_AlurSFS18:p9:c3",
+          "filename": "DBLP_journals_cacm_AlurSFS18.pdf",
+          "title": "Beyond the Training Distribution: Mapping Generalization Boundaries in Neural Program Synthesis",
+          "page": 9,
+          "excerpt": "Yoshitaka Ushiku. 2023. A transformer model for symbolic regres- sion towards scientific discovery.arXiv preprint arXiv:2312.04070(2023). [20] Raymond Li, Loubna Ben Allal, Yangtian Zi, Niklas Muennighoff, Denis Kocetkov, Chenghao Mou, Marc Marone, Christopher Akiki, Jia Li, Jenny Chim, et al. 2023. Starcoder: may the source be with you!arXiv preprint arXiv:2305.06161(2023). [21] Yujia Li, David Choi, Junyoung Chung,..."
+        },
+        {
+          "rank": 2,
+          "score": 28.559,
+          "chunk_id": "DBLP_conf_icml_GuJLSESS25:p57:c2",
+          "filename": "DBLP_conf_icml_GuJLSESS25.pdf",
+          "title": "Position: Future Research and Challenges Remain Towards AI for Software Engineering",
+          "page": 57,
+          "excerpt": "one major challenge is writing code in low-adoption general purposed language and domain specific languages (DSLs). Benchmarks for this include MultiPL-E (Cassano et al., 2023), McEval (Chai et al., 2024), and VerilogEval (Liu et al., 2023b). A popular method to improve performance is to train on manually curated and processing data in low-resource languages such as Coq (Florath, 2024) and Verilog (Pei et al., 2024)...."
+        },
+        {
+          "rank": 3,
+          "score": 28.077,
+          "chunk_id": "DBLP_journals_corr_abs-2501-18623:p3:c1",
+          "filename": "DBLP_journals_corr_abs-2501-18623.pdf",
+          "title": "Published as a conference paper at ICLR 2025 VLM ATERIAL : P ROCEDURAL MATERIAL GENERA -",
+          "page": 3,
+          "excerpt": "Published as a conference paper at ICLR 2025 Visual program synthesis. Our work is also related to visual program synthesis,i.e., inferring the underlying programs from input visual signals. Prior works under this topic span many domains, such as synthesizing drawing programs from images (Johnson et al., 2017; Ellis et al., 2018; 2019; Tian et al., 2019; Ellis et al., 2023), converting raster images into SVGs (Reddy..."
+        },
+        {
+          "rank": 4,
+          "score": 28.077,
+          "chunk_id": "DBLP_conf_iclr_LiWSZ0BM25:p3:c1",
+          "filename": "DBLP_conf_iclr_LiWSZ0BM25.pdf",
+          "title": "Published as a conference paper at ICLR 2025 VLM ATERIAL : P ROCEDURAL MATERIAL GENERA -",
+          "page": 3,
+          "excerpt": "Published as a conference paper at ICLR 2025 Visual program synthesis. Our work is also related to visual program synthesis,i.e., inferring the underlying programs from input visual signals. Prior works under this topic span many domains, such as synthesizing drawing programs from images (Johnson et al., 2017; Ellis et al., 2018; 2019; Tian et al., 2019; Ellis et al., 2023), converting raster images into SVGs (Reddy..."
+        },
+        {
+          "rank": 5,
+          "score": 28.003,
+          "chunk_id": "DBLP_journals_cacm_AlurSFS18:p9:c4",
+          "filename": "DBLP_journals_cacm_AlurSFS18.pdf",
+          "title": "Beyond the Training Distribution: Mapping Generalization Boundaries in Neural Program Synthesis",
+          "page": 9,
+          "excerpt": "LIII. On lines and planes of closest fit to systems of points in space.The London, Edinburgh, and Dublin philosophical magazine and journal of science2, 11 (1901), 559–572. [30] Martin Riddell, Ansong Ni, and Arman Cohan. 2024. Quantifying Contamination in Evaluating Code Generation Capabilities of Language Models. InProceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Lo..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "item_id": "Q1",
+    "category": "known-paper finding",
+    "question": "What is the main finding of 'The Counterfeit Conundrum' about whether code language models recognize their own incorrect generations?",
+    "grading_notes": "The answer should state that code language models generally do not reliably recognize their own incorrect or counterfeit generations. It should describe at least two of the three reported failure modes: misclassifying incorrect programs as correct, reasoning about their execution as if they were correct, and struggling to repair them.",
+    "expected_sources": [
+      "DBLP_conf_acl_GuLJOLSS24.pdf",
+      "DBLP_journals_corr_abs-2402-19475.pdf"
+    ],
+    "robustness_family": "counterfeit-finding",
+    "expected_difficulty": "standard"
+  },
+  {
+    "item_id": "Q2",
+    "category": "paraphrase",
+    "question": "According to The Counterfeit Conundrum, do code-generation models notice when their own generated programs are wrong, and where do they struggle?",
+    "grading_notes": "The answer should state that recognition is unreliable and should identify at least two problems involving correctness classification, execution reasoning, or repair.",
+    "expected_sources": [
+      "DBLP_conf_acl_GuLJOLSS24.pdf",
+      "DBLP_journals_corr_abs-2402-19475.pdf"
+    ],
+    "robustness_family": "counterfeit-finding",
+    "expected_difficulty": "standard"
+  },
+  {
+    "item_id": "Q3",
+    "category": "technical method",
+    "question": "How does the sketching approach to program synthesis use partial programs with holes and constraints?",
+    "grading_notes": "The answer should explain that a programmer supplies a partial program or sketch with holes, and that a synthesizer fills those holes while satisfying constraints such as a specification, tests, or a reference implementation.",
+    "expected_sources": [
+      "DBLP_conf_aplas_Solar-Lezama09.pdf"
+    ],
+    "robustness_family": "sketching-method",
+    "expected_difficulty": "standard"
+  },
+  {
+    "item_id": "Q4",
+    "category": "terminology variant",
+    "question": "What does the Sketching Approach paper say about completing an unfinished code template that contains unknown values?",
+    "grading_notes": "The answer should connect the unfinished template and unknown values to a partial program with holes, then explain that synthesis searches for values or code that satisfy the given correctness constraints.",
+    "expected_sources": [
+      "DBLP_conf_aplas_Solar-Lezama09.pdf"
+    ],
+    "robustness_family": "sketching-method",
+    "expected_difficulty": "standard"
+  },
+  {
+    "item_id": "Q5",
+    "category": "cross-paper comparison",
+    "question": "Which papers study program synthesis from input-output examples, and what learning or search methods do they use?",
+    "grading_notes": "The answer should name at least two relevant papers and accurately connect each named paper to a supported method. Acceptable examples include Program Synthesis with a REPL using reinforcement learning and Sequential Monte Carlo search, Learning Compositional Rules via Neural Program Synthesis using neural attention, and Unsupervised Learning by Program Synthesis using sketching, SMT-based search, and Bayesian inference.",
+    "expected_sources": [
+      "DBLP_journals_corr_abs-1906-04604.pdf",
+      "DBLP_journals_corr_abs-2003-05562.pdf",
+      "DBLP_conf_nips_EllisST15.pdf"
+    ],
+    "robustness_family": null,
+    "expected_difficulty": "challenging"
+  },
+  {
+    "item_id": "Q6",
+    "category": "temporal exploratory",
+    "question": "What recent directions from 2023 through 2025 connect language models with program synthesis or code generation?",
+    "grading_notes": "The answer should synthesize at least three directions supported by the retrieved papers. Acceptable directions include class- or project-level generation, multimodal generation, low-resource languages or DSLs, retrieval-augmented generation, interactive workflows, and stronger evaluation for correctness, contamination, or security.",
+    "expected_sources": [
+      "DBLP_conf_icml_GuJLSESS25.pdf",
+      "DBLP_journals_corr_abs-2503-22625.pdf",
+      "DBLP_conf_iclr_JainHGLYZWSSS25.pdf"
+    ],
+    "robustness_family": null,
+    "expected_difficulty": "challenging"
+  },
+  {
+    "item_id": "Q7",
+    "category": "specific-paper method",
+    "question": "How does Learning to Infer Program Sketches combine learned sketch prediction with program search?",
+    "grading_notes": "The answer should explain that a learned model predicts a program sketch or partial structure and that a symbolic or enumerative synthesizer searches for a completion that matches the examples or specification. It should not rely only on bibliography mentions.",
+    "expected_sources": [
+      "DBLP_conf_icml_NyeHTS19.pdf",
+      "DBLP_journals_corr_abs-1902-06349.pdf"
+    ],
+    "robustness_family": null,
+    "expected_difficulty": "known retrieval risk"
+  },
+  {
+    "item_id": "Q8",
+    "category": "out-of-corpus abstention",
+    "question": "Which randomized clinical trial in this collection compares three cancer treatments, and what survival rates did it report?",
+    "grading_notes": "A correct answer should state that the retrieved research-paper collection does not provide enough evidence to identify such a trial or its survival rates. It must not invent a study name, treatments, or numbers.",
+    "expected_sources": [],
+    "robustness_family": null,
+    "expected_difficulty": "adversarial no-answer case"
+  }
+]

@@ -1,0 +1,194 @@
+{
+  "purpose": "Evaluator reliability check; original 27 production runs and their verdicts are unchanged.",
+  "repeat_condition": "Same saved answer, same original grading notes, same Week 3 judge. Three additional evaluation-only calls.",
+  "checks": [
+    {
+      "id": "T1",
+      "original": {
+        "verdict": "fail",
+        "reason": "The answer covers the core methods but misses the required source-page citations from numbered passages and includes unsupported or imprecise evaluation claims instead of a clearly documented trade-off from the REPL paper.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The answer covers the core methods but misses the required source-page citations from numbered passages and includes unsupported or imprecise evaluation claims instead of a clearly documented trade-off from the REPL paper.\"}"
+      },
+      "repeated": {
+        "verdict": "fail",
+        "reason": "The answer covers the sketch-and-REPL methods generally, but it misses required documented trade-offs/caveats from the grading notes and includes unsupported benchmark-style claims rather than the specified evidence-backed limits.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The answer covers the sketch-and-REPL methods generally, but it misses required documented trade-offs/caveats from the grading notes and includes unsupported benchmark-style claims rather than the specified evidence-backed limits.\"}"
+      },
+      "calls": [
+        {
+          "role": "judge",
+          "model": "openai/gpt-5.4-mini",
+          "path": "/chat/completions",
+          "status": "ok",
+          "requested_max_tokens": 180,
+          "synthetic_fact_exposed": false,
+          "injected_command_exposed": false,
+          "prompt_tokens": 941,
+          "completion_tokens": 56,
+          "total_tokens": 997,
+          "reported_cost_usd": 0.00095775,
+          "usage": {
+            "prompt_tokens": 941,
+            "completion_tokens": 56,
+            "total_tokens": 997,
+            "cost": 0.00095775,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00095775,
+              "upstream_inference_prompt_cost": 0.00070575,
+              "upstream_inference_completions_cost": 0.000252
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "seconds": 1.3839
+        }
+      ],
+      "input_unchanged": true
+    },
+    {
+      "id": "T2",
+      "original": {
+        "verdict": "fail",
+        "reason": "The answer mostly covers the required distinctions and caveats, but it invents unsupported details such as LLM integration and does not provide the requested evidence-supported citations from numbered passages with source pages.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The answer mostly covers the required distinctions and caveats, but it invents unsupported details such as LLM integration and does not provide the requested evidence-supported citations from numbered passages with source pages.\"}"
+      },
+      "repeated": {
+        "verdict": "fail",
+        "reason": "The response covers the broad distinction and caveat, but it invents unsupported details and misleading citations (e.g., LLMs and incorrect page/source attributions) rather than using evidence-supported passages from both papers as required.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The response covers the broad distinction and caveat, but it invents unsupported details and misleading citations (e.g., LLMs and incorrect page/source attributions) rather than using evidence-supported passages from both papers as required.\"}"
+      },
+      "calls": [
+        {
+          "role": "judge",
+          "model": "openai/gpt-5.4-mini",
+          "path": "/chat/completions",
+          "status": "ok",
+          "requested_max_tokens": 180,
+          "synthetic_fact_exposed": false,
+          "injected_command_exposed": false,
+          "prompt_tokens": 1246,
+          "completion_tokens": 61,
+          "total_tokens": 1307,
+          "reported_cost_usd": 0.001209,
+          "usage": {
+            "prompt_tokens": 1246,
+            "completion_tokens": 61,
+            "total_tokens": 1307,
+            "cost": 0.001209,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.001209,
+              "upstream_inference_prompt_cost": 0.0009345,
+              "upstream_inference_completions_cost": 0.0002745
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "seconds": 1.33
+        }
+      ],
+      "input_unchanged": true
+    },
+    {
+      "id": "T3",
+      "original": {
+        "verdict": "fail",
+        "reason": "The answer covers the three routes and their ambiguity, but it does not cite passage numbers and makes unsupported claims about the methods’ behavior instead of grounding them in the required passages.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The answer covers the three routes and their ambiguity, but it does not cite passage numbers and makes unsupported claims about the methods’ behavior instead of grounding them in the required passages.\"}"
+      },
+      "repeated": {
+        "verdict": "fail",
+        "reason": "The answer covers the three routes and ambiguity, but it gives no passage numbers and includes unsupported or potentially overstated claims, so it does not satisfy the required evidence criteria.",
+        "raw": "{\"verdict\":\"fail\",\"reason\":\"The answer covers the three routes and ambiguity, but it gives no passage numbers and includes unsupported or potentially overstated claims, so it does not satisfy the required evidence criteria.\"}"
+      },
+      "calls": [
+        {
+          "role": "judge",
+          "model": "openai/gpt-5.4-mini",
+          "path": "/chat/completions",
+          "status": "ok",
+          "requested_max_tokens": 180,
+          "synthetic_fact_exposed": false,
+          "injected_command_exposed": false,
+          "prompt_tokens": 845,
+          "completion_tokens": 50,
+          "total_tokens": 895,
+          "reported_cost_usd": 0.00085875,
+          "usage": {
+            "prompt_tokens": 845,
+            "completion_tokens": 50,
+            "total_tokens": 895,
+            "cost": 0.00085875,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00085875,
+              "upstream_inference_prompt_cost": 0.00063375,
+              "upstream_inference_completions_cost": 0.000225
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "seconds": 0.8195
+        }
+      ],
+      "input_unchanged": true
+    }
+  ],
+  "citation_checks": [
+    {
+      "id": "T1",
+      "inline_passage_numbers_present": true,
+      "sources_list_has_page_numbers": true
+    },
+    {
+      "id": "T2",
+      "inline_passage_numbers_present": true,
+      "sources_list_has_page_numbers": true
+    },
+    {
+      "id": "T3",
+      "inline_passage_numbers_present": true,
+      "sources_list_has_page_numbers": true
+    }
+  ],
+  "manual_observations": [
+    "All three lower-cost control answers contain inline passage numbers and source-page lists; missing-citation complaints in the original judge reasons are inaccurate.",
+    "The original T2 judge calls LLM integration unsupported, but the selected Raven excerpt explicitly says its key insight is to integrate LLMs with video analysis.",
+    "The T1 answer still lacks a specific documented REPL-paper scope/cost trade-off, which is a substantive completeness concern independent of the citation complaint.",
+    "Citation presence is not full citation correctness. No manually adjudicated aggregate accuracy score is claimed."
+  ],
+  "T2_counterevidence": "individual programs. Program-specific assertions and hard-coded execution assumptions therefore fail to generalize across submissions. To address this gap, we propose Raven, a video-grounded framework thatrethinks automated assessment for Scratch programs viavideo-basedevaluation of program execution. Raven evaluates submissions at the task level using shared video-generation rules that specify how programs are exercised. Instead of relying on program-specific state assertions, it grades by analyzing execution videos. This design decouples grading criteria from individual implementations, enabling consistent assessment across diverse student solutions. The key insight of Raven is to integrate LLMs with video analysis to assess whether a program’s observed visual and interactive behavior satisfies grading criteria. LLMs enable semantic interpre- tation of high-level visual outcomes, such...",
+  "additional_judge_cost_usd": 0.0030255,
+  "additional_judge_tokens": 3199
+}

@@ -9,3 +9,27 @@ data/papers/
 outputs/
 *.npz
 *.json.gz
+
+# Submission-only and confidential material must stay local.
+presentation/
+submission/
+.build/
+*.pptx
+*.ppt
+*.docx
+*.pdf
+*.mp3
+*.wav
+*.mp4
+*Voice_Over*
+*voice_over*
+*Recording_Script*
+*recording_script*
+*confidential*
+*private*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Historical evidence logs are intentional; do not ignore all *.log files.

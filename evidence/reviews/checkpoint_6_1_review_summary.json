@@ -1,0 +1,58 @@
+{
+  "main_run_records": 27,
+  "role_totals": {
+    "planner": {
+      "calls": 54,
+      "total_tokens": 178510,
+      "reported_cost_usd": 0.0878424,
+      "seconds": 141.7809,
+      "missing_cost_calls": 0
+    },
+    "answer": {
+      "calls": 27,
+      "total_tokens": 88440,
+      "reported_cost_usd": 0.08306025,
+      "seconds": 123.2723,
+      "missing_cost_calls": 0
+    },
+    "embedding": {
+      "calls": 35,
+      "total_tokens": 1216,
+      "reported_cost_usd": 0.00002432,
+      "seconds": 8.5653,
+      "missing_cost_calls": 0
+    },
+    "judge": {
+      "calls": 27,
+      "total_tokens": 21295,
+      "reported_cost_usd": 0.02094375,
+      "seconds": 26.9129,
+      "missing_cost_calls": 0
+    }
+  },
+  "planner_length_finishes": 2,
+  "reported_cached_prompt_tokens": 18688,
+  "selected_verbatim_output_cases": [
+    [
+      "current",
+      "S1"
+    ],
+    [
+      "current",
+      "S4_clean"
+    ],
+    [
+      "current",
+      "S4_poison"
+    ],
+    [
+      "lower_cost",
+      "S4_poison"
+    ],
+    [
+      "lower_cost",
+      "S2"
+    ]
+  ],
+  "source_preserved": true
+}

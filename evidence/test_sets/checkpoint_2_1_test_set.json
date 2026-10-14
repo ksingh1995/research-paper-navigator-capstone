@@ -1,0 +1,18 @@
+[
+  {
+    "id": "W2Q1",
+    "question": "What is the main finding of 'The Counterfeit Conundrum' about whether code language models recognize their own incorrect generations?"
+  },
+  {
+    "id": "W2Q2",
+    "question": "How does the sketching approach to program synthesis use partial programs with holes and constraints?"
+  },
+  {
+    "id": "W2Q3",
+    "question": "Which papers study program synthesis from input-output examples, and what learning or search methods do they use?"
+  },
+  {
+    "id": "W2Q4",
+    "question": "What recent directions from 2023 through 2025 connect language models with program synthesis or code generation?"
+  }
+]

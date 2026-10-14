@@ -1,0 +1,68 @@
+[
+  {
+    "id": "BD1",
+    "topic": "Neural and symbolic synthesis",
+    "question": "Across the research-paper collection, what broad approaches combine learned predictions with symbolic program search? Explain how learned proposals, sketches or constraints, and final checking each contribute, and note a limitation or open trade-off.",
+    "required_facets": [
+      "learned proposals",
+      "symbolic search or constraints",
+      "checking or limitations"
+    ],
+    "grading_notes": "Required: discuss at least two distinct learned-plus-symbolic approaches supported by cited passages; explain the role of learned proposals and of symbolic search, sketches, or constraints; distinguish any final execution/constraint checking from prediction; state at least one limitation or trade-off. Do not require specific named papers if the evidence supports the directions."
+  },
+  {
+    "id": "BD2",
+    "topic": "Examples and user intent",
+    "question": "What different ways do the papers turn examples or user intent into a program? Compare input-output example methods with at least one other kind of specification or interaction, explain how candidate programs are searched or ranked, and describe a practical ambiguity or feedback challenge.",
+    "required_facets": [
+      "input-output examples",
+      "other specification or interaction",
+      "search/ranking and ambiguity"
+    ],
+    "grading_notes": "Required: explain input-output examples as one specification; compare with at least one other supported form of user intent such as natural language, sketches, constraints, or interaction; explain how candidate programs are generated, searched, or ranked; identify an ambiguity, feedback, or generalization issue. Use only supported comparisons."
+  },
+  {
+    "id": "BD3",
+    "topic": "Correctness and feedback",
+    "question": "How do research directions in code generation and program synthesis try to move from plausible code to correct code? Compare roles for tests or execution feedback, formal constraints or verification, and iterative repair or refinement; explain what these checks still cannot guarantee.",
+    "required_facets": [
+      "tests or execution",
+      "formal constraints or verification",
+      "repair/refinement and limits"
+    ],
+    "grading_notes": "Required: compare evidence-supported roles of tests/execution feedback, formal constraints or verification, and iterative repair/refinement; explain a limitation of finite tests, incomplete specifications, or another supported check. It is acceptable to state a direction is not established by retrieved evidence rather than invent it."
+  },
+  {
+    "id": "BD4",
+    "topic": "Representations and domains",
+    "question": "Across the papers, how do the choice of programming language, domain-specific language, or intermediate representation shape what can be synthesized? Compare at least two domains or representations, explain how grammar or domain knowledge narrows search, and discuss the generality trade-off.",
+    "required_facets": [
+      "two domains or representations",
+      "grammar/domain knowledge",
+      "generality trade-off"
+    ],
+    "grading_notes": "Required: compare at least two supported synthesis domains, languages, or representations; explain how grammar, primitives, types, or domain knowledge constrains search; describe the trade-off between a narrower search space and portability or generality. Avoid claims about languages absent from the retrieved passages."
+  },
+  {
+    "id": "BD5",
+    "topic": "Visual inputs",
+    "question": "What research directions use visual information to specify or guide programs? Compare at least two forms of visual input or output, explain how the system connects visual evidence to candidate code or structures, and identify an evaluation or ambiguity challenge.",
+    "required_facets": [
+      "two visual forms",
+      "visual-to-program link",
+      "evaluation or ambiguity"
+    ],
+    "grading_notes": "Required: compare at least two supported visual synthesis settings, such as images, drawings, diagrams, layouts, or graphics; explain how visual observations help generate/search for programs or structured representations; discuss an ambiguity or evaluation challenge. If the five passages cannot support two forms, say so explicitly instead of fabricating."
+  },
+  {
+    "id": "BD6",
+    "topic": "Search efficiency and scale",
+    "question": "How have program-synthesis papers tried to make large search spaces manageable? Compare at least three broad strategies—such as constraints, learned guidance, reusable abstractions, or staged search—and explain what each saves and what limitation remains.",
+    "required_facets": [
+      "three strategies",
+      "how each narrows search",
+      "remaining limitations"
+    ],
+    "grading_notes": "Required: describe at least three distinct supported strategies for managing search complexity; explain the mechanism of each rather than only listing names; compare what cost or search-space pressure each addresses; identify at least one remaining limitation or trade-off. Ground claims in cited passages."
+  }
+]

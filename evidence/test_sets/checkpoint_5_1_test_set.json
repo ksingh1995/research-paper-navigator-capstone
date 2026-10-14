@@ -1,0 +1,29 @@
+[
+  {
+    "id": "T1",
+    "topic": "Neural and symbolic methods",
+    "question": "Compare Learning to Infer Program Sketches with Program Synthesis with a REPL. How does each combine learning with symbolic search or execution feedback? For each paper, report one evaluation or scope trade-off stated by its authors and explain how it qualifies the method.",
+    "expected_title_terms": [
+      "Learning to Infer Program Sketches",
+      "Program Synthesis with a REPL"
+    ],
+    "grading_notes": "Required: explain learned sketch proposal plus symbolic hole completion in Learning to Infer Program Sketches; explain learned policy/value guidance plus partial-program REPL execution during search in Program Synthesis with a REPL; compare these different roles for learning. For the sketch paper, identify one documented evaluation/scope limit or trade-off: excluded multi-input/prespecified-constant tasks, synthetic training, only three evaluated domains, or symbolic enumeration becoming slower and less effective in the larger string-editing DSL. For the REPL paper, identify one documented trade-off: no-REPL becoming competitive with sufficient time because per-step CNN calls add cost, quantized scenes, or evaluation only on two reported domains. Explain why the evidence qualifies the approach. Cite numbered passages from both named papers and identify source pages. No unsupported benchmark claims."
+  },
+  {
+    "id": "T2",
+    "topic": "Visual-program methods",
+    "question": "Compare Learning to Infer Graphics Programs from Hand-Drawn Images with Raven: Rethinking Automated Assessment for Scratch Programs via Video-Grounded Evaluation. What visual evidence does each use, how does it relate to programs, how is success evaluated, and what uncertainty or scope limit remains?",
+    "expected_title_terms": [
+      "Learning to Infer Graphics Programs from Hand-Drawn Images",
+      "Raven: Rethinking Automated Assessment for Scratch Programs"
+    ],
+    "grading_notes": "Required: distinguish graphics-program inference from hand-drawn images from Raven's video-grounded assessment of Scratch programs; explain the visual input/output and program role in each; describe how each paper evaluates success; identify an evidence-supported ambiguity, scope limit, or evaluation caveat. Cite numbered passages from both named papers and identify source pages. Do not treat both as the same task or invent metrics."
+  },
+  {
+    "id": "T3",
+    "topic": "Specifications and feedback",
+    "question": "Across the papers, compare three routes from user intent to correct code: input-output examples, formal or symbolic specifications, and feedback-driven program repair. How does each guide candidate search or checking, and where can ambiguity or incomplete evidence remain?",
+    "expected_title_terms": [],
+    "grading_notes": "Required: compare input-output examples, formal/symbolic specifications, and feedback-driven repair as distinct routes; explain how each guides generation, search, ranking, or checking; identify ambiguity or incompleteness that remains. Support the three routes with at least two distinct papers, not merely a reference list or a single survey. Cite passage numbers and avoid unsupported guarantees."
+  }
+]
